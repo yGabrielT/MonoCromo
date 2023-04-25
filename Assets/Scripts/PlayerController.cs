@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
 
         //Corrida
-        if (inputManager.isSprinting == true && inputManager.isCrouching == false)
+        if (inputManager.isSprinting == true && inputManager.isCrouching == false && groundedPlayer)
         {
             playerSpeed = playerBaseSpeed * playerSprintMultiplier;
         }
@@ -113,11 +113,7 @@ public class PlayerController : MonoBehaviour
         //Planar
         if (inputManager.isGliding == true && !groundedPlayer && isFalling)
         {
-            gravityValue = GlidingGravity;
-        }
-        else
-        {
-            gravityValue = BaseGravity;
+            playerVelocity.y = -1;
         }
   
         playerVelocity.y += gravityValue * Time.deltaTime;

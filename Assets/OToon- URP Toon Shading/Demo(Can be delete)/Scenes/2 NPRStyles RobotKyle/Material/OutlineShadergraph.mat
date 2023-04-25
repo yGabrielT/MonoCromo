@@ -97,7 +97,7 @@ Material:
     m_Floats:
     - Vector1_02a3577392224a4db4885cfdc40d3d90: 1
     - Vector1_067fcea47cd344e492dee8858d95ad07: 0
-    - Vector1_8dd6492e16194799b37d5efeb9926b89: 0.62
+    - Vector1_8dd6492e16194799b37d5efeb9926b89: 0.4
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -107,8 +107,8 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DitherTexelSize: 1
-    - _DitherThreshold: 0
+    - _DitherTexelSize: 5.8
+    - _DitherThreshold: 0.248
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -128,7 +128,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_e33122dd1341407eb6ef24a34b660f09: {r: 1, g: 0, b: 0, a: 0}
+    - Color_e33122dd1341407eb6ef24a34b660f09: {r: 0.8113207, g: 0.06505873, b: 0.06505873,
+        a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
