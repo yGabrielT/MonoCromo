@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     private float GlidingGravity = -0.3f;
     [SerializeField]
     private float fallingThreshold = 2.5f;
+    [SerializeField]
+    private Transform Modelo;
+    [SerializeField]
+    private Transform CameraPos;
 
     [Space]
 
@@ -28,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool groundedPlayer;
     private InputManager inputManager;
     private Transform camera;
+    
     private Vector2 currentInputVector;
     private Vector2 smoothInputVelocity;
     private float PlayerBaseHeight;
@@ -115,7 +120,6 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y = -1;
         }
-  
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
