@@ -20,10 +20,6 @@ public class PlayerController : MonoBehaviour
     private float GlidingGravity = -0.3f;
     [SerializeField]
     private float fallingThreshold = 2.5f;
-    [SerializeField]
-    private Transform Modelo;
-    [SerializeField]
-    private Transform CameraPos;
 
     [Space]
 
