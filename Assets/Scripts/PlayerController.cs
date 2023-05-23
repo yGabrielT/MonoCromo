@@ -1,5 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y = 0f;
         }
+        
 
         Vector2 movement = inputManager.GetPlayerMovement();
         currentInputVector = Vector2.SmoothDamp(currentInputVector, movement, ref smoothInputVelocity, smoothInputSpeed);
@@ -67,7 +70,7 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
 
-
+        
         //Corrida
         if (inputManager.isSprinting == true && inputManager.isCrouching == false && groundedPlayer)
         {
@@ -116,6 +119,7 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y = -1;
         }
+        
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
