@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
     private float GlidingGravity = -0.3f;
     [SerializeField]
     private float fallingThreshold = 2.5f;
+    [SerializeField]
+    private Animator animator;
+    [SerializeField]
+    private float playerAnimSpeed = .25f;
 
     [Space]
 
@@ -31,6 +35,10 @@ public class PlayerController : MonoBehaviour
     private InputManager inputManager;
     private Transform camera;
     
+    private int MoveXAnimatorFloat;
+    private int MoveYAnimatorFloat;
+    private int JumpAnim;
+
     private Vector2 currentInputVector;
     private Vector2 smoothInputVelocity;
     private float PlayerBaseHeight;
@@ -40,6 +48,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        JumpAnim = Animator.StringToHash("Jump");
+        MoveXAnimatorFloat = Animator.StringToHash("MaxX");
+        MoveYAnimatorFloat = Animator.StringToHash("MaxY");
         camera = Camera.main.transform;
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
@@ -64,10 +75,15 @@ public class PlayerController : MonoBehaviour
         move.y = 0f;
         controller.Move(move * Time.deltaTime * playerSpeed);
 
+        //Animação
+        animator.SetFloat(MoveXAnimatorFloat, currentInputVector.x);
+        animator.SetFloat(MoveYAnimatorFloat, currentInputVector.y);
+
         // Changes the height position of the player..
         if (inputManager.PlayerJumped() && groundedPlayer)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            animator.CrossFade(JumpAnim, playerAnimSpeed);
         }
 
         
