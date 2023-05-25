@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float playerBaseSpeed = 2.0f;
     private float playerSpeed;
-    [SerializeField]
-    private float playerSprintMultiplier = 4.0f;
+    //[SerializeField]
+    //private float playerSprintMultiplier = 4.0f;
     [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 currentInputVector;
     private Vector2 smoothInputVelocity;
     private float PlayerBaseHeight;
-    private float BaseGravity;
     private float fallStartLevel;
     private bool isFalling = false;
 
@@ -56,7 +55,6 @@ public class PlayerController : MonoBehaviour
         inputManager = InputManager.Instance;
         playerSpeed = playerBaseSpeed;
         PlayerBaseHeight = gameObject.transform.localScale.y;
-        BaseGravity = gravityValue;
     }
 
     void Update()
@@ -73,7 +71,7 @@ public class PlayerController : MonoBehaviour
         Vector3 move = new Vector3(currentInputVector.x, 0f, currentInputVector.y);
         move = camera.forward * move.z + camera.right * move.x;
         move.y = 0f;
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        controller.Move(move * Time.unscaledDeltaTime * playerSpeed);
 
         //Animação
         animator.SetFloat(MoveXAnimatorFloat, currentInputVector.x);
@@ -88,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
         
         //Corrida
+        /*
         if (inputManager.isSprinting == true && inputManager.isCrouching == false && groundedPlayer)
         {
             playerSpeed = playerBaseSpeed * playerSprintMultiplier;
@@ -96,6 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             playerSpeed = playerBaseSpeed;
         }
+        */
 
 
         //Agachar
@@ -136,8 +136,8 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = -1;
         }
         
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        playerVelocity.y += gravityValue * Time.unscaledDeltaTime;
+        controller.Move(playerVelocity * Time.unscaledDeltaTime);
 
 
     }

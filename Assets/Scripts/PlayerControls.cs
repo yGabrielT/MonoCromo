@@ -71,6 +71,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold(duration=0.1)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SlowMotion"",
+                    ""type"": ""Button"",
+                    ""id"": ""7a354c37-bf28-41ff-bb2c-2c4d32a59266"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd1f35bf-2feb-4dbc-a85c-52eaecc98f59"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlowMotion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +205,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Ground_Sprint = m_Ground.FindAction("Sprint", throwIfNotFound: true);
         m_Ground_Mouse = m_Ground.FindAction("Mouse", throwIfNotFound: true);
         m_Ground_Crouch = m_Ground.FindAction("Crouch", throwIfNotFound: true);
+        m_Ground_SlowMotion = m_Ground.FindAction("SlowMotion", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +272,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Ground_Sprint;
     private readonly InputAction m_Ground_Mouse;
     private readonly InputAction m_Ground_Crouch;
+    private readonly InputAction m_Ground_SlowMotion;
     public struct GroundActions
     {
         private @PlayerControls m_Wrapper;
@@ -260,6 +282,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Ground_Sprint;
         public InputAction @Mouse => m_Wrapper.m_Ground_Mouse;
         public InputAction @Crouch => m_Wrapper.m_Ground_Crouch;
+        public InputAction @SlowMotion => m_Wrapper.m_Ground_SlowMotion;
         public InputActionMap Get() { return m_Wrapper.m_Ground; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -284,6 +307,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Crouch.started += instance.OnCrouch;
             @Crouch.performed += instance.OnCrouch;
             @Crouch.canceled += instance.OnCrouch;
+            @SlowMotion.started += instance.OnSlowMotion;
+            @SlowMotion.performed += instance.OnSlowMotion;
+            @SlowMotion.canceled += instance.OnSlowMotion;
         }
 
         private void UnregisterCallbacks(IGroundActions instance)
@@ -303,6 +329,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Crouch.started -= instance.OnCrouch;
             @Crouch.performed -= instance.OnCrouch;
             @Crouch.canceled -= instance.OnCrouch;
+            @SlowMotion.started -= instance.OnSlowMotion;
+            @SlowMotion.performed -= instance.OnSlowMotion;
+            @SlowMotion.canceled -= instance.OnSlowMotion;
         }
 
         public void RemoveCallbacks(IGroundActions instance)
@@ -327,5 +356,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnMouse(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnSlowMotion(InputAction.CallbackContext context);
     }
 }

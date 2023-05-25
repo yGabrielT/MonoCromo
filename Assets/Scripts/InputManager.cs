@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
     public bool isSprinting = false;
     public bool isCrouching = false;
     public bool isGliding = false;
+    public bool isSlow = false;
 
     public static InputManager Instance
     {
@@ -34,6 +35,9 @@ public class InputManager : MonoBehaviour
         playerControls.Ground.Crouch.canceled += ctx => PlayerCrouchOff();
         playerControls.Ground.Jump.performed += ctx => PlayerGlidingOn();
         playerControls.Ground.Jump.canceled += ctx => PlayerGlidingOff();
+        playerControls.Ground.SlowMotion.performed += ctx => PlayerSlowOn();
+        playerControls.Ground.SlowMotion.canceled += ctx => PlayerSlowOff();
+
     }
 
     private void OnEnable()
@@ -84,5 +88,13 @@ public class InputManager : MonoBehaviour
     public void PlayerGlidingOff()
     {
         isGliding = false;
+    }
+    public void PlayerSlowOn()
+    {
+        isSlow = true;
+    }
+    public void PlayerSlowOff()
+    {
+        isSlow = false;
     }
 }
