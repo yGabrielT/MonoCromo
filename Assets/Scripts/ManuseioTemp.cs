@@ -7,8 +7,7 @@ public class ManuseioTemp : MonoBehaviour
     [SerializeField]
     private float timeCrono, SlowCooldown;
     private InputManager inputManager;
-    public static bool timeToggle = false;
-    private bool startcooldown;
+    public static bool timeToggle = false, startcooldown;
     private float timeScale = .25f, defaultTimeScale = 1f, defaultFixedDeltaTime = 0.02f;
  
     // Start is called before the first frame update
