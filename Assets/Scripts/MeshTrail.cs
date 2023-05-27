@@ -65,7 +65,7 @@ public class MeshTrail : MonoBehaviour
     {
         if (SlowAtiv)
         {
-            while (timeActive > 0)
+            while (timeActive > 0 && SlowAtiv)
             {
                 timeActive -= meshRefreshRate;
 
