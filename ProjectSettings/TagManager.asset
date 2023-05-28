@@ -5,14 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Clone
+  - CinemachineTarget
+  - Bombs
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - Ground
+  - Bombs
   - 
   - 
   - 

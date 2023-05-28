@@ -14,8 +14,9 @@ namespace StarterAssets
         public bool aim;
         public bool slow;
         public bool sprint;
+        public bool shoot;
 
-		[Header("Movement Settings")]
+        [Header("Movement Settings")]
 		public bool analogMovement;
 
 		[Header("Mouse Cursor Settings")]
@@ -40,6 +41,11 @@ namespace StarterAssets
 		{
 			JumpInput(value.isPressed);
 		}
+
+        public void OnShoot(InputValue value)
+        {
+            ShootInput(value.isPressed);
+        }
 
         public void OnSlow(InputValue value)
         {
@@ -72,6 +78,11 @@ namespace StarterAssets
 		{
 			jump = newJumpState;
 		}
+
+        public void ShootInput(bool newShootState)
+        {
+            shoot = newShootState;
+        }
         public void SlowInput(bool newSlowState)
         {
             slow = newSlowState;

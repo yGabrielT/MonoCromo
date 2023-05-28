@@ -19,6 +19,7 @@ namespace StarterAssets
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
         public float Sensivity = 1f;
+        public bool _rotateOnMove = true;
 
 
         [Tooltip("Sprint speed of the character in m/s")]
@@ -263,7 +264,11 @@ namespace StarterAssets
                     RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                if (_rotateOnMove)
+                {
+                    transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                }
+                
             }
 
 
@@ -394,6 +399,11 @@ namespace StarterAssets
         public void SetSensivity(float sens)
         {
             Sensivity = sens;
+        }
+
+        public void SetRotateOnMove(bool rotate)
+        {
+            _rotateOnMove = rotate;
         }
     }
 }
