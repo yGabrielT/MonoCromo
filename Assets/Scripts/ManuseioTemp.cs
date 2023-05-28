@@ -1,19 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StarterAssets;
 
 public class ManuseioTemp : MonoBehaviour
 {
-    [SerializeField]
+    
     private float timeCrono, SlowCooldown;
-    private InputManager inputManager;
+    private StarterAssetsInputs _input;
+    [SerializeField]
     public static bool timeToggle = false, startcooldown;
+    [SerializeField]
     private float timeScale = .25f, defaultTimeScale = 1f, defaultFixedDeltaTime = 0.02f;
- 
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        _input = GetComponent<StarterAssetsInputs>();
+    }
     void Start()
     {
-        inputManager = InputManager.Instance;
         SlowCooldown = 10;
     }
 
@@ -21,16 +26,17 @@ public class ManuseioTemp : MonoBehaviour
     void Update()
     {
         // Ativar slow down após cooldown de 10 secs
-        if (inputManager.isSlow && timeToggle == false && !startcooldown)
+        if (_input.slow && timeToggle == false && !startcooldown)
         {
             timeToggle = true;
+            _input.slow = false;
             SlowCooldown = 0;
             Time.timeScale = timeScale;
         }
         // desativar slow down após 10 secs
         if (timeCrono >= 5 && timeToggle == true)
         {
-
+            
             timeCrono = 0;
             timeToggle = false;
             Time.timeScale = defaultTimeScale;

@@ -5,12 +5,11 @@ using UnityEngine;
 public class MeshTrail : MonoBehaviour
 {
     public float activeTime = 4f;
-    private InputManager inputManager;
 
     [Header("Mesh")]
     public float meshRefreshRate = 0.1f;
     public Transform PosSpawn;
-    public float meshDestroyDelay= 0.3f;
+    // public float meshDestroyDelay= 0.3f;
 
     [Header("Shader")]
     public Material mat;
@@ -50,6 +49,8 @@ public class MeshTrail : MonoBehaviour
             isTrailActive = true;
             StartCoroutine(ActivateTrail(activeTime));
         }
+
+        //Deletar clones apos o uso da habilidade
         if (SlowCooldown)
         {
             GameObject[] clones = GameObject.FindGameObjectsWithTag("Clone");
@@ -88,8 +89,8 @@ public class MeshTrail : MonoBehaviour
                     mr.material = mat;
                     mr.material.color = slowColor;
 
-
-
+                    // Deletar clones um apos o outro após um tempo da criação
+                    //Destroy(gObj, meshDestroyDelay);
                 }
 
                 yield return new WaitForSecondsRealtime(meshRefreshRate);
