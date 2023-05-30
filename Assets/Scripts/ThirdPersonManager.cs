@@ -7,14 +7,13 @@ using StarterAssets;
 public class ThirdPersonManager : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera _cam;
-    [SerializeField] private GameObject _crosshair;
     [SerializeField] private float normalSensivity = 1f;
     [SerializeField] private float aimSensivity = .5f;
     [SerializeField] private LayerMask _mask;
     public RaycastHit raycastHit;
     public bool isLooking;
 
-
+    private Throwing _throwScript;
     private ThirdPersonController _controller;
     private StarterAssetsInputs _input;
     // Start is called before the first frame update
@@ -23,6 +22,7 @@ public class ThirdPersonManager : MonoBehaviour
         
         _controller = GetComponent<ThirdPersonController>();
         _input = GetComponent<StarterAssetsInputs>();
+        _throwScript = GetComponent<Throwing>();
     }
 
     // Update is called once per frame
@@ -45,7 +45,6 @@ public class ThirdPersonManager : MonoBehaviour
         {
             _cam.gameObject.SetActive(true);
             _controller.SetSensivity(aimSensivity);
-            _crosshair.SetActive(true);
             _controller.SetRotateOnMove(false);
 
             Vector3 worldAimTarget = mouseWorldPosition;
@@ -57,12 +56,20 @@ public class ThirdPersonManager : MonoBehaviour
         {
             _cam.gameObject.SetActive(false);
             _controller.SetSensivity(normalSensivity);
-            _crosshair.SetActive(false);
             _controller.SetRotateOnMove(true);
         }
     }
 
-  
-
+    public void BoolThrow(bool isThrownable)
+    {
+        if(isThrownable)
+        {
+            _throwScript.enabled = true;
+        }
+        else
+        {
+            _throwScript.enabled = false;
+        }
+    }
 
 }

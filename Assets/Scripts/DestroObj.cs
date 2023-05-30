@@ -16,11 +16,11 @@ public class DestroObj : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter()
     {
-        if (!other.CompareTag("Player"))
+        if (!CompareTag("Player"))
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         
     }
