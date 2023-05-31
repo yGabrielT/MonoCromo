@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 410087040}
-  m_IndirectSpecularColor: {r: 0.58536756, g: 0.054558143, b: 0.29848042, a: 1}
+  m_IndirectSpecularColor: {r: 0.5853216, g: 0.054551937, b: 0.29865727, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -25585,6 +25585,7 @@ MonoBehaviour:
   BottomClamp: -50
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  _speed: 0
 --- !u!114 &8729942609572532628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25728,8 +25729,7 @@ MonoBehaviour:
   TempoText: {fileID: 1147299774}
   SetTempParado: 5
   SetTempCooldown: 25
-  timeCrono: 0
-  SlowCooldown: 0
+  timeScale: 0.25
 --- !u!114 &8729942609572532636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25799,7 +25799,7 @@ MonoBehaviour:
   totalThrows: 0
   throwCooldown: 0
   readyToThrow: 0
-  PrincipalThrowObj: {fileID: 1036235635598703293, guid: 20e46f52a16048944b96a37bcff9c2b6,
+  PrincipalThrowObj: {fileID: 8341455949525019227, guid: c25cfe1ca5b1d3b4bbfde0847e19ab9b,
     type: 3}
   isEquip1: 0
   throwForceEquip1: 60
