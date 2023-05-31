@@ -14,7 +14,8 @@ public class Throwing : MonoBehaviour
     private StarterAssetsInputs _input;
     private ThirdPersonManager _personManager;
     private RaycastHit hit;
-    
+    public TMP_Text MunicaoText;
+
 
     [Header("Settings")]
     public int totalThrows;
@@ -51,7 +52,7 @@ public class Throwing : MonoBehaviour
 
     private void Update()
     {
-
+        AtualizarCanvasMunicao();
         CheckEquips();
 
         hit = _personManager.raycastHit;
@@ -127,5 +128,21 @@ public class Throwing : MonoBehaviour
         }
     }
     
+    private void AtualizarCanvasMunicao()
+    {
+        if (isEquip1 && !isEquip2)
+        {
+            MunicaoText.SetText("Munição Principal: " + totalThrows1.ToString());
+        }
+        else
+        {
+            MunicaoText.SetText("Granadas: " + totalThrows2.ToString());
+        }
+        if (!isEquip1 && !isEquip2)
+        {
+            MunicaoText.SetText("");
+        }
+
+    }
 
 }

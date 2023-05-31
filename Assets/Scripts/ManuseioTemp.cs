@@ -6,12 +6,13 @@ using TMPro;
 
 public class ManuseioTemp : MonoBehaviour
 {
-    public float TempParado, TempCooldown;
+    public TMP_Text TempoText;
+    
+    public int SetTempParado, SetTempCooldown;
     public float timeCrono, SlowCooldown;
     private StarterAssetsInputs _input;
     [SerializeField]
     public static bool timeToggle = false, startcooldown;
-    [SerializeField]
     private float timeScale = .25f, defaultTimeScale = 1f, defaultFixedDeltaTime = 0.02f;
 
     private void Awake()
@@ -20,13 +21,19 @@ public class ManuseioTemp : MonoBehaviour
     }
     void Start()
     {
-        SlowCooldown = TempCooldown;
+        SlowCooldown = SetTempCooldown;
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        PararTempo();
+        AtualizarCanvas();
+
+    }
+
+    void PararTempo()
+    {
         // Ativar slow down após cooldown de 10 secs
         if (_input.slow)
         {
@@ -40,9 +47,9 @@ public class ManuseioTemp : MonoBehaviour
         }
 
         // desativar slow down após 10 secs
-        if (timeCrono >= TempParado && timeToggle == true)
+        if (timeCrono >= SetTempParado && timeToggle == true)
         {
-            
+
             timeCrono = 0;
             timeToggle = false;
             Time.timeScale = defaultTimeScale;
@@ -61,11 +68,29 @@ public class ManuseioTemp : MonoBehaviour
         {
             SlowCooldown += Time.unscaledDeltaTime;
         }
-        if (SlowCooldown >= TempCooldown)
+        if (SlowCooldown >= SetTempCooldown)
         {
             startcooldown = false;
         }
+    }
 
+    void AtualizarCanvas()
+    {
+        if (timeToggle)
+        {
+            TempoText.SetText("Tempo: " + timeCrono.ToString("0"));
+        }
+        if (startcooldown)
+        {
+            TempoText.SetText("Cooldown: " + SlowCooldown.ToString("0"));
+        }
+        if(!timeToggle && !startcooldown)
+        {
+            TempoText.SetText("");
+        }
+
+
+        
     }
 
 
