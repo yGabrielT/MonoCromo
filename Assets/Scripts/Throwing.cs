@@ -14,6 +14,7 @@ public class Throwing : MonoBehaviour
     private StarterAssetsInputs _input;
     private ThirdPersonManager _personManager;
     private RaycastHit hit;
+    
 
     [Header("Settings")]
     public int totalThrows;
@@ -83,8 +84,15 @@ public class Throwing : MonoBehaviour
         Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce;
 
         projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
+        if(isEquip1 && !isEquip2)
+        {
+            totalThrows1--;
+        }
+        if(!isEquip1 && isEquip2)
+        {
+            totalThrows2--;
+        }
 
-        totalThrows--;
 
         Invoke(nameof(ResetThrow), throwCooldown);
     }

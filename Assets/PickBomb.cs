@@ -6,16 +6,15 @@ using UnityEngine;
 public class PickBomb : MonoBehaviour
 {
     private Throwing _throw;
-
     private void Start()
     {
         _throw = GetComponent<Throwing>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        
         if (other.CompareTag("Bombs"))
         {
+            
             Destroy(other.gameObject);
             _throw.totalThrows2++;
             _throw.readyToThrow = true;
@@ -25,6 +24,7 @@ public class PickBomb : MonoBehaviour
 
         if (other.CompareTag("Bullet"))
         {
+            
             Destroy(other.gameObject);
             _throw.totalThrows1 += 20;
             _throw.readyToThrow = true;

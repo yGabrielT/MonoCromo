@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
+using TMPro;
 
 public class ManuseioTemp : MonoBehaviour
 {
-    
-    private float timeCrono, SlowCooldown;
+    public float TempParado, TempCooldown;
+    public float timeCrono, SlowCooldown;
     private StarterAssetsInputs _input;
     [SerializeField]
     public static bool timeToggle = false, startcooldown;
@@ -19,27 +20,33 @@ public class ManuseioTemp : MonoBehaviour
     }
     void Start()
     {
-        SlowCooldown = 10;
+        SlowCooldown = TempCooldown;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         // Ativar slow down após cooldown de 10 secs
-        if (_input.slow && timeToggle == false && !startcooldown)
+        if (_input.slow)
         {
-            timeToggle = true;
             _input.slow = false;
-            SlowCooldown = 0;
-            Time.timeScale = timeScale;
+            if (timeToggle == false && !startcooldown)
+            {
+                timeToggle = true;
+                SlowCooldown = 0;
+                Time.timeScale = timeScale;
+            }
         }
+
         // desativar slow down após 10 secs
-        if (timeCrono >= 5 && timeToggle == true)
+        if (timeCrono >= TempParado && timeToggle == true)
         {
             
             timeCrono = 0;
             timeToggle = false;
             Time.timeScale = defaultTimeScale;
+            _input.slow = false;
             startcooldown = true;
         }
         Time.fixedDeltaTime = defaultFixedDeltaTime * Time.timeScale;
@@ -54,12 +61,13 @@ public class ManuseioTemp : MonoBehaviour
         {
             SlowCooldown += Time.unscaledDeltaTime;
         }
-        if (SlowCooldown >= 10)
+        if (SlowCooldown >= TempCooldown)
         {
             startcooldown = false;
         }
 
-
     }
+
+
 
 }
