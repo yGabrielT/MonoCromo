@@ -55,6 +55,7 @@ public class Throwing : MonoBehaviour
     {
         AtualizarCanvasMunicao();
         CheckEquips();
+        trocarArma();
 
         hit = _personManager.raycastHit;
         if (_input.shoot)
@@ -147,4 +148,21 @@ public class Throwing : MonoBehaviour
 
     }
 
+    private void trocarArma()
+    {
+        if(_input.scroll > 0)
+        {
+            Debug.Log("Mouse Scroll cima");
+            isEquip1 = true;
+            isEquip2 = false;
+        }
+        else if (_input.scroll < 0)
+        {
+           Debug.Log("Mouse Scroll baixo");
+            isEquip1 = false;
+            isEquip2 = true;
+        }
+        
+
+    }
 }
