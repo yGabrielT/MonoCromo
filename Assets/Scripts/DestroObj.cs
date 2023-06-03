@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class DestroObj : MonoBehaviour
 {
-    private bool Destroy;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != ("Player") && other.gameObject.tag != ("Bullet") && other.gameObject.tag != ("Bombs") && !Destroy)
+        if (other.gameObject.tag != ("Player") && other.gameObject.tag != ("Inimigo") && other.gameObject.tag != ("Bullet") && other.gameObject.tag != ("Bombs"))
         {
-            Destroy = true;
             Destroy(gameObject);
+        }
+
+        if (other.gameObject.tag == ("Inimigo"))
+        {
+            other.GetComponent<EliminarInimigo>().TomarDano(10);
+            Debug.Log("Atingido");
         }
         
     }
