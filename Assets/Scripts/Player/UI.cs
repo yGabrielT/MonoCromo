@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using StarterAssets;
 using UnityEngine.UI;
 
 public class UI : MonoBehaviour
@@ -9,10 +10,14 @@ public class UI : MonoBehaviour
     public float cool;
     [SerializeField]
     private Image image;
-    private bool isCooldon = false;
+    private StarterAssetsInputs _input;
 
 
+    private void Awake()
+    {
 
+        _input = GetComponent<StarterAssetsInputs>();
+    }
 
     void Start()
     {
@@ -28,25 +33,24 @@ public class UI : MonoBehaviour
     }
     private void imagemTempo()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isCooldon)
+        //Para o tempo
+        if (_input.slow)
         {
             Debug.Log("FUNCIONA");
-            isCooldon = true;
             image.fillAmount = 1;
         }
 
 
-
-        if (isCooldon)
+        // Cooldown
+        if (!_input.slow)
         {
             image.fillAmount -= 1 / cool * Time.deltaTime;
 
 
-
+            // Termino do cooldonw
             if (image.fillAmount <= 0)
             {
                 image.fillAmount = 0;
-                isCooldon = false;
             }
         }
     }

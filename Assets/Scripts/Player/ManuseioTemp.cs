@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using StarterAssets;
 using TMPro;
     public class ManuseioTemp : MonoBehaviour
     {
         public TMP_Text TempoText;
-
-        public int SetTempParado, SetTempCooldown;
+        public float SetTempParado, SetTempCooldown;
         private float timeCrono, SlowCooldown;
         private StarterAssetsInputs _input;
         [SerializeField]
@@ -23,7 +23,6 @@ using TMPro;
         void Start()
         {
             SlowCooldown = SetTempCooldown;
-
         }
 
         void Update()
@@ -38,19 +37,19 @@ using TMPro;
             // Ativar slow down após cooldown de 10 secs
             if (_input.slow)
             {
-                
+
                 if (timeToggle == false && !startcooldown)
                 {
                     timeToggle = true;
                     SlowCooldown = 0;
                     Time.timeScale = timeScale;
+
                 }
             }
 
             // desativar slow down após 10 secs
             if (timeCrono >= SetTempParado && timeToggle == true)
             {
-
                 timeCrono = 0;
                 timeToggle = false;
                 Time.timeScale = defaultTimeScale;
@@ -69,6 +68,7 @@ using TMPro;
             {
                 _input.slow = false;
                 SlowCooldown += Time.unscaledDeltaTime;
+                
             }
             if (SlowCooldown >= SetTempCooldown)
             {
@@ -81,23 +81,25 @@ using TMPro;
         {
             if (timeToggle)
             {
-                TempoText.SetText("Tempo: " + timeCrono.ToString("0"));
+                TempoText.SetText(timeCrono.ToString("0"));
+               //  Cooldown.fillAmount = 1;
             }
-            if (startcooldown)
+            if (startcooldown && !timeToggle)
             {
-                TempoText.SetText("Cooldown: " + SlowCooldown.ToString("0"));
+                TempoText.SetText(SlowCooldown.ToString("0"));
+                // Cooldown.fillAmount -= 1 / SetTempCooldown * Time.deltaTime;
             }
             if (!timeToggle && !startcooldown)
             {
                 TempoText.SetText("");
+                // Cooldown.fillAmount = 0;
             }
-
-
-
         }
 
+    
 
 
-    }
+
+}
 
 

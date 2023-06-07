@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using StarterAssets;
 using UnityEngine.Rendering.Universal.Internal;
@@ -15,6 +16,12 @@ public class Throwing : MonoBehaviour
     private ThirdPersonManager _personManager;
     private RaycastHit hit;
     public TMP_Text MunicaoText;
+    public TMP_Text GranadaText;
+    public Image armaPrincipal;
+    public Image Granada1;
+    public Image Granada2;
+    public Image Granada3;
+
 
 
     [Header("Settings")]
@@ -135,15 +142,62 @@ public class Throwing : MonoBehaviour
     {
         if (isEquip1 && !isEquip2)
         {
-            MunicaoText.SetText("Munição Principal: " + totalThrows1.ToString());
+            MunicaoText.SetText(totalThrows1.ToString() + "/20");
+            armaPrincipal.enabled = true;
+            GranadaText.SetText("");
+            Granada1.enabled = false;
+            Granada2.enabled = false;
+            Granada3.enabled = false;
         }
-        else
+        else if (isEquip1 && totalThrows1 == 0)
         {
-            MunicaoText.SetText("Granadas: " + totalThrows2.ToString());
+            GranadaText.SetText("Não há munição!");
         }
+        else if (isEquip2 && totalThrows2 == 1)
+        {
+            armaPrincipal.enabled = false;
+            MunicaoText.SetText("");
+            Granada1.enabled = true;
+            Granada2.enabled = false;
+            Granada3.enabled = false;
+            GranadaText.SetText("");
+        }
+        else if (isEquip2 && totalThrows2 == 2)
+        {
+            armaPrincipal.enabled = false;
+            MunicaoText.SetText("");
+            Granada1.enabled = true;
+            Granada2.enabled = true;
+            Granada3.enabled = false;
+            GranadaText.SetText("");
+        }
+        else if (isEquip2 && totalThrows2 == 3)
+        {
+            armaPrincipal.enabled = false;
+            MunicaoText.SetText("");
+            Granada1.enabled = true; 
+            Granada2.enabled = true;
+            Granada3.enabled = true;
+            GranadaText.SetText("");
+        }
+        else if (isEquip2 && totalThrows2 == 0)
+        {
+            armaPrincipal.enabled = false;
+            MunicaoText.SetText("");
+            Granada1.enabled = false;
+            Granada2.enabled = false;
+            Granada3.enabled = false;
+            GranadaText.SetText("Não há granadas!");
+        }
+        
         if (!isEquip1 && !isEquip2)
         {
             MunicaoText.SetText("");
+            GranadaText.SetText("");
+            armaPrincipal.enabled = false;
+            Granada1.enabled = false; 
+            Granada2.enabled = false;
+            Granada3.enabled = false;
         }
 
     }
@@ -155,6 +209,7 @@ public class Throwing : MonoBehaviour
             Debug.Log("Mouse Scroll cima");
             isEquip1 = true;
             isEquip2 = false;
+
         }
         else if (_input.scroll < 0)
         {
