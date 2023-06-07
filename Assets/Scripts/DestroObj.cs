@@ -15,6 +15,7 @@ public class DestroObj : MonoBehaviour
         if (other.gameObject.tag == ("Inimigo"))
         {
             other.GetComponent<EliminarInimigo>().TomarDano(10);
+            Destroy(gameObject);
             Debug.Log("Atingido");
         }
         

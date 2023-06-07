@@ -10,6 +10,8 @@ public class ThirdPersonManager : MonoBehaviour
     [SerializeField] private float normalSensivity = 1f;
     [SerializeField] private float aimSensivity = .5f;
     [SerializeField] private LayerMask _mask;
+    [SerializeField] private GameObject _crosshair;
+    private Animator _anim;
     public RaycastHit raycastHit;
     public bool isLooking;
 
@@ -19,7 +21,7 @@ public class ThirdPersonManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        
+        _anim = GetComponent<Animator>();
         _controller = GetComponent<ThirdPersonController>();
         _input = GetComponent<StarterAssetsInputs>();
         _throwScript = GetComponent<Throwing>();
@@ -44,16 +46,21 @@ public class ThirdPersonManager : MonoBehaviour
         if (_input.aim)
         {
             _cam.gameObject.SetActive(true);
+            _crosshair.gameObject.SetActive(true);
             _controller.SetSensivity(aimSensivity);
             _controller.SetRotateOnMove(false);
+            _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 1, Time.deltaTime * 10f));
 
             Vector3 worldAimTarget = mouseWorldPosition;
+            worldAimTarget.y = transform.position.y;
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
-
-            transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+            
+            transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 10f);
         }
         else
         {
+            _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 0, Time.deltaTime * 10f));
+            _crosshair.gameObject.SetActive(false);
             _cam.gameObject.SetActive(false);
             _controller.SetSensivity(normalSensivity);
             _controller.SetRotateOnMove(true);

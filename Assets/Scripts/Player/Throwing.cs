@@ -61,7 +61,7 @@ public class Throwing : MonoBehaviour
         if (_input.shoot)
         {
             _input.shoot = false;
-            if (readyToThrow && totalThrows >= 1 && (isEquip1 || isEquip2))
+            if (readyToThrow && totalThrows >= 1 && (isEquip1 || isEquip2) && _input.aim)
             {
 
                 Throw();

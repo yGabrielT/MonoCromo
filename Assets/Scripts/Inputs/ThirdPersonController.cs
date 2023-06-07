@@ -18,8 +18,10 @@ namespace StarterAssets
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
+        public bool isDouble = false;
         public float Sensivity = 1f;
         public bool _rotateOnMove = true;
+        private float baseSpeed;
         private bool temp;
 
         [Tooltip("Sprint speed of the character in m/s")]
@@ -138,6 +140,7 @@ namespace StarterAssets
 
         private void Start()
         {
+            baseSpeed = MoveSpeed;
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
@@ -159,7 +162,7 @@ namespace StarterAssets
         {
             
             _hasAnimator = TryGetComponent(out _animator);
-
+            DoubleSpeed();
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -406,6 +409,25 @@ namespace StarterAssets
         public void SetRotateOnMove(bool rotate)
         {
             _rotateOnMove = rotate;
+        }
+
+        private void DoubleSpeed() 
+        {
+            
+            if (_input.slow && !isDouble)
+            {
+                isDouble = true;
+                MoveSpeed = MoveSpeed + 4f;
+            }
+            else if (!_input.slow)
+            {
+                isDouble = false;
+                MoveSpeed = baseSpeed;
+            }
+                
+                    
+            
+        
         }
     }
 }
