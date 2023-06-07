@@ -18,6 +18,7 @@ namespace StarterAssets
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
+        public float AddSpeed = 4f;
         public bool isDouble = false;
         public float Sensivity = 1f;
         public bool _rotateOnMove = true;
@@ -417,7 +418,7 @@ namespace StarterAssets
             if (_input.slow && !isDouble)
             {
                 isDouble = true;
-                MoveSpeed = MoveSpeed + 4f;
+                MoveSpeed = MoveSpeed + AddSpeed;
             }
             else if (!_input.slow)
             {

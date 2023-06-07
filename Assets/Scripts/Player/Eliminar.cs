@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EliminarInimigo : MonoBehaviour
+public class Eliminar : MonoBehaviour
 {
     private int vida;
     public int vidaMax;

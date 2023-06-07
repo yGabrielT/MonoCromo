@@ -60,6 +60,7 @@ public class Throwing : MonoBehaviour
 
     private void Update()
     {
+        LimitarMunicao();
         AtualizarCanvasMunicao();
         CheckEquips();
         trocarArma();
@@ -111,6 +112,17 @@ public class Throwing : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(waitTime);
         readyToThrow = true;
+    }
+    private void LimitarMunicao()
+    {
+        if(totalThrows1 > 20)
+        {
+            totalThrows1 = 20;
+        }
+        if(totalThrows2 > 3)
+        {
+            totalThrows2 = 3;
+        }
     }
 
     private void CheckEquips()
