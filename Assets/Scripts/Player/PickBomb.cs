@@ -26,7 +26,7 @@ public class PickBomb : MonoBehaviour
         {
             
             Destroy(other.gameObject);
-            _throw.totalThrows1 += 20;
+            _throw.totalThrows1 += 5;
             _throw.readyToThrow = true;
             _throw.isEquip2 = false;
             _throw.isEquip1 = true;

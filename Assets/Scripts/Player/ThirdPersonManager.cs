@@ -49,17 +49,17 @@ public class ThirdPersonManager : MonoBehaviour
             _crosshair.gameObject.SetActive(true);
             _controller.SetSensivity(aimSensivity);
             _controller.SetRotateOnMove(false);
-            _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 1, Time.deltaTime * 10f));
+            _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 1, Time.deltaTime * 15f));
 
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
             
-            transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 10f);
+            transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 15f);
         }
         else
         {
-            _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 0, Time.deltaTime * 10f));
+            _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 0, Time.deltaTime * 15f));
             _crosshair.gameObject.SetActive(false);
             _cam.gameObject.SetActive(false);
             _controller.SetSensivity(normalSensivity);

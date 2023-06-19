@@ -12,6 +12,7 @@ public class DestroObj : MonoBehaviour
             if (this.gameObject.tag == ("Bombs"))
             {
                 Instantiate(ExploHitFX, transform.position, Quaternion.identity);
+
             }
             Destroy(gameObject);
             
