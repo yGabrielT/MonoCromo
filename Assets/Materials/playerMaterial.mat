@@ -23,16 +23,17 @@ Material:
   m_Name: playerMaterial
   m_Shader: {fileID: 4800000, guid: e88aeddd2ef1f934d805981244872e27, type: 3}
   m_Parent: {fileID: 2100000, guid: bea8db233dc3a4946aef8cfce8d451f9, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
   - _HALFTONESHAPE_CROSS
   - _OUTLINE
+  - _SPECULAR_COLOR
   m_InvalidKeywords:
   - _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2050
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []

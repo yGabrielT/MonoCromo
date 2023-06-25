@@ -9,6 +9,7 @@ TagManager:
   - Bombs
   - Bullet
   - Inimigo
+  - Model
   layers:
   - Default
   - TransparentFX

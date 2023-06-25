@@ -7,10 +7,13 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
+    public TMP_Text textoFPS;
     public float cool;
+    private float tempo, refresh, frameRate;
     [SerializeField]
     private Image image;
     private StarterAssetsInputs _input;
+
 
 
     private void Awake()
@@ -30,7 +33,9 @@ public class UI : MonoBehaviour
     void Update()
     {
         imagemTempo();
+        atualizandoFPS();
     }
+
     private void imagemTempo()
     {
         //Para o tempo
@@ -53,5 +58,15 @@ public class UI : MonoBehaviour
                 image.fillAmount = 0;
             }
         }
+    }
+
+    private void atualizandoFPS()
+    {
+        float timelapse = Time.smoothDeltaTime;
+        tempo = tempo <= 0 ? refresh : tempo -= timelapse;
+
+        if (tempo <= 0 ) frameRate = (int)(1f / timelapse);
+        textoFPS.SetText(frameRate.ToString("0") + " FPS");
+        
     }
 }

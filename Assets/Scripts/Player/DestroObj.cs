@@ -13,7 +13,7 @@ public class DestroObj : MonoBehaviour
             if (this.gameObject.tag == ("Bombs"))
             {
                 Explode();
-                Instantiate(ExploHitFX, transform.position, Quaternion.identity);
+                Instantiate(ExploHitFX, this.transform.position, Quaternion.identity);
 
             }
             Destroy(this.gameObject);
@@ -25,13 +25,13 @@ public class DestroObj : MonoBehaviour
             if(this.gameObject.tag == ("Bombs"))
             {
                 Explode();
-                Instantiate(ExploHitFX, transform.position, Quaternion.identity);
+                Instantiate(ExploHitFX, this.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
             }
             else
             {
                 other.GetComponent<Eliminar>().TomarDano(10);
-                Destroy(gameObject);
+                Destroy(this.gameObject);
                 Debug.Log("Atingido");
             }
         }
@@ -40,18 +40,19 @@ public class DestroObj : MonoBehaviour
 
     private void Explode()
     {
-        Collider[] colisores = Physics.OverlapSphere(transform.position, raio);
-        Destroy(gameObject);
+        Collider[] colisores = Physics.OverlapSphere(this.transform.position, raio);
+        Destroy(this.gameObject);
         foreach (Collider nearbyObjs in colisores)
         {
-            if (nearbyObjs != null && nearbyObjs.gameObject.tag == ("Inimigo"))
+            if (nearbyObjs != null && nearbyObjs.gameObject.tag == ("Inimigo") && nearbyObjs.gameObject.tag != ("Ground"))
             {
-                nearbyObjs.GetComponent<Eliminar>().TomarDano(100);
+                nearbyObjs.GetComponent<Eliminar>().TomarDano(30);
                 Debug.Log("Raio Atingido");
             }
 
-
         }
+         
+
     }
     private void OnDrawGizmos()
     {
