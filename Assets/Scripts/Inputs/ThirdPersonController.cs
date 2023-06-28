@@ -109,7 +109,7 @@ namespace StarterAssets
         private PlayerInput _playerInput;
 #endif
         private Animator _animator;
-        private CharacterController _controller;
+        public CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
 

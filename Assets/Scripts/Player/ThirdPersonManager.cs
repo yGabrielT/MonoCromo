@@ -11,6 +11,10 @@ public class ThirdPersonManager : MonoBehaviour
     [SerializeField] private float aimSensivity = .5f;
     [SerializeField] private LayerMask _mask;
     [SerializeField] private GameObject _crosshair;
+    [SerializeField] private ParticleSystem SmokeTrail;
+    [Range(0f,0.2f)]
+    [SerializeField] private float tempoFormacaoPoeira;
+    private float contador;
     private Animator _anim;
     public RaycastHit raycastHit;
     public bool isLooking;
@@ -29,6 +33,38 @@ public class ThirdPersonManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        SmokeUpdate();
+        CamUpdate();
+        
+    }
+
+    public void BoolThrow(bool isThrownable)
+    {
+        if(isThrownable)
+        {
+            _throwScript.enabled = true;
+        }
+        else
+        {
+            _throwScript.enabled = false;
+        }
+    }
+
+    public void SmokeUpdate()
+    {
+        contador += Time.deltaTime;
+        if(SmokeTrail != null && _input.sprint && _controller._controller.isGrounded)
+        {
+            if(contador > tempoFormacaoPoeira)
+            {
+                SmokeTrail.Play();
+                contador = 0;
+            }
+        }
+    }
+
+    public void CamUpdate()
     {
         Vector3 mouseWorldPosition = Vector3.zero;
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
@@ -66,17 +102,4 @@ public class ThirdPersonManager : MonoBehaviour
             _controller.SetRotateOnMove(true);
         }
     }
-
-    public void BoolThrow(bool isThrownable)
-    {
-        if(isThrownable)
-        {
-            _throwScript.enabled = true;
-        }
-        else
-        {
-            _throwScript.enabled = false;
-        }
-    }
-
 }
