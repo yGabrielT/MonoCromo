@@ -30,7 +30,7 @@ public class DestroObj : MonoBehaviour
             }
             else
             {
-                other.GetComponent<Eliminar>().TomarDano(10);
+                other.GetComponent<Inimigo>().TomarDano(10);
                 Destroy(this.gameObject);
                 Debug.Log("Atingido");
             }
@@ -46,7 +46,7 @@ public class DestroObj : MonoBehaviour
         {
             if (nearbyObjs != null && nearbyObjs.gameObject.tag == ("Inimigo") && nearbyObjs.gameObject.tag != ("Ground"))
             {
-                nearbyObjs.GetComponent<Eliminar>().TomarDano(30);
+                nearbyObjs.GetComponent<Inimigo>().TomarDano(30);
                 Debug.Log("Raio Atingido");
             }
 

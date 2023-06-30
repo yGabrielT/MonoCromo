@@ -69,8 +69,9 @@ public class ThirdPersonManager : MonoBehaviour
         Vector3 mouseWorldPosition = Vector3.zero;
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-        if (Physics.Raycast(ray, out raycastHit, 999f, _mask))
+        if (Physics.Raycast(ray, out raycastHit, Mathf.Infinity, _mask))
         {
+            Debug.DrawRay(transform.position, Vector3.forward, Color.blue);
             isLooking = true;
             mouseWorldPosition = raycastHit.point;
         }
