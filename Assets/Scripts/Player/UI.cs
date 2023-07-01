@@ -62,7 +62,7 @@ public class UI : MonoBehaviour
 
     private void atualizandoFPS()
     {
-        float timelapse = Time.smoothDeltaTime;
+        float timelapse = Time.unscaledDeltaTime;
         tempo = tempo <= 0 ? refresh : tempo -= timelapse;
 
         if (tempo <= 0 ) frameRate = (int)(1f / timelapse);
