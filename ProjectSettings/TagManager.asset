@@ -10,6 +10,8 @@ TagManager:
   - Bullet
   - Inimigo
   - Model
+  - InProj
+  - Track
   layers:
   - Default
   - TransparentFX

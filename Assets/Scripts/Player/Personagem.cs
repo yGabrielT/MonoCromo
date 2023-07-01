@@ -4,8 +4,18 @@ using UnityEngine;
 using Cinemachine;
 using StarterAssets;
 
-public class ThirdPersonManager : MonoBehaviour
-{
+public class Personagem : MonoBehaviour
+{   
+    [Header("Atributos do Player")]
+    public int playerVida;
+    [Range(4f,7f)]
+    public float velocidade = 4f;
+    [Range(10f,30f)]
+    public float sprintVelocidade = 10f;
+    public float gravidade = -15f;
+
+    public bool ativarControles = true;
+
     [SerializeField] private CinemachineVirtualCamera _cam;
     [SerializeField] private float normalSensivity = 1f;
     [SerializeField] private float aimSensivity = .5f;
@@ -14,44 +24,73 @@ public class ThirdPersonManager : MonoBehaviour
     [SerializeField] private ParticleSystem SmokeTrail;
     [Range(0f,0.2f)]
     [SerializeField] private float tempoFormacaoPoeira;
-    private float contador;
-    private Animator _anim;
+
     public RaycastHit raycastHit;
     public bool isLooking;
-
-    private Throwing _throwScript;
+    private float contador;
+    
+    private Animator _anim;
+    private Equipamento _throwScript;
     private ThirdPersonController _controller;
     private StarterAssetsInputs _input;
+    public Inimigo inimigo;
     // Start is called before the first frame update
     private void Awake()
     {
         _anim = GetComponent<Animator>();
         _controller = GetComponent<ThirdPersonController>();
         _input = GetComponent<StarterAssetsInputs>();
-        _throwScript = GetComponent<Throwing>();
+        _throwScript = GetComponent<Equipamento>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        SmokeUpdate();
-        CamUpdate();
-        
+        Controlar();
     }
 
-    public void BoolThrow(bool isThrownable)
+
+    public void Controlar()
     {
-        if(isThrownable)
+        if(ativarControles)
         {
-            _throwScript.enabled = true;
+            _controller.enabled = true;
+            SmokeUpdate();
+            ControlarCamera();
+            _controller.MoveSpeed = velocidade;
+            _controller.SprintSpeed = sprintVelocidade;
+            _controller.Gravity = gravidade;
         }
         else
         {
-            _throwScript.enabled = false;
+            _controller.enabled = false;
+        }
+        
+    }
+
+    private void PerderVida()
+    {
+        if(playerVida >= 0)
+        {
+            playerVida -= inimigo.dano; 
+        }
+        else
+        {
+            playerVida = 0;
+            Destroy(this.gameObject);
         }
     }
 
-    public void SmokeUpdate()
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "InProj")
+        {
+            Destroy(other.gameObject);
+            PerderVida();
+        }
+    }
+
+    private void SmokeUpdate()
     {
         contador += Time.deltaTime;
         if(SmokeTrail != null && _input.sprint && _controller._controller.isGrounded)
@@ -64,7 +103,7 @@ public class ThirdPersonManager : MonoBehaviour
         }
     }
 
-    public void CamUpdate()
+    private void ControlarCamera()
     {
         Vector3 mouseWorldPosition = Vector3.zero;
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
@@ -103,4 +142,7 @@ public class ThirdPersonManager : MonoBehaviour
             _controller.SetRotateOnMove(true);
         }
     }
+
+    
+    
 }

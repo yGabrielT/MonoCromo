@@ -6,14 +6,14 @@ using TMPro;
 using StarterAssets;
 using UnityEngine.Rendering.Universal.Internal;
 
-public class Throwing : MonoBehaviour
+public class Equipamento : MonoBehaviour
 {
     [Header("References")]
     private Transform cam;
     public Transform attackPoint;
     private GameObject objectToThrow;
     private StarterAssetsInputs _input;
-    private ThirdPersonManager _personManager;
+    private Personagem _Personagem;
     private RaycastHit hit;
     public TMP_Text MunicaoText;
     public TMP_Text GranadaText;
@@ -54,7 +54,7 @@ public class Throwing : MonoBehaviour
     private void Start()
     {
         cam = Camera.main.transform;
-        _personManager = GetComponent<ThirdPersonManager>();
+        _Personagem = GetComponent<Personagem>();
         _input = GetComponent<StarterAssetsInputs>();
     }
 
@@ -65,7 +65,7 @@ public class Throwing : MonoBehaviour
         CheckEquips();
         trocarArma();
 
-        hit = _personManager.raycastHit;
+        hit = _Personagem.raycastHit;
         if (_input.shoot)
         {
             _input.shoot = false;
@@ -87,7 +87,7 @@ public class Throwing : MonoBehaviour
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
 
         Vector3 forceDirection = cam.transform.forward;
-        if (_personManager.isLooking)
+        if (_Personagem.isLooking)
         {
             forceDirection = (hit.point - attackPoint.position).normalized;
         }
@@ -163,7 +163,7 @@ public class Throwing : MonoBehaviour
         }
         else if (isEquip1 && totalThrows1 == 0)
         {
-            GranadaText.SetText("Não há munição!");
+            GranadaText.SetText("Nï¿½o hï¿½ muniï¿½ï¿½o!");
         }
         else if (isEquip2 && totalThrows2 == 1)
         {
@@ -199,7 +199,7 @@ public class Throwing : MonoBehaviour
             Granada1.enabled = false;
             Granada2.enabled = false;
             Granada3.enabled = false;
-            GranadaText.SetText("Não há granadas!");
+            GranadaText.SetText("Nï¿½o hï¿½ granadas!");
         }
         
         if (!isEquip1 && !isEquip2)

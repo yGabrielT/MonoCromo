@@ -11,27 +11,45 @@ public class Inimigo : MonoBehaviour
 
     [Header("Inimigo(Apenas para inimigos)")]
     public int vidaMax = 30;
+    [Range(0,10)]
+    public int velocidade = 4;
+    public int dano = 10;
     [Range(0,20f)]
-    public float cooldownTime = 5f;
+    public float cooldownTimer = 5f;
     public Material atordoadoMaterial;
+    public GameObject Projetil;
+    public float ProjForc = 3f;
+    private float projTemp;
+    public float TempoPraAtirar = .5f;
 
-    private int vida;
-    private Transform Player;
+    private int vidaAtual;
+    private Transform playerPos;
     private Renderer renderer;
     private Material defaultMaterial;
     private NavMeshAgent NavMeshAgente;
     private float temp;
     private bool Spawnado = false;
+    public static Inimigo _instance;
     
 
+    private void Awake()
+    {
+        _instance = this;
+    }
     private void Start()
     {
-        var gObj = GameObject.FindWithTag("Model");
-        Player = gObj.transform;
-        vida = vidaMax;
+        //Encontrar o jogador
+        var gObj = GameObject.FindWithTag("Track");
+        playerPos = gObj.transform;
+
+        //Aplicar vida máxima a atual
+        vidaAtual = vidaMax;
+
+        //Pegar os componentes do IA para depois executar o PathFinding
         if(this.gameObject.tag == "Inimigo")
         {
             NavMeshAgente = this.GetComponent<NavMeshAgent>();
+            NavMeshAgente.speed = velocidade;
             defaultMaterial = this.GetComponent<Renderer>().material;
             renderer = this.GetComponent<Renderer>();
         }
@@ -41,19 +59,13 @@ public class Inimigo : MonoBehaviour
     private void Update()
     {
         
-        if(this.gameObject.tag == "Inimigo")
-        {
-            Movimentar();
-            
-            if(this.vida == 0)
-            {
-                atordoar(cooldownTime);
-            }
-        }
-        
-        
+        Movimentar();
+        AtacarPersonagem();
+        Atordoar(cooldownTimer);
+
     }
 
+    //Instanciando o inimigo em lugares aleatorios proximos ao GameObject
     private void GerarInimigo()
     {
         if(this.gameObject.tag != "Inimigo")
@@ -67,36 +79,69 @@ public class Inimigo : MonoBehaviour
         }
     }
 
+    //Movimentar até o jogador caso esteja com vida senão função Atordoar é chamada
     private void Movimentar()
     {
-        if (vida > 0)
+        if(this.gameObject.tag == "Inimigo")
         {
-            NavMeshAgente.SetDestination(Player.position);
+            if (vidaAtual > 0 && playerPos != null)
+            {
+                NavMeshAgente.SetDestination(playerPos.position);
+            }
+            else
+            {
+                Atordoar(cooldownTimer);
+            }
+
         }
-        else
-        {
-            atordoar(cooldownTime);
-        }
+        
     }
 
-    private void atordoar(float cooldown)
+    private void AtacarPersonagem()
     {
-        renderer.material = atordoadoMaterial;
-        NavMeshAgente.SetDestination(transform.position);
-        if (cooldown > temp)
+        if(this.gameObject.tag == "Inimigo" && Projetil != null && this.vidaAtual > 0 && playerPos != null)
         {
-            temp += Time.unscaledDeltaTime;
+            projTemp += Time.deltaTime;
+            this.gameObject.transform.LookAt(playerPos.transform);
+            if(projTemp > TempoPraAtirar)
+            {
+                GameObject InimigoProjetil = Instantiate(Projetil, transform.position, this.gameObject.transform.rotation);
+                Rigidbody Rb = InimigoProjetil.GetComponent<Rigidbody>();
+                Rb.AddForce(transform.forward * ProjForc, ForceMode.VelocityChange);
+                projTemp = 0;
+                Destroy(InimigoProjetil,2f);
+            }
+            
         }
-        else
-        {
-            this.vida = vidaMax;
-            renderer.material = defaultMaterial;
-            temp = 0;
-        }
+        
     }
 
+    //Mudar o material e a vida atual baseado em quanto tempo o inimigo está atordoado
+    private void Atordoar(float cooldown)
+    {
+        if(this.gameObject.tag == "Inimigo" && this.vidaAtual <= 0)
+        {
+            renderer.material = atordoadoMaterial;
+            NavMeshAgente.SetDestination(transform.position);
+
+            if (cooldown > temp)
+            {
+                temp += Time.deltaTime;
+            }
+            else
+            {
+                this.vidaAtual = vidaMax;
+                renderer.material = defaultMaterial;
+                temp = 0;
+            }
+
+        }
+        
+    }
+
+    // Aplicar dano a vida atual quando chamado em qualquer script
     public void TomarDano(int dano)
     {
-        this.vida -= dano;
+        this.vidaAtual -= dano;
     }
 }

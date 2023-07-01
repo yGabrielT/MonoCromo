@@ -17,7 +17,6 @@ using TMPro;
 
         private void Awake()
         {
-
             _input = GetComponent<StarterAssetsInputs>();
         }
         void Start()
@@ -34,7 +33,7 @@ using TMPro;
 
         void PararTempo()
         {
-            // Ativar slow down após cooldown de 10 secs
+            // Ativar slow down apï¿½s cooldown de 10 secs
             if (_input.slow)
             {
 
@@ -47,7 +46,7 @@ using TMPro;
                 }
             }
 
-            // desativar slow down após 10 secs
+            // desativar slow down apï¿½s 10 secs
             if (timeCrono >= SetTempParado && timeToggle == true)
             {
                 timeCrono = 0;

@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class PickBomb : MonoBehaviour
 {
-    private Throwing _throw;
+    private Equipamento _throw;
     private void Start()
     {
-        _throw = GetComponent<Throwing>();
+        _throw = GetComponent<Equipamento>();
     }
     private void OnTriggerEnter(Collider other)
     {

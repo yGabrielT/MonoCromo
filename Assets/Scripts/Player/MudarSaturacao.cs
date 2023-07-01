@@ -13,13 +13,13 @@ public class MudarSaturacao : MonoBehaviour
 
     private void Start()
     {
-        // Obtém o componente Color Adjustments do volume
+        // Obtem o componente Color Adjustments do volume
         volume.profile.TryGet(out colorAdjustments);
     }
 
     private void Update()
     {
-        // Exemplo de ativação da saturação
+        // Exemplo de ativacao da saturacao
         if (ManuseioTemp.timeToggle)
         {
             t += Time.unscaledDeltaTime;
