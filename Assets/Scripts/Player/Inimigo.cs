@@ -13,7 +13,7 @@ public class Inimigo : MonoBehaviour
     public int vidaMax = 30;
     [Range(0,10)]
     public int velocidade = 4;
-    public int dano = 10;
+    public int dano = 1;
     [Range(0,20f)]
     public float cooldownTimer = 5f;
     public Material atordoadoMaterial;

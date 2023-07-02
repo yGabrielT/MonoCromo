@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 using StarterAssets;
 
@@ -8,6 +9,8 @@ public class Personagem : MonoBehaviour
 {   
     [Header("Atributos do Player")]
     public int playerVida;
+    public int vidaAtual;
+    public HealthBar barraDeVida;
     [Range(4f,7f)]
     public float velocidade = 4f;
     [Range(10f,30f)]
@@ -43,6 +46,14 @@ public class Personagem : MonoBehaviour
         _throwScript = GetComponent<Equipamento>();
     }
 
+    void Start()
+    {
+        // afirmando que a vida atual eh 100%
+        vidaAtual = playerVida;
+        // Chamando script para que a barra de vida fique no total
+        barraDeVida.vidaMaxima(playerVida);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -70,13 +81,17 @@ public class Personagem : MonoBehaviour
 
     private void PerderVida()
     {
-        if(playerVida >= 0)
+
+        if(vidaAtual >= 0)
         {
-            playerVida -= inimigo.dano; 
+            // caso leve dano
+            vidaAtual -= inimigo.dano;
+            // atualiza a barra de vida
+            barraDeVida.atualizarVida(vidaAtual);
         }
         else
         {
-            playerVida = 0;
+            vidaAtual = 0;
             Destroy(this.gameObject);
         }
     }
