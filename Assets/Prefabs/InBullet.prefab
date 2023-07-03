@@ -5221,6 +5221,7 @@ GameObject:
   - component: {fileID: 5927171783732427019}
   - component: {fileID: 4131752222559996303}
   - component: {fileID: 3262958787684058233}
+  - component: {fileID: -4876569199963907731}
   m_Layer: 0
   m_Name: InBullet
   m_TagString: InProj
@@ -5292,3 +5293,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13350163, y: 0.13631427, z: 0.31278768}
   m_Center: {x: 0.009218285, y: -0.006081566, z: 0.05175905}
+--- !u!114 &-4876569199963907731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8341455949525019227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2878ac02c5fbbbc4f89ade9bb396a86e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -4,12 +4,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class Inimigo : MonoBehaviour
 {
     [Header("Spawner(Apenas para spawners)")]
     public GameObject Tipo;
+    public int quantidade = 3;
 
-    [Header("Inimigo(Apenas para inimigos)")]
+    //É possivel usar Scriptable Objects para essas variaveis
+    [Header("Inimigo(Apenas para as prefabs dos inimigos)")]
     public int vidaMax = 30;
     [Range(0,10)]
     public int velocidade = 4;
@@ -17,11 +20,13 @@ public class Inimigo : MonoBehaviour
     [Range(0,20f)]
     public float cooldownTimer = 5f;
     public Material atordoadoMaterial;
+    public float TempoPraAtirar = .5f;
     public GameObject Projetil;
     public float ProjForc = 3f;
+    public AudioSource audio;
+    
+    
     private float projTemp;
-    public float TempoPraAtirar = .5f;
-
     private int vidaAtual;
     private Transform playerPos;
     private Renderer renderer;
@@ -70,9 +75,9 @@ public class Inimigo : MonoBehaviour
     {
         if(this.gameObject.tag != "Inimigo")
         {
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < quantidade; i++)
             {
-                Vector3 InimigoPosition = new Vector3(Random.Range(-5, 5) + this.transform.position.x, this.transform.position.y, this.transform.position.z + Random.Range(-5, 5));
+                Vector3 InimigoPosition = new Vector3(Random.Range(-5, 5) + this.transform.position.x, this.transform.position.y + 5, this.transform.position.z + Random.Range(-5, 5));
                 Instantiate(Tipo, InimigoPosition, Quaternion.identity);
                 
             }
@@ -143,5 +148,6 @@ public class Inimigo : MonoBehaviour
     public void TomarDano(int dano)
     {
         this.vidaAtual -= dano;
+        audio.Play();
     }
 }

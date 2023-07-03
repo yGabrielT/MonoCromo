@@ -9,6 +9,7 @@ using TMPro;
         public TMP_Text TempoText;
         public float SetTempParado, SetTempCooldown;
         private float timeCrono, SlowCooldown;
+        public AudioSource audio;
         private StarterAssetsInputs _input;
         [SerializeField]
         private float timeScale = .5f;
@@ -42,7 +43,7 @@ using TMPro;
                     timeToggle = true;
                     SlowCooldown = 0;
                     Time.timeScale = timeScale;
-
+                    audio.Play();
                 }
             }
 

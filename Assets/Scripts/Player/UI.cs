@@ -8,23 +8,25 @@ using UnityEngine.UI;
 public class UI : MonoBehaviour
 {
     public TMP_Text textoFPS;
-    public float cool;
+    private float cool;
     private float tempo, refresh, frameRate;
     [SerializeField]
     private Image image;
     private StarterAssetsInputs _input;
+    private ManuseioTemp _manuseio;
 
 
 
     private void Awake()
     {
-
+        _manuseio = GetComponent<ManuseioTemp>();
         _input = GetComponent<StarterAssetsInputs>();
     }
 
     void Start()
     {
         image.fillAmount = 0;
+        cool = _manuseio.SetTempCooldown;
     }
 
 

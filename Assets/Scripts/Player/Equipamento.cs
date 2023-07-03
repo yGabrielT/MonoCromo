@@ -1,10 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using StarterAssets;
-using UnityEngine.Rendering.Universal.Internal;
+using Cinemachine;
+
 
 public class Equipamento : MonoBehaviour
 {
@@ -24,7 +24,7 @@ public class Equipamento : MonoBehaviour
 
 
 
-    [Header("Settings")]
+    [Header("Config")]
     public int totalThrows;
     public float throwCooldown;
     public bool readyToThrow;
@@ -36,6 +36,9 @@ public class Equipamento : MonoBehaviour
     public float throwUpwardForceEquip1;
     public float throwCooldown1;
     public int totalThrows1;
+    public AudioSource audioPistol;
+    [SerializeField] private float ShakeForce = 0.1f;
+
 
     [Header("SecundaryEquip")]
     public GameObject SecundaryThrowObj;
@@ -44,15 +47,18 @@ public class Equipamento : MonoBehaviour
     public float throwUpwardForceEquip2;
     public float throwCooldown2;
     public int totalThrows2;
+   // public AudioSource audioGranada;
 
     private float throwForce;
     private float throwUpwardForce;
+    private CinemachineImpulseSource impulseSource;
     
 
     
 
     private void Start()
     {
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         cam = Camera.main.transform;
         _Personagem = GetComponent<Personagem>();
         _input = GetComponent<StarterAssetsInputs>();
@@ -71,11 +77,29 @@ public class Equipamento : MonoBehaviour
             _input.shoot = false;
             if (readyToThrow && totalThrows >= 1 && (isEquip1 || isEquip2) && _input.aim)
             {
-
                 Throw();
+                if(isEquip1)
+                
+                AudioPistol();
+                impulseSource.GenerateImpulse(ShakeForce);
+              //  else
+              //  AudioGranada();
             }
         }
     }
+
+
+    private void AudioPistol()
+    {
+        audioPistol.Play();
+    }
+
+    /*
+    private void AudioGranada()
+    {
+        audioGranada.Play();
+    }
+    */
 
     private void Throw()
     {
@@ -127,6 +151,7 @@ public class Equipamento : MonoBehaviour
 
     private void CheckEquips()
     {
+        //Usando arma de tinta
         if (isEquip1 && !isEquip2)
         {
             objectToThrow = PrincipalThrowObj;
@@ -135,6 +160,7 @@ public class Equipamento : MonoBehaviour
             throwUpwardForce = throwUpwardForceEquip1;
             totalThrows = totalThrows1;
         }
+        //Usando Granada de tinta
         else if (!isEquip1 && isEquip2)
         {
             throwCooldown = throwCooldown2;
@@ -143,6 +169,7 @@ public class Equipamento : MonoBehaviour
             throwUpwardForce = throwUpwardForceEquip2;
             totalThrows = totalThrows2;
         }
+        //Sem equipamentos
         if (!isEquip1 && !isEquip2)
         {
             readyToThrow = false;
@@ -163,7 +190,7 @@ public class Equipamento : MonoBehaviour
         }
         else if (isEquip1 && totalThrows1 == 0)
         {
-            GranadaText.SetText("N�o h� muni��o!");
+            GranadaText.SetText("Não há munição!");
         }
         else if (isEquip2 && totalThrows2 == 1)
         {

@@ -27,11 +27,12 @@ public class Personagem : MonoBehaviour
     [SerializeField] private ParticleSystem SmokeTrail;
     [Range(0f,0.2f)]
     [SerializeField] private float tempoFormacaoPoeira;
-
+    [SerializeField] private float ShakeForce = 0.1f;
     public RaycastHit raycastHit;
     public bool isLooking;
     private float contador;
     
+    private CinemachineImpulseSource impulseSource;
     private Animator _anim;
     private Equipamento _throwScript;
     private ThirdPersonController _controller;
@@ -40,6 +41,7 @@ public class Personagem : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         _anim = GetComponent<Animator>();
         _controller = GetComponent<ThirdPersonController>();
         _input = GetComponent<StarterAssetsInputs>();
@@ -86,6 +88,7 @@ public class Personagem : MonoBehaviour
         {
             // caso leve dano
             vidaAtual -= inimigo.dano;
+            impulseSource.GenerateImpulse(ShakeForce);
             // atualiza a barra de vida
             barraDeVida.atualizarVida(vidaAtual);
         }
