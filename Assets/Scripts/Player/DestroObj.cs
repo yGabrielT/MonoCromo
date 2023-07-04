@@ -13,11 +13,7 @@ public class DestroObj : MonoBehaviour
             if (this.gameObject.tag == ("Bombs"))
             {
                 Explode();
-                Instantiate(ExploHitFX, this.transform.position, Quaternion.identity);
-
             }
-            Destroy(this.gameObject);
-            
         }
 
         if (other.gameObject.tag == ("Inimigo"))
@@ -25,8 +21,6 @@ public class DestroObj : MonoBehaviour
             if(this.gameObject.tag == ("Bombs"))
             {
                 Explode();
-                Instantiate(ExploHitFX, this.transform.position, Quaternion.identity);
-                Destroy(this.gameObject);
             }
             else
             {
@@ -40,6 +34,8 @@ public class DestroObj : MonoBehaviour
 
     private void Explode()
     {
+        
+        Instantiate(ExploHitFX, this.transform.position, Quaternion.identity);
         Collider[] colisores = Physics.OverlapSphere(this.transform.position, raio);
         Destroy(this.gameObject);
         foreach (Collider nearbyObjs in colisores)

@@ -30,8 +30,9 @@ public class Personagem : MonoBehaviour
     [SerializeField] private float ShakeForce = 0.1f;
     public RaycastHit raycastHit;
     public bool isLooking;
+    public AudioSource audioMorte;
+
     private float contador;
-    
     private CinemachineImpulseSource impulseSource;
     private Animator _anim;
     private Equipamento _throwScript;
@@ -86,7 +87,7 @@ public class Personagem : MonoBehaviour
 
         if(vidaAtual >= 0)
         {
-            // caso leve dano
+            //levar dano
             vidaAtual -= inimigo.dano;
             impulseSource.GenerateImpulse(ShakeForce);
             // atualiza a barra de vida
@@ -94,6 +95,8 @@ public class Personagem : MonoBehaviour
         }
         else
         {
+            //morte
+            audioMorte.Play();
             vidaAtual = 0;
             Destroy(this.gameObject);
         }

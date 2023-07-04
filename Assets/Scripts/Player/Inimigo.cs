@@ -23,10 +23,14 @@ public class Inimigo : MonoBehaviour
     public float TempoPraAtirar = .5f;
     public GameObject Projetil;
     public float ProjForc = 3f;
-    public AudioSource audio;
+    public AudioSource audioAcertado;
+    public AudioSource audioAtirar;
+    public AudioSource audioAtordoado;
     
     
     private float projTemp;
+    private bool somTocando;
+    private bool atordoado;
     private int vidaAtual;
     private Transform playerPos;
     private Renderer renderer;
@@ -67,6 +71,7 @@ public class Inimigo : MonoBehaviour
         Movimentar();
         AtacarPersonagem();
         Atordoar(cooldownTimer);
+        AtordoarSom();
 
     }
 
@@ -110,6 +115,7 @@ public class Inimigo : MonoBehaviour
             this.gameObject.transform.LookAt(playerPos.transform);
             if(projTemp > TempoPraAtirar)
             {
+                audioAtirar.Play();
                 GameObject InimigoProjetil = Instantiate(Projetil, transform.position, this.gameObject.transform.rotation);
                 Rigidbody Rb = InimigoProjetil.GetComponent<Rigidbody>();
                 Rb.AddForce(transform.forward * ProjForc, ForceMode.VelocityChange);
@@ -125,16 +131,17 @@ public class Inimigo : MonoBehaviour
     private void Atordoar(float cooldown)
     {
         if(this.gameObject.tag == "Inimigo" && this.vidaAtual <= 0)
-        {
+        {   
+            atordoado = true;
             renderer.material = atordoadoMaterial;
             NavMeshAgente.SetDestination(transform.position);
-
             if (cooldown > temp)
             {
                 temp += Time.deltaTime;
             }
             else
             {
+                atordoado = false;
                 this.vidaAtual = vidaMax;
                 renderer.material = defaultMaterial;
                 temp = 0;
@@ -148,6 +155,18 @@ public class Inimigo : MonoBehaviour
     public void TomarDano(int dano)
     {
         this.vidaAtual -= dano;
-        audio.Play();
+        audioAcertado.Play();
+    }
+
+    private void AtordoarSom()
+    {
+        
+        if(atordoado && !somTocando){
+            somTocando = true;
+            audioAtordoado.Play();
+        }
+        if(!atordoado){
+            somTocando = false;
+        }
     }
 }

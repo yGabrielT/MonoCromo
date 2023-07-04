@@ -36,8 +36,8 @@ public class Equipamento : MonoBehaviour
     public float throwUpwardForceEquip1;
     public float throwCooldown1;
     public int totalThrows1;
-    public AudioSource audioPistol;
     [SerializeField] private float ShakeForce = 0.1f;
+    public AudioSource audioPistol;
 
 
     [Header("SecundaryEquip")]
@@ -47,6 +47,7 @@ public class Equipamento : MonoBehaviour
     public float throwUpwardForceEquip2;
     public float throwCooldown2;
     public int totalThrows2;
+    public AudioSource audioGranada;
    // public AudioSource audioGranada;
 
     private float throwForce;
@@ -79,27 +80,19 @@ public class Equipamento : MonoBehaviour
             {
                 Throw();
                 if(isEquip1)
+                {
+                    audioPistol.Play();
+                    impulseSource.GenerateImpulse(ShakeForce);
+                }
+                else{
+                    audioGranada.Play();
+                }
                 
-                AudioPistol();
-                impulseSource.GenerateImpulse(ShakeForce);
-              //  else
-              //  AudioGranada();
             }
         }
     }
 
 
-    private void AudioPistol()
-    {
-        audioPistol.Play();
-    }
-
-    /*
-    private void AudioGranada()
-    {
-        audioGranada.Play();
-    }
-    */
 
     private void Throw()
     {
