@@ -16,20 +16,20 @@ public class PickBomb : MonoBehaviour
         {
             
             Destroy(other.gameObject);
-            _throw.totalThrows2++;
-            _throw.readyToThrow = true;
-            _throw.isEquip2 = true;
-            _throw.isEquip1 = false;
+            _throw._municaoSecundaria++;
+            _throw.prontoPraJogar = true;
+            _throw._isSecundario = true;
+            _throw.isPrincipal = false;
         }
 
         if (other.CompareTag("Bullet"))
         {
             
             Destroy(other.gameObject);
-            _throw.totalThrows1 += 5;
-            _throw.readyToThrow = true;
-            _throw.isEquip2 = false;
-            _throw.isEquip1 = true;
+            _throw.municaoPrincipal += 5;
+            _throw.prontoPraJogar = true;
+            _throw._isSecundario = false;
+            _throw.isPrincipal = true;
         }
     }
 }

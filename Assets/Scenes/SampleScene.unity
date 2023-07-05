@@ -6573,7 +6573,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 843049769}
-  m_VersionIndex: 7
+  m_VersionIndex: 10
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -7146,7 +7146,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 819770914}
-  m_VersionIndex: 7
+  m_VersionIndex: 10
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -8036,7 +8036,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30086
+  m_Name: pb_Mesh30126
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -8405,7 +8405,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-208212
+  m_Name: pb_Mesh29832
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -8646,7 +8646,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-208220
+  m_Name: pb_Mesh29830
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -9042,6 +9042,7 @@ MonoBehaviour:
   audioAcertado: {fileID: 0}
   audioAtirar: {fileID: 0}
   audioAtordoado: {fileID: 0}
+  AtacarBool: 1
 --- !u!1 &1087913370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4767400413853537203, guid: 01ac5ffcb3424544b88c965bec54de86,
@@ -9179,7 +9180,7 @@ RectTransform:
   m_GameObject: {fileID: 1133090685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 785835524}
@@ -9187,8 +9188,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 25, y: 25}
+  m_AnchoredPosition: {x: -20, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1133090687
 MonoBehaviour:
@@ -9447,11 +9448,11 @@ AudioSource:
   m_GameObject: {fileID: 1175185912}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 47233fcbdd1907d4da309e52cb270bb0,
+  OutputAudioMixerGroup: {fileID: 8554586281766505660, guid: 8c82976af34757f4082da22904073db5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c9a39d084b65df84ca36b274b36b6d0f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.51
+  m_Volume: 1
   m_Pitch: 0.78
   Loop: 0
   Mute: 0
@@ -10061,13 +10062,13 @@ AudioSource:
   m_GameObject: {fileID: 1237724741}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 47233fcbdd1907d4da309e52cb270bb0,
+  OutputAudioMixerGroup: {fileID: -7176658433355944741, guid: 8c82976af34757f4082da22904073db5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 5b331a634656b3a408be633cb8c71516, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.299
+  m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -10190,12 +10191,12 @@ AudioSource:
   m_GameObject: {fileID: 1241783943}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 47233fcbdd1907d4da309e52cb270bb0,
+  OutputAudioMixerGroup: {fileID: 8554586281766505660, guid: 8c82976af34757f4082da22904073db5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a73a140c6b9a62f46920d6bb846b99c2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
-  m_Pitch: 0.78
+  m_Volume: 1
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -10785,11 +10786,11 @@ AudioSource:
   m_GameObject: {fileID: 1309188440}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 47233fcbdd1907d4da309e52cb270bb0,
+  OutputAudioMixerGroup: {fileID: 8554586281766505660, guid: 8c82976af34757f4082da22904073db5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 49ab7d2e8fafc4341a218125fff37030, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.51
+  m_Volume: 1
   m_Pitch: 0.78
   Loop: 0
   Mute: 0
@@ -16759,11 +16760,11 @@ AudioSource:
   m_GameObject: {fileID: 1784444292}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 47233fcbdd1907d4da309e52cb270bb0,
+  OutputAudioMixerGroup: {fileID: 4820288546930712592, guid: 8c82976af34757f4082da22904073db5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 8e5bdd1d36ab64849ba1ae3902f55698, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 1
   m_Pitch: 0.9
   Loop: 0
   Mute: 0
@@ -17417,7 +17418,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5c7a7fc13d255bb41a2a0794f16f8645, type: 2}
+      objectReference: {fileID: 2100000, guid: 511f50dc2c5aaa941b1bc36c3439807e, type: 2}
     - target: {fileID: 8416272007918961125, guid: 01ac5ffcb3424544b88c965bec54de86,
         type: 3}
       propertyPath: m_Layer
@@ -17835,7 +17836,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29982
+  m_Name: pb_Mesh30016
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -26509,7 +26510,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8950265562796933603, guid: 6a4b1139a52f26240ad430094fda1671, type: 3}
+  - {fileID: 2100000, guid: 511f50dc2c5aaa941b1bc36c3439807e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30909,6 +30910,7 @@ GameObject:
   - component: {fileID: 7067408597304210828}
   - component: {fileID: 7960266315456006701}
   - component: {fileID: 7960266315456006702}
+  - component: {fileID: 7960266315456006703}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -30955,6 +30957,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.16259706, y: 0.10565436, z: 0.0533163}
   m_Center: {x: -0.042715512, y: 0.00003283731, z: -0.011768676}
+--- !u!205 &7960266315456006703
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7960266315456006700}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1 &7961879603444085513
 GameObject:
   m_ObjectHideFlags: 0
@@ -32266,6 +32292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e40a7256d2ae84e87bbdf0f6842994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMix: {fileID: 24100000, guid: 8c82976af34757f4082da22904073db5, type: 2}
   TempoText: {fileID: 2095594769}
   SetTempParado: 3.8
   SetTempCooldown: 10
@@ -32351,33 +32378,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6072d63e1ef2234f9232172d31f7282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPoint: {fileID: 1277714784}
+  tipoPrincipal: {fileID: 8341455949525019227, guid: c25cfe1ca5b1d3b4bbfde0847e19ab9b,
+    type: 3}
+  isPrincipal: 0
+  forcaPrincipal: 50
+  forcaCimaPrincipal: 0
+  tempoDeRecargaPrincipal: 0.01
+  municaoPrincipal: 0
+  forceShake: 0.03
+  audioPrincipal: {fileID: 1241783945}
+  _tipoSecundario: {fileID: 76866827463003559, guid: 94885afc29dffb24c9100ccf596f7f38,
+    type: 3}
+  _isSecundario: 0
+  _forcaSecundaria: 10
+  _forcaCimaSecundaria: 3
+  _tempoDeRecargaSecundaria: 1
+  _municaoSecundaria: 0
+  audioSecundario: {fileID: 1175185914}
+  municaoAtual: 0
+  cooldownAtual: 0
+  prontoPraJogar: 0
+  pontoAtaque: {fileID: 1277714784}
   MunicaoText: {fileID: 748095022}
   GranadaText: {fileID: 735759268}
   armaPrincipal: {fileID: 720448132}
   Granada1: {fileID: 1264341312}
   Granada2: {fileID: 1111473310}
   Granada3: {fileID: 838192208}
-  totalThrows: 0
-  throwCooldown: 0
-  readyToThrow: 0
-  PrincipalThrowObj: {fileID: 8341455949525019227, guid: c25cfe1ca5b1d3b4bbfde0847e19ab9b,
-    type: 3}
-  isEquip1: 0
-  throwForceEquip1: 50
-  throwUpwardForceEquip1: 0
-  throwCooldown1: 0.1
-  totalThrows1: 0
-  ShakeForce: 0.05
-  audioPistol: {fileID: 1241783945}
-  SecundaryThrowObj: {fileID: 76866827463003559, guid: 94885afc29dffb24c9100ccf596f7f38,
-    type: 3}
-  isEquip2: 0
-  throwForceEquip2: 20
-  throwUpwardForceEquip2: 4
-  throwCooldown2: 1
-  totalThrows2: 0
-  audioGranada: {fileID: 1175185914}
 --- !u!114 &8729942609572532645
 MonoBehaviour:
   m_ObjectHideFlags: 0

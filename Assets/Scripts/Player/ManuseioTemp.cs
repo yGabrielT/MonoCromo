@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using StarterAssets;
 using TMPro;
     public class ManuseioTemp : MonoBehaviour
     {
+        public AudioMixer audioMix;
         public TMP_Text TempoText;
         public float SetTempParado, SetTempCooldown;
         private float timeCrono, SlowCooldown;
@@ -29,11 +31,12 @@ using TMPro;
         {
             PararTempo();
             AtualizarCanvas();
-
+            audioMix.SetFloat("SFXpitch", Time.timeScale);
         }
 
         void PararTempo()
         {
+            
             // Ativar slow down ap�s cooldown de 10 secs
             if (_input.slow)
             {

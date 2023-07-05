@@ -8,9 +8,35 @@ using Cinemachine;
 
 public class Equipamento : MonoBehaviour
 {
+
+    [Header("PrincipalEquip")]
+    public GameObject tipoPrincipal;
+    public bool isPrincipal;
+    public float forcaPrincipal;
+    public float forcaCimaPrincipal;
+    public float tempoDeRecargaPrincipal;
+    public int municaoPrincipal;
+    [SerializeField] private float forceShake = 0.1f;
+    public AudioSource audioPrincipal;
+
+
+    [Header("SecundaryEquip")]
+    public GameObject _tipoSecundario;
+    public bool _isSecundario;
+    public float _forcaSecundaria;
+    public float _forcaCimaSecundaria;
+    public float _tempoDeRecargaSecundaria;
+    public int _municaoSecundaria;
+    public AudioSource audioSecundario;
+    
+    [Header("Config")]
+    public int municaoAtual;
+    public float cooldownAtual;
+    public bool prontoPraJogar;
+
     [Header("References")]
     private Transform cam;
-    public Transform attackPoint;
+    public Transform pontoAtaque;
     private GameObject objectToThrow;
     private StarterAssetsInputs _input;
     private Personagem _Personagem;
@@ -22,36 +48,8 @@ public class Equipamento : MonoBehaviour
     public Image Granada2;
     public Image Granada3;
 
-
-
-    [Header("Config")]
-    public int totalThrows;
-    public float throwCooldown;
-    public bool readyToThrow;
-
-    [Header("PrincipalEquip")]
-    public GameObject PrincipalThrowObj;
-    public bool isEquip1;
-    public float throwForceEquip1;
-    public float throwUpwardForceEquip1;
-    public float throwCooldown1;
-    public int totalThrows1;
-    [SerializeField] private float ShakeForce = 0.1f;
-    public AudioSource audioPistol;
-
-
-    [Header("SecundaryEquip")]
-    public GameObject SecundaryThrowObj;
-    public bool isEquip2;
-    public float throwForceEquip2;
-    public float throwUpwardForceEquip2;
-    public float throwCooldown2;
-    public int totalThrows2;
-    public AudioSource audioGranada;
-   // public AudioSource audioGranada;
-
-    private float throwForce;
-    private float throwUpwardForce;
+    private float forcaAtual;
+    private float forcaCimaAtual;
     private CinemachineImpulseSource impulseSource;
     
 
@@ -71,121 +69,123 @@ public class Equipamento : MonoBehaviour
         AtualizarCanvasMunicao();
         CheckEquips();
         trocarArma();
-
+        ValidarEntrada();
         hit = _Personagem.raycastHit;
+    }
+
+    private void ValidarEntrada()
+    {
         if (_input.shoot)
         {
             _input.shoot = false;
-            if (readyToThrow && totalThrows >= 1 && (isEquip1 || isEquip2) && _input.aim)
+            if (prontoPraJogar && municaoAtual >= 1 && (isPrincipal || _isSecundario) && _input.aim)
             {
-                Throw();
-                if(isEquip1)
+                UsarEquipamento();
+                if(isPrincipal)
                 {
-                    audioPistol.Play();
-                    impulseSource.GenerateImpulse(ShakeForce);
+                    audioPrincipal.Play();
+                    impulseSource.GenerateImpulse(forceShake);
                 }
                 else{
-                    audioGranada.Play();
+                    audioSecundario.Play();
                 }
                 
             }
         }
     }
 
-
-
-    private void Throw()
+    private void UsarEquipamento()
     {
         
-        readyToThrow = false;
+        prontoPraJogar = false;
 
-        GameObject projectile = Instantiate(objectToThrow, attackPoint.position, cam.rotation);
+        GameObject projetil = Instantiate(objectToThrow, pontoAtaque.position, cam.rotation);
 
-        Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+        Rigidbody projetilRb = projetil.GetComponent<Rigidbody>();
 
-        Vector3 forceDirection = cam.transform.forward;
+        Vector3 forcaDir = cam.transform.forward;
         if (_Personagem.isLooking)
         {
-            forceDirection = (hit.point - attackPoint.position).normalized;
+            forcaDir = (hit.point - pontoAtaque.position).normalized;
         }
 
-        Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce;
+        Vector3 forcaAdicional = forcaDir * forcaAtual + transform.up * forcaCimaAtual;
 
-        projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
-        if(isEquip1 && !isEquip2)
+        projetilRb.AddForce(forcaAdicional, ForceMode.Impulse);
+        if(isPrincipal && !_isSecundario)
         {
-            totalThrows1--;
+            municaoPrincipal--;
         }
-        if(!isEquip1 && isEquip2)
+        if(!isPrincipal && _isSecundario)
         {
-            totalThrows2--;
+            _municaoSecundaria--;
         }
 
 
-        StartCoroutine(ResetThrow(throwCooldown));
+        StartCoroutine(ResetThrow(cooldownAtual));
     }
 
-    private IEnumerator ResetThrow(float waitTime)
+    private IEnumerator ResetThrow(float esperaTempo)
     {
-        yield return new WaitForSecondsRealtime(waitTime);
-        readyToThrow = true;
+        yield return new WaitForSecondsRealtime(esperaTempo);
+        prontoPraJogar = true;
     }
     private void LimitarMunicao()
     {
-        if(totalThrows1 > 20)
+        if(municaoPrincipal > 20)
         {
-            totalThrows1 = 20;
+            municaoPrincipal = 20;
         }
-        if(totalThrows2 > 3)
+        if(_municaoSecundaria > 3)
         {
-            totalThrows2 = 3;
+            _municaoSecundaria = 3;
         }
     }
 
     private void CheckEquips()
     {
         //Usando arma de tinta
-        if (isEquip1 && !isEquip2)
+        if (isPrincipal && !_isSecundario)
         {
-            objectToThrow = PrincipalThrowObj;
-            throwCooldown = throwCooldown1; 
-            throwForce = throwForceEquip1;
-            throwUpwardForce = throwUpwardForceEquip1;
-            totalThrows = totalThrows1;
+            objectToThrow = tipoPrincipal;
+            cooldownAtual = tempoDeRecargaPrincipal; 
+            forcaAtual = forcaPrincipal;
+            forcaCimaAtual = forcaCimaPrincipal;
+            municaoAtual = municaoPrincipal;
         }
         //Usando Granada de tinta
-        else if (!isEquip1 && isEquip2)
+        else if (!isPrincipal && _isSecundario)
         {
-            throwCooldown = throwCooldown2;
-            objectToThrow = SecundaryThrowObj;
-            throwForce = throwForceEquip2;
-            throwUpwardForce = throwUpwardForceEquip2;
-            totalThrows = totalThrows2;
+            cooldownAtual = _tempoDeRecargaSecundaria;
+            objectToThrow = _tipoSecundario;
+            forcaAtual = _forcaSecundaria;
+            forcaCimaAtual = _forcaCimaSecundaria;
+            municaoAtual = _municaoSecundaria;
         }
         //Sem equipamentos
-        if (!isEquip1 && !isEquip2)
+        if (!isPrincipal && !_isSecundario)
         {
-            readyToThrow = false;
-            totalThrows = 0;
+            prontoPraJogar = false;
+            municaoAtual = 0;
         }
     }
     
     private void AtualizarCanvasMunicao()
     {
-        if (isEquip1 && !isEquip2)
+        if (isPrincipal && !_isSecundario)
         {
-            MunicaoText.SetText(totalThrows1.ToString() + "/20");
+            MunicaoText.SetText(municaoPrincipal.ToString() + "/20");
             armaPrincipal.enabled = true;
             GranadaText.SetText("");
             Granada1.enabled = false;
             Granada2.enabled = false;
             Granada3.enabled = false;
         }
-        else if (isEquip1 && totalThrows1 == 0)
+        else if (isPrincipal && municaoPrincipal == 0)
         {
             GranadaText.SetText("Não há munição!");
         }
-        else if (isEquip2 && totalThrows2 == 1)
+        else if (_isSecundario && _municaoSecundaria == 1)
         {
             armaPrincipal.enabled = false;
             MunicaoText.SetText("");
@@ -194,7 +194,7 @@ public class Equipamento : MonoBehaviour
             Granada3.enabled = false;
             GranadaText.SetText("");
         }
-        else if (isEquip2 && totalThrows2 == 2)
+        else if (_isSecundario && _municaoSecundaria == 2)
         {
             armaPrincipal.enabled = false;
             MunicaoText.SetText("");
@@ -203,7 +203,7 @@ public class Equipamento : MonoBehaviour
             Granada3.enabled = false;
             GranadaText.SetText("");
         }
-        else if (isEquip2 && totalThrows2 == 3)
+        else if (_isSecundario && _municaoSecundaria == 3)
         {
             armaPrincipal.enabled = false;
             MunicaoText.SetText("");
@@ -212,7 +212,7 @@ public class Equipamento : MonoBehaviour
             Granada3.enabled = true;
             GranadaText.SetText("");
         }
-        else if (isEquip2 && totalThrows2 == 0)
+        else if (_isSecundario && _municaoSecundaria == 0)
         {
             armaPrincipal.enabled = false;
             MunicaoText.SetText("");
@@ -222,7 +222,7 @@ public class Equipamento : MonoBehaviour
             GranadaText.SetText("N�o h� granadas!");
         }
         
-        if (!isEquip1 && !isEquip2)
+        if (!isPrincipal && !_isSecundario)
         {
             MunicaoText.SetText("");
             GranadaText.SetText("");
@@ -239,15 +239,15 @@ public class Equipamento : MonoBehaviour
         if(_input.scroll > 0)
         {
             Debug.Log("Mouse Scroll cima");
-            isEquip1 = true;
-            isEquip2 = false;
+            isPrincipal = true;
+            _isSecundario = false;
 
         }
         else if (_input.scroll < 0)
         {
            Debug.Log("Mouse Scroll baixo");
-            isEquip1 = false;
-            isEquip2 = true;
+            isPrincipal = false;
+            _isSecundario = true;
         }
         
 

@@ -26,7 +26,7 @@ public class Inimigo : MonoBehaviour
     public AudioSource audioAcertado;
     public AudioSource audioAtirar;
     public AudioSource audioAtordoado;
-    
+    public bool AtacarBool = true;
     
     private float projTemp;
     private bool somTocando;
@@ -94,7 +94,7 @@ public class Inimigo : MonoBehaviour
     {
         if(this.gameObject.tag == "Inimigo")
         {
-            if (vidaAtual > 0 && playerPos != null)
+            if (vidaAtual > 0 && playerPos != null && AtacarBool)
             {
                 NavMeshAgente.SetDestination(playerPos.position);
             }
@@ -109,7 +109,7 @@ public class Inimigo : MonoBehaviour
 
     private void AtacarPersonagem()
     {
-        if(this.gameObject.tag == "Inimigo" && Projetil != null && this.vidaAtual > 0 && playerPos != null)
+        if(this.gameObject.tag == "Inimigo" && Projetil != null && this.vidaAtual > 0 && playerPos != null && AtacarBool)
         {
             projTemp += Time.deltaTime;
             this.gameObject.transform.LookAt(playerPos.transform);

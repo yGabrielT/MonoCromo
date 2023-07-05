@@ -150,17 +150,18 @@ MonoBehaviour:
   Tipo: {fileID: 0}
   quantidade: 3
   vidaMax: 30
-  velocidade: 10
-  dano: 4
+  velocidade: 4
+  dano: 2
   cooldownTimer: 5
   atordoadoMaterial: {fileID: 2100000, guid: c229628907afddb4a8ef291c8565329e, type: 2}
-  TempoPraAtirar: 1
+  TempoPraAtirar: 2
   Projetil: {fileID: 8341455949525019227, guid: dfbbce2603f1edf47b6869dedc36e712,
     type: 3}
   ProjForc: 30
   audioAcertado: {fileID: 4954440468428459552}
   audioAtirar: {fileID: 7686533634596741857}
   audioAtordoado: {fileID: 109997062458827757}
+  AtacarBool: 0
 --- !u!1 &2092646154271392799
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,10 +203,11 @@ AudioSource:
   m_GameObject: {fileID: 2092646154271392799}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8554586281766505660, guid: 8c82976af34757f4082da22904073db5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 017bcd652d876324ca5b8e0074d05876, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.218
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -330,10 +332,11 @@ AudioSource:
   m_GameObject: {fileID: 5342558275969356650}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8554586281766505660, guid: 8c82976af34757f4082da22904073db5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: a06a25f415d214342bbb099583743432, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.218
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -458,10 +461,11 @@ AudioSource:
   m_GameObject: {fileID: 7015084685291781813}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8554586281766505660, guid: 8c82976af34757f4082da22904073db5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: d583724484195ad4aaee40f7ef6d612e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.218
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
