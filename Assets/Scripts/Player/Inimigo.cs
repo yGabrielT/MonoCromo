@@ -50,6 +50,7 @@ public class Inimigo : MonoBehaviour
         //Encontrar o jogador
         var gObj = GameObject.FindWithTag("Track");
         playerPos = gObj.transform;
+        
 
         //Aplicar vida máxima a atual
         vidaAtual = vidaMax;
@@ -112,7 +113,13 @@ public class Inimigo : MonoBehaviour
         if(this.gameObject.tag == "Inimigo" && Projetil != null && this.vidaAtual > 0 && playerPos != null && AtacarBool)
         {
             projTemp += Time.deltaTime;
+            
             this.gameObject.transform.LookAt(playerPos.transform);
+            var angle = transform.rotation.eulerAngles;
+            angle.x = 0;
+            angle.z = 0;
+            transform.rotation = Quaternion.Euler(angle);
+            
             if(projTemp > TempoPraAtirar)
             {
                 audioAtirar.Play();
