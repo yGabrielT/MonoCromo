@@ -32,6 +32,8 @@ public class Personagem : MonoBehaviour
     public bool isLooking;
     public AudioSource audioMorte;
 
+    private bool change = false;
+    public Renderer materialObj;
     private float contador;
     private CinemachineImpulseSource impulseSource;
     private Animator _anim;
@@ -60,6 +62,7 @@ public class Personagem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         Controlar();
     }
 
@@ -109,7 +112,39 @@ public class Personagem : MonoBehaviour
             Destroy(other.gameObject);
             PerderVida();
         }
+        
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Interactable")
+        {
+            
+            InteractInput(other.gameObject);
+            
+        }
+    }
+
+    private void InteractInput(GameObject obj)
+    {
+        if (_input.interact && !change)
+        {
+            
+            change = true;
+            _input.interact = false;
+
+            materialObj = obj.GetComponent<Renderer>();
+            materialObj.material.color = Color.red;
+            Debug.Log("Interagido");
+        }
+        Invoke("ColldownInteract", 0.1f);
+    }
+
+    private void ColldownInteract()
+    {
+        change = false;
+    }
+
 
     private void SmokeUpdate()
     {

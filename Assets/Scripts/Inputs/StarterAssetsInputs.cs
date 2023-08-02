@@ -12,6 +12,7 @@ namespace StarterAssets
 		public Vector2 look;
         public float scroll;
         public bool jump;
+		public bool interact;
         public bool aim;
         public bool slow;
         public bool sprint;
@@ -23,6 +24,7 @@ namespace StarterAssets
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
+
 
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
@@ -59,6 +61,11 @@ namespace StarterAssets
             SlowInput(value.isPressed);
         }
 
+		public void OnInteract(InputValue value)
+        {
+            InteractInput(value.isPressed);
+        }
+
         public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
@@ -86,7 +93,12 @@ namespace StarterAssets
 			look = newLookDirection;
 		}
 
-		public void JumpInput(bool newJumpState)
+        public void InteractInput(bool newInteractState)
+        {
+            interact = newInteractState;
+        }
+
+        public void JumpInput(bool newJumpState)
 		{
 			jump = newJumpState;
 		}

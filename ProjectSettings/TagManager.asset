@@ -12,6 +12,7 @@ TagManager:
   - Model
   - InProj
   - Track
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Bombs
   - Ground
   - Inimigo
-  - 
+  - Push
   - 
   - 
   - 
