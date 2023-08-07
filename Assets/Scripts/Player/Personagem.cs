@@ -24,36 +24,23 @@ public class Personagem : MonoBehaviour
     [SerializeField] private float aimSensivity = .5f;
     [SerializeField] private LayerMask _mask;
     [SerializeField] private GameObject _crosshair;
+    [SerializeField] private ParticleSystem SmokeTrail;
+    [Range(0f,0.2f)]
+    [SerializeField] private float tempoFormacaoPoeira;
     [SerializeField] private float ShakeForce = 0.1f;
     public RaycastHit raycastHit;
     public bool isLooking;
     public AudioSource audioMorte;
-<<<<<<< Updated upstream
 
     private bool change = false;
     public Renderer materialObj;
     private float contador;
-=======
-    
->>>>>>> Stashed changes
     private CinemachineImpulseSource impulseSource;
     private Animator _anim;
     private Equipamento _throwScript;
     private ThirdPersonController _controller;
     private StarterAssetsInputs _input;
     public Inimigo inimigo;
-
-    [Header("VFX")]
-    [SerializeField] private ParticleSystem SmokeWalkTrail;
-    [SerializeField] private ParticleSystem SmokeSprintTrail;
-    [SerializeField] private GameObject SmokeJump;
-    [SerializeField] private GameObject SmokeFall;
-    [SerializeField] private float tempoFormacaoPoeiraWalk;
-    [SerializeField] private float tempoFormacaoPoeiraSprint;
-    [SerializeField] private Transform vfxPos;
-    private bool isInAir = false;
-    private float contadorWalk;
-    private float contadorSprint;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -161,36 +148,14 @@ public class Personagem : MonoBehaviour
 
     private void SmokeUpdate()
     {
-        //Rastro para quando estiver andando
-        contadorWalk += Time.deltaTime;
-        if(SmokeWalkTrail != null && !_input.sprint && _controller._controller.isGrounded && _controller._controller.velocity != Vector3.zero)
+        contador += Time.deltaTime;
+        if(SmokeTrail != null && _input.sprint && _controller._controller.isGrounded)
         {
-            if(contadorWalk > tempoFormacaoPoeiraWalk)
+            if(contador > tempoFormacaoPoeira)
             {
-                SmokeWalkTrail.Play();
-                contadorWalk = 0;
+                SmokeTrail.Play();
+                contador = 0;
             }
-        }
-
-        contadorSprint += Time.deltaTime;
-        if (SmokeSprintTrail != null && _input.sprint && _controller._controller.isGrounded && _controller._controller.velocity != Vector3.zero)
-        {
-            if (contadorSprint > tempoFormacaoPoeiraSprint)
-            {
-                SmokeSprintTrail.Play();
-                contadorSprint = 0;
-            }
-        }
-        //Rastro pra pular
-        if (SmokeJump != null && _input.jump && !_controller._controller.isGrounded && !isInAir)
-        {
-            isInAir = true;
-            Instantiate(SmokeJump, vfxPos.position, Quaternion.identity);
-        }
-        if(SmokeFall != null && _controller._controller.isGrounded && isInAir && !_input.jump)
-        {
-            isInAir = false;
-            Instantiate(SmokeFall, vfxPos.position, Quaternion.identity);
         }
     }
 
