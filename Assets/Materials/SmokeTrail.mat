@@ -188,7 +188,7 @@ Material:
     - _OcclusionStrength: 0
     - _OutlineEnabled: 1
     - _OutlineMode: 0
-    - _OutlineWidth: 5
+    - _OutlineWidth: 9.17
     - _OverrideShadowColor: 0
     - _Parallax: 0.02
     - _QueueOffset: 0
