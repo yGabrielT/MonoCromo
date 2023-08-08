@@ -125,6 +125,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &12463030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 12463031}
+  m_Layer: 3
+  m_Name: VFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &12463031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12463030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1872726257}
+  - {fileID: 1768168416}
+  m_Father: {fileID: 8245295009871317794}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &34096947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -526,7 +559,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh87632
+  m_Name: pb_Mesh30172
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -8857,7 +8890,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh87750
+  m_Name: pb_Mesh30290
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -9226,7 +9259,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh87432
+  m_Name: pb_Mesh29960
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -9467,7 +9500,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh87430
+  m_Name: pb_Mesh29958
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -12916,12 +12949,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768168415}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.045, y: 0.064, z: -0.364}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.045000017, y: 0.06400013, z: -0.36400008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8245295009871317794}
+  m_Father: {fileID: 12463031}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1768168417
@@ -18035,12 +18068,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872726256}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.045, y: 0.064, z: -0.364}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.045000017, y: 0.06400013, z: -0.36400008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8245295009871317794}
+  m_Father: {fileID: 12463031}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1872726258
@@ -18297,8 +18330,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.25
-      minScalar: 0.15
+      scalar: 0.2
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -38827,9 +38860,8 @@ Transform:
   m_Children:
   - {fileID: 4021969249167468740}
   - {fileID: 3127520171163570160}
-  - {fileID: 1768168416}
   - {fileID: 660302479}
-  - {fileID: 1872726257}
+  - {fileID: 12463031}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -40101,13 +40133,15 @@ MonoBehaviour:
   audioMorte: {fileID: 1309188442}
   materialObj: {fileID: 0}
   inimigo: {fileID: 1500782727885953526, guid: b1c84f33a169e86418152d4608a4af01, type: 3}
-  SmokeWalkTrail: {fileID: 0}
-  SmokeSprintTrail: {fileID: 0}
-  SmokeJump: {fileID: 0}
-  SmokeFall: {fileID: 0}
-  tempoFormacaoPoeiraWalk: 0
-  tempoFormacaoPoeiraSprint: 0
-  vfxPos: {fileID: 0}
+  SmokeWalkTrail: {fileID: 1872726258}
+  SmokeSprintTrail: {fileID: 1768168417}
+  SmokeJump: {fileID: 1014737460875142850, guid: c19d98d1631c99542a4e1373c9f57550,
+    type: 3}
+  SmokeFall: {fileID: 3853540410205525889, guid: bf854ad714deb9e4d855532bd7b6593d,
+    type: 3}
+  tempoFormacaoPoeiraWalk: 0.73
+  tempoFormacaoPoeiraSprint: 0.17
+  vfxPos: {fileID: 12463031}
 --- !u!114 &8729942609572532644
 MonoBehaviour:
   m_ObjectHideFlags: 0

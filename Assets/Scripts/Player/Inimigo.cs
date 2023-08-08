@@ -39,7 +39,8 @@ public class Inimigo : MonoBehaviour
     private float temp;
     private bool Spawnado = false;
     public static Inimigo _instance;
-    
+    private bool isPatrulhando = false;
+    private bool isStealth = false;
 
     private void Awake()
     {
@@ -68,12 +69,23 @@ public class Inimigo : MonoBehaviour
 
     private void Update()
     {
-        
+        Stealth();
         Movimentar();
         AtacarPersonagem();
         Atordoar(cooldownTimer);
         AtordoarSom();
 
+    }
+
+    private void Stealth()
+    {
+        if(this.gameObject.tag == "Inimigo")
+        {
+            if (isStealth)
+            {
+
+            }
+        }
     }
 
     //Instanciando o inimigo em lugares aleatorios proximos ao GameObject
@@ -93,7 +105,7 @@ public class Inimigo : MonoBehaviour
     //Movimentar até o jogador caso esteja com vida senão função Atordoar é chamada
     private void Movimentar()
     {
-        if(this.gameObject.tag == "Inimigo")
+        if(this.gameObject.tag == "Inimigo" )
         {
             if (vidaAtual > 0 && playerPos != null && AtacarBool)
             {
