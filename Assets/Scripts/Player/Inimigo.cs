@@ -40,7 +40,11 @@ public class Inimigo : MonoBehaviour
     private bool Spawnado = false;
     public static Inimigo _instance;
     private bool isPatrulhando = false;
-    private bool isStealth = false;
+    private float newPosTemp;
+    [SerializeField] private float newPosCooldown;
+
+    [SerializeField] private float AggroRange;
+    [SerializeField] private float offSetWalk;
 
     private void Awake()
     {
@@ -81,9 +85,24 @@ public class Inimigo : MonoBehaviour
     {
         if(this.gameObject.tag == "Inimigo")
         {
-            if (isStealth)
+            newPosTemp += Time.deltaTime;
+            if (EstaLonge(AggroRange) && vidaAtual > 0 && playerPos != null)
             {
+                AtacarBool = false;
+                if (newPosCooldown <= newPosTemp)
+                {
+                    //var rand = new Vector3(Random.Range(-5,5), 0, Random.Range(-5,5)) + transform.position;
+                    NavMeshAgente.SetDestination(RandomPos());
+                    newPosTemp = 0;
+                    
+                }
+                
 
+
+            }
+            else
+            {
+                AtacarBool = true;
             }
         }
     }
@@ -105,7 +124,7 @@ public class Inimigo : MonoBehaviour
     //Movimentar até o jogador caso esteja com vida senão função Atordoar é chamada
     private void Movimentar()
     {
-        if(this.gameObject.tag == "Inimigo" )
+        if(this.gameObject.tag == "Inimigo")
         {
             if (vidaAtual > 0 && playerPos != null && AtacarBool)
             {
@@ -188,4 +207,29 @@ public class Inimigo : MonoBehaviour
             somTocando = false;
         }
     }
+
+    private bool EstaLonge(float limite)
+    {
+        float distance = Vector3.Distance(transform.position, playerPos.position);
+        if(distance >= limite) 
+        {
+            return true;
+        
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, AggroRange);
+    }
+
+    private Vector3 RandomPos(){
+        return new Vector3(Random.Range(-offSetWalk,offSetWalk), 0, Random.Range(-offSetWalk,offSetWalk)) + transform.position;
+    }
+
 }

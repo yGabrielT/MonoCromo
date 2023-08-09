@@ -28,7 +28,8 @@ public class Personagem : MonoBehaviour
     public RaycastHit raycastHit;
     public bool isLooking;
     public AudioSource audioMorte;
-
+    [SerializeField] private float maxDistance = 10;
+    
     private bool change = false;
     public Renderer materialObj;
     private float contador;
@@ -52,6 +53,8 @@ public class Personagem : MonoBehaviour
     private bool isInAir = false;
     private float contadorWalk;
     private float contadorSprint;
+    [SerializeField] private GameObject text;
+    
     // Start is called before the first frame update
     private void Awake()
     {
@@ -73,10 +76,9 @@ public class Personagem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        InteractInput();
         Controlar();
     }
-
 
     public void Controlar()
     {
@@ -126,29 +128,39 @@ public class Personagem : MonoBehaviour
         
     }
 
-    private void OnTriggerStay(Collider other)
+    private void InteractInput()
     {
-        if (other.gameObject.tag == "Interactable")
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxDistance))
         {
-            
-            InteractInput(other.gameObject);
+            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * maxDistance, Color.green);
+            if(hit.transform.gameObject.tag == "Interactable")
+            {
+                text.SetActive(true);
+                var obj = hit.transform.gameObject;
+                if(_input.interact)
+                {
+                    _input.interact = false;
+                    if (!change)
+                    {
+                        text.SetActive(false);
+                        change = true;
+                        materialObj = obj.GetComponent<Renderer>();
+                        materialObj.material.color = Color.red;
+                        Debug.Log("Interagido");
+                    }
+                    else{
+                        text.SetActive(false);
+                    }
+                    Invoke("ColldownInteract", 0.1f);
+                }
+            }
+            else{
+                text.SetActive(false);
+            }
             
         }
-    }
-
-    private void InteractInput(GameObject obj)
-    {
-        if (_input.interact && !change)
-        {
-            
-            change = true;
-            _input.interact = false;
-
-            materialObj = obj.GetComponent<Renderer>();
-            materialObj.material.color = Color.red;
-            Debug.Log("Interagido");
-        }
-        Invoke("ColldownInteract", 0.1f);
+        
     }
 
     private void ColldownInteract()
