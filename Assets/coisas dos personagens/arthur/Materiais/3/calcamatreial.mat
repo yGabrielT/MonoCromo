@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7066884849454241733
+--- !u!114 &-5186554470653513229
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,7 +39,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 3c7006d119e23624b9fbf6fb95e15c40, type: 3}
+        m_Texture: {fileID: 2800000, guid: 526998467c3fae349982a59811252c4a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -87,7 +87,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3c7006d119e23624b9fbf6fb95e15c40, type: 3}
+        m_Texture: {fileID: 2800000, guid: 526998467c3fae349982a59811252c4a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -133,7 +133,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BrushLowerCut: 0.278
-    - _BrushSize: 0.8
+    - _BrushSize: 0.63
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -167,7 +167,7 @@ Material:
     - _HalfToneUvMode: 0
     - _HalftoneFadeDistance: 100
     - _HalftoneFadeToColor: 1
-    - _HalftoneNoiseClip: 8.7
+    - _HalftoneNoiseClip: 4.8
     - _HalftoneTilling: 50.92
     - _HatchingDensity: 1
     - _HatchingDiffuseOffset: 0
@@ -226,7 +226,7 @@ Material:
     - _OutlineColor: {r: 0.36320752, g: 0.68641686, b: 1, a: 1}
     - _OutlineDistancFade: {r: -25, g: 5, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.242}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

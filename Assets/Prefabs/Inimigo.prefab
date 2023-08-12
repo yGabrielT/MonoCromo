@@ -162,7 +162,7 @@ MonoBehaviour:
   audioAtirar: {fileID: 7686533634596741857}
   audioAtordoado: {fileID: 109997062458827757}
   AtacarBool: 1
-  newPosCooldown: 3
+  newPosCooldown: 5
   AggroRange: 10
   offSetWalk: 25
 --- !u!1 &2092646154271392799
