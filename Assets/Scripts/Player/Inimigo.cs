@@ -18,7 +18,7 @@ public class Inimigo : MonoBehaviour
     public int velocidade = 4;
     public int dano = 1;
     [Range(0,20f)]
-    public float cooldownTimer = 5f;
+    public float AtordTimer = 5f;
     public Material atordoadoMaterial;
     public float TempoPraAtirar = .5f;
     public GameObject Projetil;
@@ -27,6 +27,7 @@ public class Inimigo : MonoBehaviour
     public AudioSource audioAtirar;
     public AudioSource audioAtordoado;
     public bool AtacarBool = true;
+    
     
     private float projTemp;
     private bool somTocando;
@@ -41,8 +42,10 @@ public class Inimigo : MonoBehaviour
     public static Inimigo _instance;
     private bool isPatrulhando = false;
     private float newPosTemp;
-    [SerializeField] private float newPosCooldown;
 
+    [Header("Stealth")]
+    [SerializeField] private bool isStealth = false;
+    [SerializeField] private float newPosCooldown;
     [SerializeField] private float AggroRange;
     [SerializeField] private float offSetWalk;
 
@@ -76,14 +79,14 @@ public class Inimigo : MonoBehaviour
         Stealth();
         Movimentar();
         AtacarPersonagem();
-        Atordoar(cooldownTimer);
+        Atordoar(AtordTimer);
         AtordoarSom();
 
     }
 
     private void Stealth()
     {
-        if(this.gameObject.tag == "Inimigo")
+        if(this.gameObject.tag == "Inimigo" && isStealth)
         {
             newPosTemp += Time.deltaTime;
             if (EstaLonge(AggroRange) && vidaAtual > 0 && playerPos != null)
@@ -103,6 +106,7 @@ public class Inimigo : MonoBehaviour
             else
             {
                 AtacarBool = true;
+                isStealth = false;
             }
         }
     }
@@ -132,7 +136,7 @@ public class Inimigo : MonoBehaviour
             }
             else
             {
-                Atordoar(cooldownTimer);
+                Atordoar(AtordTimer);
             }
 
         }
@@ -208,6 +212,7 @@ public class Inimigo : MonoBehaviour
         }
     }
 
+    //Retorna true caso o inimigo esteja longe do jogador
     private bool EstaLonge(float limite)
     {
         float distance = Vector3.Distance(transform.position, playerPos.position);
@@ -228,6 +233,7 @@ public class Inimigo : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, AggroRange);
     }
 
+    //Posição aleatória
     private Vector3 RandomPos(){
         return new Vector3(Random.Range(-offSetWalk,offSetWalk), 0, Random.Range(-offSetWalk,offSetWalk)) + transform.position;
     }

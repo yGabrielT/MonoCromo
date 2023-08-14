@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3094258597270693308
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Material.001
+  m_Name: roupamaterial 1
   m_Shader: {fileID: 4800000, guid: e88aeddd2ef1f934d805981244872e27, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -39,7 +26,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 4664daa068cae084393030bd667b3379, type: 3}
+        m_Texture: {fileID: 2800000, guid: a0ac2fe328f553043aeac1a40faed838, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -87,7 +74,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4664daa068cae084393030bd667b3379, type: 3}
+        m_Texture: {fileID: 2800000, guid: a0ac2fe328f553043aeac1a40faed838, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -132,7 +119,7 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _BrushLowerCut: 0.278
+    - _BrushLowerCut: 0.383
     - _BrushSize: 0.63
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -141,7 +128,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DiffuseStep: -0.52
+    - _DiffuseStep: -0.42
     - _DitherTexelSize: 1
     - _DitherThreshold: 1
     - _DstBlend: 0
@@ -160,13 +147,13 @@ Material:
     - _HairSpecNoiseStrength: 1
     - _HairSpecularSize: 0.8
     - _HairSpecularSmoothness: 0.1
-    - _HalfToneDiffuseStep: -0.17
-    - _HalfToneEnabled: 0
+    - _HalfToneDiffuseStep: -0.2
+    - _HalfToneEnabled: 1
     - _HalfToneIncludeReceivedShadow: 1
     - _HalfToneShape: 1
-    - _HalfToneUvMode: 0
-    - _HalftoneFadeDistance: 100
-    - _HalftoneFadeToColor: 1
+    - _HalfToneUvMode: 1
+    - _HalftoneFadeDistance: 88.3
+    - _HalftoneFadeToColor: 0.877
     - _HalftoneNoiseClip: 4.8
     - _HalftoneTilling: 50.92
     - _HatchingDensity: 1
@@ -182,7 +169,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineEnabled: 0
     - _OutlineMode: 0
-    - _OutlineWidth: 6
+    - _OutlineWidth: 8.7
     - _OverrideShadowColor: 0
     - _Parallax: 0.02
     - _QueueOffset: 0
@@ -192,12 +179,12 @@ Material:
     - _RimLightSmoothness: 0
     - _RimPower: 0.55
     - _Shininess: 0
-    - _SizeFalloff: 1
+    - _SizeFalloff: 0.872
     - _Smoothness: 0.5
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _SpecClipMaskScale: 1
-    - _SpecShadowStrength: 0.584
+    - _SpecShadowStrength: 1
     - _SpecSource: 0
     - _SpecularClipStrength: 0
     - _SpecularFalloff: 0.5
@@ -223,10 +210,23 @@ Material:
     - _HairSpecColor: {r: 0, g: 0, b: 0, a: 1}
     - _HalfToneColor: {r: 0, g: 0, b: 0, a: 0.466}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0.36320752, g: 0.68641686, b: 1, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineDistancFade: {r: -25, g: 5, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &4128801033868988920
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

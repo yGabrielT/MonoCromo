@@ -152,7 +152,7 @@ MonoBehaviour:
   vidaMax: 30
   velocidade: 4
   dano: 2
-  cooldownTimer: 5
+  AtordTimer: 7.2
   atordoadoMaterial: {fileID: 2100000, guid: c229628907afddb4a8ef291c8565329e, type: 2}
   TempoPraAtirar: 2
   Projetil: {fileID: 8341455949525019227, guid: dfbbce2603f1edf47b6869dedc36e712,
@@ -162,9 +162,10 @@ MonoBehaviour:
   audioAtirar: {fileID: 7686533634596741857}
   audioAtordoado: {fileID: 109997062458827757}
   AtacarBool: 1
-  newPosCooldown: 5
+  isStealth: 1
+  newPosCooldown: 10
   AggroRange: 10
-  offSetWalk: 25
+  offSetWalk: 10
 --- !u!1 &2092646154271392799
 GameObject:
   m_ObjectHideFlags: 0
