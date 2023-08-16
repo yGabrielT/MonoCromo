@@ -183,6 +183,8 @@ public class Inimigo : MonoBehaviour
             }
             else
             {
+                AtacarBool = false;
+                isStealth = true;
                 atordoado = false;
                 this.vidaAtual = vidaMax;
                 renderer.material = defaultMaterial;

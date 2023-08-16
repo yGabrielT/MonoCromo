@@ -54,6 +54,7 @@ public class Personagem : MonoBehaviour
     private float contadorWalk;
     private float contadorSprint;
     [SerializeField] private GameObject text;
+    [SerializeField] private GameObject weaponObj;
     
     // Start is called before the first frame update
     private void Awake()
@@ -234,6 +235,7 @@ public class Personagem : MonoBehaviour
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
             
             transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 15f);
+            
         }
         else
         {
@@ -242,6 +244,25 @@ public class Personagem : MonoBehaviour
             _cam.gameObject.SetActive(false);
             _controller.SetSensivity(normalSensivity);
             _controller.SetRotateOnMove(true);
+        }
+
+        if (_throwScript._isSecundario && _throwScript._municaoSecundaria == 0)
+        {
+            weaponObj.SetActive(false);
+            if (_input.aim)
+            {
+                _anim.SetBool("isAiming", true);
+                if (_input.shoot)
+                {
+                    _anim.SetTrigger("Throw");
+                }
+                
+            }
+        }
+        else
+        {
+            weaponObj.SetActive(true);
+            _anim.SetBool("isAiming", false);
         }
     }
 
