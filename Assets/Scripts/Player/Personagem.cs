@@ -246,7 +246,7 @@ public class Personagem : MonoBehaviour
             _controller.SetRotateOnMove(true);
         }
 
-        if (_throwScript._isSecundario && _throwScript._municaoSecundaria == 0)
+        if (_throwScript._isSecundario && _throwScript._municaoSecundaria != 0)
         {
             weaponObj.SetActive(false);
             if (_input.aim)
