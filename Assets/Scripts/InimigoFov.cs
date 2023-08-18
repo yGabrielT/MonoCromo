@@ -23,7 +23,7 @@ public class InimigoFov : MonoBehaviour
 
     private IEnumerator FOVRoutine()
     {
-        WaitForSeconds wait = new WaitForSeconds(1f);
+        WaitForSeconds wait = new WaitForSeconds(.2f);
 
         while (true)
         {

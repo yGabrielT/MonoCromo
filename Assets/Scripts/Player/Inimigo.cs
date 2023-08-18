@@ -49,12 +49,15 @@ public class Inimigo : MonoBehaviour
     [SerializeField] private float AggroRange;
     [SerializeField] private float offSetWalk;
 
+
+
     private void Awake()
     {
         _instance = this;
     }
     private void Start()
     {
+
         //Encontrar o jogador
         var gObj = GameObject.FindWithTag("Track");
         playerPos = gObj.transform;

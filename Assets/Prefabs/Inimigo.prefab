@@ -186,8 +186,8 @@ MonoBehaviour:
   audioAcertado: {fileID: 4954440468428459552}
   audioAtirar: {fileID: 7686533634596741857}
   audioAtordoado: {fileID: 109997062458827757}
-  AtacarBool: 1
-  isStealth: 1
+  AtacarBool: 0
+  isStealth: 0
   newPosCooldown: 10
   AggroRange: 10
   offSetWalk: 10
@@ -211,7 +211,7 @@ MonoBehaviour:
     m_Bits: 8
   obstructionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   canSeePlayer: 0
 --- !u!1 &1733407589685014281
 GameObject:
