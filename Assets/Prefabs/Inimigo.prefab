@@ -187,7 +187,8 @@ MonoBehaviour:
   audioAtirar: {fileID: 7686533634596741857}
   audioAtordoado: {fileID: 109997062458827757}
   AtacarBool: 0
-  isStealth: 0
+  _fov: {fileID: 5627309459276063005}
+  isStealth: 1
   newPosCooldown: 10
   AggroRange: 10
   offSetWalk: 10

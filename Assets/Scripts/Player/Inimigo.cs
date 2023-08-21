@@ -43,6 +43,8 @@ public class Inimigo : MonoBehaviour
     private bool isPatrulhando = false;
     private float newPosTemp;
 
+    public InimigoFov _fov;
+
     [Header("Stealth")]
     [SerializeField] private bool isStealth = false;
     [SerializeField] private float newPosCooldown;
@@ -92,7 +94,7 @@ public class Inimigo : MonoBehaviour
         if(this.gameObject.tag == "Inimigo" && isStealth)
         {
             newPosTemp += Time.deltaTime;
-            if (EstaLonge(AggroRange) && vidaAtual > 0 && playerPos != null)
+            if (!_fov.canSeePlayer && vidaAtual > 0 && playerPos != null)
             {
                 AtacarBool = false;
                 if (newPosCooldown <= newPosTemp)
