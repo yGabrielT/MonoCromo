@@ -28,8 +28,10 @@ public class Equipamento : MonoBehaviour
     public float _tempoDeRecargaSecundaria;
     public int _municaoSecundaria;
     public AudioSource audioSecundario;
-    
+
     [Header("Config")]
+    [SerializeField] private int municao1Max;
+    [SerializeField] private int municao2Max;
     public int municaoAtual;
     public float cooldownAtual;
     public bool prontoPraJogar;
@@ -132,13 +134,13 @@ public class Equipamento : MonoBehaviour
     }
     private void LimitarMunicao()
     {
-        if(municaoPrincipal > 20)
+        if(municaoPrincipal > municao1Max)
         {
-            municaoPrincipal = 20;
+            municaoPrincipal = municao1Max;
         }
-        if(_municaoSecundaria > 3)
+        if(_municaoSecundaria > municao2Max)
         {
-            _municaoSecundaria = 3;
+            _municaoSecundaria = municao2Max;
         }
     }
 

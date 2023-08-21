@@ -8,6 +8,7 @@ public class MudarSaturacao : MonoBehaviour
 {
     public Volume volume;
     private float SatCor;
+    [SerializeField] private float HueCor;
     private float t = 0f;
     private ColorAdjustments colorAdjustments; 
 
@@ -25,7 +26,7 @@ public class MudarSaturacao : MonoBehaviour
             t += Time.unscaledDeltaTime;
             SatCor = Mathf.Lerp(-100, 0, t);
 
-            colorAdjustments.hueShift.value = -123;
+            colorAdjustments.hueShift.value = -HueCor;
             if(t < 1f)
             {
                 
