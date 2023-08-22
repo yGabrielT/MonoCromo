@@ -16,6 +16,13 @@ public class Personagem : MonoBehaviour
     [Range(10f,30f)]
     public float sprintVelocidade = 10f;
     public float gravidade = -15f;
+    private bool isCrouch;
+    private float crouchSpeed;
+    private float AddSpeed = 4f;
+    private bool isDouble = false;
+    private float baseSpeed;
+    private float baseHeight;
+    public float crouchHeight = 0.85f;
 
     public bool ativarControles = true;
 
@@ -55,28 +62,36 @@ public class Personagem : MonoBehaviour
     private float contadorSprint;
     [SerializeField] private GameObject text;
     [SerializeField] private GameObject weaponObj;
+
+    private CharacterController _char;
+    
     
     // Start is called before the first frame update
     private void Awake()
     {
+        
         impulseSource = GetComponent<CinemachineImpulseSource>();
         _anim = GetComponent<Animator>();
         _controller = GetComponent<ThirdPersonController>();
         _input = GetComponent<StarterAssetsInputs>();
         _throwScript = GetComponent<Equipamento>();
+        _char = GetComponent<CharacterController>(); 
     }
 
     void Start()
     {
+        baseHeight = _char.height;
         // afirmando que a vida atual eh 100%
         vidaAtual = playerVida;
         // Chamando script para que a barra de vida fique no total
         barraDeVida.vidaMaxima(playerVida);
+        baseSpeed = _controller.MoveSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         InteractInput();
         Controlar();
     }
@@ -85,6 +100,8 @@ public class Personagem : MonoBehaviour
     {
         if(ativarControles)
         {
+            DoubleSpeed();
+            Crouch();
             _controller.enabled = true;
             SmokeUpdate();
             ControlarCamera();
@@ -252,7 +269,7 @@ public class Personagem : MonoBehaviour
             if (_input.aim)
             {
                 _anim.SetBool("isAiming", true);
-                if (_input.shoot)
+                if (_input.shoot && _throwScript.prontoPraJogar)
                 {
                     _anim.SetTrigger("Throw");
                 }
@@ -266,6 +283,37 @@ public class Personagem : MonoBehaviour
         }
     }
 
-    
-    
+    private void Crouch()
+    {
+        if (_input.crouch && !isCrouch && !_input.sprint)
+        {
+            
+            isCrouch = true;
+            _char.height = crouchHeight;
+            //_char.center = 
+            velocidade = crouchSpeed;
+        }
+        if (!_input.crouch && isCrouch && !_input.sprint)
+        {
+            isCrouch = false;
+            _char.height = baseHeight;
+            velocidade = baseSpeed;
+        }
+    }
+
+    private void DoubleSpeed()
+    {
+        if (_input.slow && !isDouble && !isCrouch)
+        {
+            isDouble = true;
+            velocidade = velocidade + AddSpeed;
+        }
+        else if (!_input.slow && !isCrouch)
+        {
+            isDouble = false;
+            velocidade = baseSpeed;
+        }
+    }
+
+
 }
