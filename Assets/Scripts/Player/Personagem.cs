@@ -16,13 +16,12 @@ public class Personagem : MonoBehaviour
     [Range(10f,30f)]
     public float sprintVelocidade = 10f;
     public float gravidade = -15f;
-    private bool isCrouch;
-    private float crouchSpeed;
+    
     private float AddSpeed = 4f;
     private bool isDouble = false;
     private float baseSpeed;
-    private float baseHeight;
-    public float crouchHeight = 0.85f;
+
+    
 
     public bool ativarControles = true;
 
@@ -64,8 +63,17 @@ public class Personagem : MonoBehaviour
     [SerializeField] private GameObject weaponObj;
 
     private CharacterController _char;
-    
-    
+
+    [Header("Crouch")]
+    private bool isCrouch;
+    [SerializeField] private float crouchSpeed;
+    private float baseHeight;
+    private Vector3 baseCenter;
+    private float baseJump;
+    public float crouchHeight = 0.85f;
+    [SerializeField] private float smoothTime = 2f;
+
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -81,6 +89,8 @@ public class Personagem : MonoBehaviour
     void Start()
     {
         baseHeight = _char.height;
+        baseCenter = _char.center;
+        baseJump = _controller.JumpHeight;
         // afirmando que a vida atual eh 100%
         vidaAtual = playerVida;
         // Chamando script para que a barra de vida fique no total
@@ -289,15 +299,21 @@ public class Personagem : MonoBehaviour
         {
             
             isCrouch = true;
-            _char.height = crouchHeight;
-            //_char.center = 
+            
+            _char.height = Mathf.Lerp(_char.height, crouchHeight, smoothTime * Time.deltaTime);
+            _char.center = new Vector3(0, Mathf.Lerp(_char.center.y, .45f, smoothTime * Time.deltaTime), 0f);
             velocidade = crouchSpeed;
+            _anim.SetBool("Crouched", true);
+            _controller.JumpHeight = 0f;
         }
         if (!_input.crouch && isCrouch && !_input.sprint)
         {
             isCrouch = false;
-            _char.height = baseHeight;
+            _char.height = Mathf.Lerp(_char.height, baseHeight, smoothTime * Time.deltaTime);
+            _char.center = new Vector3(0, Mathf.Lerp(_char.center.y, baseCenter.y, smoothTime * Time.deltaTime), 0f);
             velocidade = baseSpeed;
+            _anim.SetBool("Crouched", false);
+            _controller.JumpHeight = baseJump;
         }
     }
 
