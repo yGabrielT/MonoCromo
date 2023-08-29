@@ -39,7 +39,6 @@ public class Inimigo : MonoBehaviour
     private NavMeshAgent NavMeshAgente;
     private float temp;
     private bool Spawnado = false;
-    public static Inimigo _instance;
     private bool isPatrulhando = false;
     private float newPosTemp;
 
@@ -52,11 +51,6 @@ public class Inimigo : MonoBehaviour
     [SerializeField] private float offSetWalk;
 
 
-
-    private void Awake()
-    {
-        _instance = this;
-    }
     private void Start()
     {
 
@@ -232,12 +226,6 @@ public class Inimigo : MonoBehaviour
         {
             return false;
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, AggroRange);
     }
 
     //Posição aleatória

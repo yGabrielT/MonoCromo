@@ -184,7 +184,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineEnabled: 0
     - _OutlineMode: 0
-    - _OutlineWidth: 6
+    - _OutlineWidth: 10.74
     - _OverrideShadowColor: 0
     - _Parallax: 0.02
     - _QueueOffset: 0
@@ -225,7 +225,7 @@ Material:
     - _HairSpecColor: {r: 0, g: 0, b: 0, a: 1}
     - _HalfToneColor: {r: 0, g: 0, b: 0, a: 0.466}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0.36320752, g: 0.68641686, b: 1, a: 1}
+    - _OutlineColor: {r: 0.9607843, g: 0.7882353, b: 0.6666667, a: 1}
     - _OutlineDistancFade: {r: -25, g: 5, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}

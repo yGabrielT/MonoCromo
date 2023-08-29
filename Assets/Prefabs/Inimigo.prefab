@@ -10,12 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8104852369729011007}
   - component: {fileID: 4741834875341726648}
-  - component: {fileID: 8291585863790465594}
   - component: {fileID: 7459339735432108622}
   - component: {fileID: 5829591265130522067}
   - component: {fileID: 9008964719225395260}
   - component: {fileID: 1500782727885953526}
-  - component: {fileID: 5627309459276063005}
   m_Layer: 8
   m_Name: Inimigo
   m_TagString: Inimigo
@@ -40,6 +38,7 @@ Transform:
   - {fileID: 6877099353799233123}
   - {fileID: 89370116312756521}
   - {fileID: 2339838132161507393}
+  - {fileID: 6601051381651744163}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,28 +50,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460284302307344749}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &8291585863790465594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460284302307344749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55d3ff595908ab4eb7fddde32b3ba7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 1
-  angle: 0
-  playerRef: {fileID: 0}
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 0
-  canSeePlayer: 0
 --- !u!23 &7459339735432108622
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -173,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tipo: {fileID: 0}
-  quantidade: 3
+  quantidade: 0
   vidaMax: 30
   velocidade: 4
   dano: 2
@@ -187,33 +164,11 @@ MonoBehaviour:
   audioAtirar: {fileID: 7686533634596741857}
   audioAtordoado: {fileID: 109997062458827757}
   AtacarBool: 0
-  _fov: {fileID: 5627309459276063005}
+  _fov: {fileID: 8667040889721136401}
   isStealth: 1
   newPosCooldown: 10
   AggroRange: 10
   offSetWalk: 10
---- !u!114 &5627309459276063005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460284302307344749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55d3ff595908ab4eb7fddde32b3ba7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 10.05
-  angle: 70
-  playerRef: {fileID: 0}
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 8
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 128
-  canSeePlayer: 0
 --- !u!1 &1733407589685014281
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,6 +545,60 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &5711963311930510223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6601051381651744163}
+  - component: {fileID: 8667040889721136401}
+  m_Layer: 8
+  m_Name: Vision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6601051381651744163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5711963311930510223}
+  m_LocalRotation: {x: -0.17985737, y: -0, z: -0, w: 0.98369277}
+  m_LocalPosition: {x: 0, y: -0.713, z: 0.439}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8104852369729011007}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: -20.723, y: 0, z: 0}
+--- !u!114 &8667040889721136401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5711963311930510223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e55d3ff595908ab4eb7fddde32b3ba7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 10.21
+  angle: 82
+  playerRef: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  canSeePlayer: 0
 --- !u!1 &7015084685291781813
 GameObject:
   m_ObjectHideFlags: 0
