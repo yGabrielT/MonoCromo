@@ -8,28 +8,17 @@ public class DestroObj : MonoBehaviour
     [SerializeField]private float raio = 10f;
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != ("Inimigo") && other.gameObject.tag != ("Player") )
+        if (this.gameObject.tag == ("Bombs"))
         {
-            if (this.gameObject.tag == ("Bombs"))
-            {
-                Explode();
-            }
+            Explode();
         }
 
-        if (other.gameObject.tag == ("Inimigo"))
+        if (this.gameObject.tag != ("Bombs") && other.gameObject.tag == ("Inimigo"))
         {
-            if(this.gameObject.tag == ("Bombs"))
-            {
-                Explode();
-            }
-            else
-            {
-                other.GetComponent<Inimigo>().TomarDano(10);
-                Destroy(this.gameObject);
-                Debug.Log("Atingido");
-            }
+            other.GetComponent<Inimigo>().TomarDano(10);
+            Destroy(this.gameObject);
+            Debug.Log("Atingido");
         }
-        
     }
 
     private void Explode()

@@ -13,7 +13,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _HALFTONESHAPE_STRIPE
-  - _OUTLINE
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -130,7 +129,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DiffuseStep: -0.42
-    - _DitherTexelSize: 1
+    - _DitherTexelSize: 20
     - _DitherThreshold: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
@@ -156,7 +155,7 @@ Material:
     - _HalftoneFadeDistance: 88.3
     - _HalftoneFadeToColor: 0.877
     - _HalftoneNoiseClip: 4.8
-    - _HalftoneTilling: 50.92
+    - _HalftoneTilling: 27.7
     - _HatchingDensity: 1
     - _HatchingDiffuseOffset: 0
     - _HatchingDrawStrength: 1
@@ -168,7 +167,7 @@ Material:
     - _NoiseScale: 1
     - _NoiseStrength: 0.1
     - _OcclusionStrength: 1
-    - _OutlineEnabled: 1
+    - _OutlineEnabled: 0
     - _OutlineMode: 0
     - _OutlineWidth: 15
     - _OverrideShadowColor: 0
@@ -209,7 +208,7 @@ Material:
     - _FaceFrontDirection: {r: 0, g: 0, b: 1, a: 0}
     - _FaceRightDirection: {r: 1, g: 0, b: 0, a: 0}
     - _HairSpecColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HalfToneColor: {r: 0, g: 0, b: 0, a: 0.466}
+    - _HalfToneColor: {r: 0, g: 0, b: 0, a: 0.382}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineDistancFade: {r: -25, g: 5, b: 0, a: 0}

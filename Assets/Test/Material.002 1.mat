@@ -144,7 +144,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DiffuseStep: -0.42
-    - _DitherTexelSize: 1
+    - _DitherTexelSize: 20
     - _DitherThreshold: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
