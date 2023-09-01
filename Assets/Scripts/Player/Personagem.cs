@@ -315,6 +315,10 @@ public class Personagem : MonoBehaviour
             _anim.SetBool("Crouched", false);
             _controller.JumpHeight = baseJump;
         }
+        if (isCrouch)
+        {
+            _input.sprint = false;
+        }
     }
 
     private void DoubleSpeed()
