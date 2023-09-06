@@ -15,6 +15,7 @@ using TMPro;
         private StarterAssetsInputs _input;
         [SerializeField]
         private float timeScale = .5f;
+        [SerializeField]
         public static bool timeToggle = false, startcooldown;
         private float defaultTimeScale = 1f, defaultFixedDeltaTime = 0.02f;
 

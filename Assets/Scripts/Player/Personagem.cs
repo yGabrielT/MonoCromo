@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
 using StarterAssets;
+using UnityEngine.Animations.Rigging;
+using DG.Tweening;
 
 public class Personagem : MonoBehaviour
 {   
@@ -72,6 +74,9 @@ public class Personagem : MonoBehaviour
     private float baseJump;
     public float crouchHeight = 0.85f;
     [SerializeField] private float smoothTime = 2f;
+
+    [Header("Rig")]
+    [SerializeField] Rig rigger;
 
 
     // Start is called before the first frame update
@@ -257,6 +262,10 @@ public class Personagem : MonoBehaviour
             _controller.SetRotateOnMove(false);
             _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 1, Time.deltaTime * 15f));
 
+            //Riggar o bra�o do jogador
+            DOVirtual.Float(1f, 0f, 1.5f, v => rigger.weight = v).SetEase(Ease.InElastic);
+
+
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
@@ -267,6 +276,10 @@ public class Personagem : MonoBehaviour
         else
         {
             _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 0, Time.deltaTime * 15f));
+
+            //voltar o rig ao normal
+            DOVirtual.Float(0f, 1f, 1.5f, v => rigger.weight = v).SetEase(Ease.InElastic);
+            
             _crosshair.gameObject.SetActive(false);
             _cam.gameObject.SetActive(false);
             _controller.SetSensivity(normalSensivity);
