@@ -64,6 +64,8 @@ public class Personagem : MonoBehaviour
     private float contadorWalk;
     private float contadorSprint;
     [SerializeField] private GameObject text;
+
+    [SerializeField] private GameObject textNPC;
     [SerializeField] private GameObject weaponObj;
 
     private CharacterController _char;
@@ -131,6 +133,7 @@ public class Personagem : MonoBehaviour
         {
             rigger.weight = 0;
             _controller.enabled = false;
+            _anim.SetFloat("Speed",0);
         }
         
     }
@@ -201,6 +204,7 @@ public class Personagem : MonoBehaviour
                     //Interagir com NPC
                     _npcCam.gameObject.SetActive(true);
                     ativarControles = false;
+                    textNPC.SetActive(true);
                 }
                 
                 
