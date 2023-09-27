@@ -28,6 +28,8 @@ public class Personagem : MonoBehaviour
     public bool ativarControles = true;
 
     [SerializeField] private CinemachineVirtualCamera _cam;
+
+    [SerializeField] private CinemachineVirtualCamera _npcCam;
     [SerializeField] private float normalSensivity = 1f;
     [SerializeField] private float aimSensivity = .5f;
     [SerializeField] private LayerMask _mask;
@@ -107,7 +109,7 @@ public class Personagem : MonoBehaviour
     void Update()
     {
         
-        InteractInput();
+        
         Controlar();
     }
 
@@ -115,6 +117,7 @@ public class Personagem : MonoBehaviour
     {
         if(ativarControles)
         {
+            InteractInput();
             DoubleSpeed();
             Crouch();
             _controller.enabled = true;
@@ -126,6 +129,7 @@ public class Personagem : MonoBehaviour
         }
         else
         {
+            rigger.weight = 0;
             _controller.enabled = false;
         }
         
@@ -164,9 +168,9 @@ public class Personagem : MonoBehaviour
     private void InteractInput()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxDistance))
+        if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out hit, maxDistance))
         {
-            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * maxDistance, Color.green);
+            Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * maxDistance, Color.green);
             if(hit.transform.gameObject.tag == "Interactable")
             {
                 text.SetActive(true);
@@ -191,8 +195,22 @@ public class Personagem : MonoBehaviour
             else{
                 text.SetActive(false);
             }
+
+            if (hit.transform.gameObject.tag =="NPC"){
+                if(_input.interact){
+                    //Interagir com NPC
+                    _npcCam.gameObject.SetActive(true);
+                    ativarControles = false;
+                }
+                
+                
+
+            }
             
         }
+         else{
+                text.SetActive(false);
+            }
         
     }
 
@@ -253,38 +271,41 @@ public class Personagem : MonoBehaviour
         {
             isLooking = false;
         }
+        if(ativarControles){
+            if (_input.aim)
+            {
+                _cam.gameObject.SetActive(true);
+                _crosshair.gameObject.SetActive(true);
+                _controller.SetSensivity(aimSensivity);
+                _controller.SetRotateOnMove(false);
+                _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 1, Time.deltaTime * 15f));
 
-        if (_input.aim)
-        {
-            _cam.gameObject.SetActive(true);
-            _crosshair.gameObject.SetActive(true);
-            _controller.SetSensivity(aimSensivity);
-            _controller.SetRotateOnMove(false);
-            _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 1, Time.deltaTime * 15f));
-
-            //Riggar o bra�o do jogador
-            DOVirtual.Float(1f, 0f, 1.5f, v => rigger.weight = v).SetEase(Ease.InElastic);
+                //Riggar o bra�o do jogador
+                rigger.weight = Mathf.Lerp(rigger.weight, 1f, Time.deltaTime * 20);
+                
 
 
-            Vector3 worldAimTarget = mouseWorldPosition;
-            worldAimTarget.y = transform.position.y;
-            Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
-            
-            transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 15f);
-            
+                Vector3 worldAimTarget = mouseWorldPosition;
+                worldAimTarget.y = transform.position.y;
+                Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
+                
+                transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 15f);
+                
+            }
+            else
+            {
+                _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 0, Time.deltaTime * 15f));
+
+                //voltar o rig ao normal
+                rigger.weight = Mathf.Lerp(rigger.weight, 0f, Time.deltaTime * 20);
+                
+                _crosshair.gameObject.SetActive(false);
+                _cam.gameObject.SetActive(false);
+                _controller.SetSensivity(normalSensivity);
+                _controller.SetRotateOnMove(true);
+            }
         }
-        else
-        {
-            _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 0, Time.deltaTime * 15f));
-
-            //voltar o rig ao normal
-            DOVirtual.Float(0f, 1f, 1.5f, v => rigger.weight = v).SetEase(Ease.InElastic);
-            
-            _crosshair.gameObject.SetActive(false);
-            _cam.gameObject.SetActive(false);
-            _controller.SetSensivity(normalSensivity);
-            _controller.SetRotateOnMove(true);
-        }
+        
 
         if (_throwScript._isSecundario && _throwScript._municaoSecundaria != 0)
         {

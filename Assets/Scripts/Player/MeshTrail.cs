@@ -21,19 +21,20 @@ public class MeshTrail : MonoBehaviour
     float t = 0f;
     private Color slowColor;
 
-    private bool SlowAtiv;
     private bool SlowCooldown;
     private bool isTrailActive;
     private SkinnedMeshRenderer[] skinnedMeshRenderers;
 
+    private ManuseioTemp _manuseioTemp;
+
     private void Start()
     {
+        _manuseioTemp = GetComponent<ManuseioTemp>();
         len = lColors.Length;
     }
     void Update()
     {
-        SlowAtiv = ManuseioTemp.timeToggle;
-        SlowCooldown = ManuseioTemp.startcooldown;
+
 
         slowColor = Color.Lerp(slowColor, lColors[colorIndex], lerpTime * Time.unscaledDeltaTime);
         t = Mathf.Lerp(t, 1, lerpTime * Time.unscaledDeltaTime);
@@ -44,14 +45,14 @@ public class MeshTrail : MonoBehaviour
             colorIndex++;
             colorIndex = (colorIndex == lColors.Length) ? 0 : colorIndex;
         }
-        if (SlowAtiv && !isTrailActive && !SlowCooldown)
+        if (_manuseioTemp.timeToggle && !isTrailActive && !_manuseioTemp.startcooldown)
         {
             isTrailActive = true;
             StartCoroutine(ActivateTrail(activeTime));
         }
 
         //Deletar clones apos o uso da habilidade
-        if (SlowCooldown)
+        if (_manuseioTemp.startcooldown)
         {
             GameObject[] clones = GameObject.FindGameObjectsWithTag("Clone");
             for (int j = 0; j < clones.Length; j++)
@@ -64,9 +65,9 @@ public class MeshTrail : MonoBehaviour
 
     IEnumerator ActivateTrail(float timeActive)
     {
-        if (SlowAtiv)
+        if (_manuseioTemp.timeToggle)
         {
-            while (timeActive > 0 && SlowAtiv)
+            while (timeActive > 0 && _manuseioTemp.timeToggle)
             {
                 timeActive -= meshRefreshRate;
 
@@ -89,7 +90,7 @@ public class MeshTrail : MonoBehaviour
                     mr.material = mat;
                     mr.material.color = slowColor;
 
-                    // Deletar clones um apos o outro após um tempo da criação
+                    // Deletar clones um apos o outro apï¿½s um tempo da criaï¿½ï¿½o
                     //Destroy(gObj, meshDestroyDelay);
                 }
 

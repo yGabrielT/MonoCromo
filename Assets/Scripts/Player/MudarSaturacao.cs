@@ -9,6 +9,7 @@ public class MudarSaturacao : MonoBehaviour
 {
     public Volume volume;
     private float SatCor;
+    public float timerBeforeEnds =1f;
     [SerializeField] private float HueCor;
     [SerializeField] private float lensIntensity = -0.8f;
     private float t = 0f;
@@ -16,8 +17,11 @@ public class MudarSaturacao : MonoBehaviour
     private LensDistortion lens;
     private bool isChangeNow;
 
+    private ManuseioTemp _manuseio;
+
     private void Start()
     {
+        _manuseio = GetComponent<ManuseioTemp>();
         // Obtem o componente Color Adjustments do volume
         volume.profile.TryGet(out colorAdjustments);
         volume.profile.TryGet(out lens);
@@ -26,8 +30,9 @@ public class MudarSaturacao : MonoBehaviour
     private void Update()
     {
         // Exemplo de ativacao da saturacao
-        if (ManuseioTemp.timeToggle)
+        if (_manuseio.timeToggle)
         {
+            
             if(!isChangeNow){
                 isChangeNow = true;
                 DOVirtual.Float(0f,lensIntensity,.01f, v => lens.intensity.value = v).SetEase(Ease.InBounce).OnComplete(() => DOVirtual.Float(lensIntensity,0,.1f, v => lens.intensity.value = v).SetEase(Ease.OutBounce));
@@ -49,21 +54,20 @@ public class MudarSaturacao : MonoBehaviour
         else
         {
             Debug.Log("Fora do tempo");
-            
-            
             t = 0f;
             SatCor = 0f;
             colorAdjustments.hueShift.value = 0;
+            Debug.Log("Função voltar");
             if(isChangeNow){
                 isChangeNow = false;
-                DOVirtual.Float(0f,lensIntensity,.1f, v => lens.intensity.value = v).SetEase(Ease.InBounce).OnComplete(() => DOVirtual.Float(lensIntensity,0,.1f, v => lens.intensity.value = v).SetEase(Ease.OutBounce));
+                DOVirtual.Float(0f,lensIntensity,.25f, v => lens.intensity.value = v).SetEase(Ease.InBounce).OnComplete(() => DOVirtual.Float(lensIntensity,0,.25f, v => lens.intensity.value = v).SetEase(Ease.OutBounce));
             }
+            
+           
         }
 
         
+
+        
     }
-
-
-
-
 }

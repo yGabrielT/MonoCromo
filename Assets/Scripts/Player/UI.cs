@@ -15,6 +15,7 @@ public class UI : MonoBehaviour
     private StarterAssetsInputs _input;
     private ManuseioTemp _manuseio;
 
+    private bool isChange = false;
 
 
     private void Awake()
@@ -27,6 +28,7 @@ public class UI : MonoBehaviour
     {
         image.fillAmount = 0;
         cool = _manuseio.SetTempCooldown;
+
     }
 
 
@@ -41,16 +43,18 @@ public class UI : MonoBehaviour
     private void imagemTempo()
     {
         //Para o tempo
-        if (_input.slow)
+        if (_manuseio.timeToggle && !isChange)
         {
+            isChange =true;
             Debug.Log("FUNCIONA");
             image.fillAmount = 1;
         }
 
 
         // Cooldown
-        if (!_input.slow)
+        if (!_manuseio.timeToggle && isChange)
         {
+            isChange =false;
             image.fillAmount -= 1 / cool * Time.deltaTime;
 
 

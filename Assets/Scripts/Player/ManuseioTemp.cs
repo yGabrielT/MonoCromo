@@ -9,14 +9,16 @@ using TMPro;
     {
         public AudioMixer audioMix;
         public TMP_Text TempoText;
+
+        // Valores para mudar o valor de tempo parado e do cooldown
         public float SetTempParado, SetTempCooldown;
         private float timeCrono, SlowCooldown;
-        public AudioSource audio;
+        public AudioSource audioClip;
         private StarterAssetsInputs _input;
         [SerializeField]
         private float timeScale = .5f;
         [SerializeField]
-        public static bool timeToggle = false, startcooldown;
+        public bool timeToggle = false, startcooldown;
         private float defaultTimeScale = 1f, defaultFixedDeltaTime = 0.02f;
 
         private void Awake()
@@ -47,7 +49,7 @@ using TMPro;
                     timeToggle = true;
                     SlowCooldown = 0;
                     Time.timeScale = timeScale;
-                    audio.Play();
+                    audioClip.Play();
                 }
             }
 

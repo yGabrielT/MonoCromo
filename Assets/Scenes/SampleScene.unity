@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 410087040}
-  m_IndirectSpecularColor: {r: 0.037675083, g: 0.26353788, b: 0.9073172, a: 1}
+  m_IndirectSpecularColor: {r: 0.03767975, g: 0.26349175, b: 0.9064991, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -53208,7 +53208,7 @@ MonoBehaviour:
   playerVida: 100
   vidaAtual: 0
   barraDeVida: {fileID: 395590065}
-  velocidade: 4
+  velocidade: 6.58
   sprintVelocidade: 10
   gravidade: -15
   ativarControles: 1
@@ -68452,10 +68452,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e54e5a728a9234ab24fcf1460ed8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 2.5
+  MoveSpeed: 5
   Sensivity: 2
   _rotateOnMove: 1
-  SprintSpeed: 5
+  SprintSpeed: 7
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
   LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
@@ -72935,6 +72935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: {fileID: 1274352940}
+  timerBeforeEnds: 0
   HueCor: -35
   lensIntensity: -0.8
 --- !u!4 &6951869187964688109
@@ -73050,6 +73051,8 @@ MonoBehaviour:
   SetTempCooldown: 3
   audio: {fileID: 1784444294}
   timeScale: 0.25
+  timeToggle: 0
+  startcooldown: 0
 --- !u!33 &7011196549505740589
 MeshFilter:
   m_ObjectHideFlags: 0
