@@ -63,7 +63,7 @@ public class Personagem : MonoBehaviour
     private bool isInAir = false;
     private float contadorWalk;
     private float contadorSprint;
-    [SerializeField] private GameObject text;
+    [SerializeField] private GameObject textInteract;
 
     [SerializeField] private GameObject textNPC;
     [SerializeField] private GameObject weaponObj;
@@ -176,32 +176,35 @@ public class Personagem : MonoBehaviour
             Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * maxDistance, Color.green);
             if(hit.transform.gameObject.tag == "Interactable")
             {
-                text.SetActive(true);
+                textInteract.SetActive(true);
                 var obj = hit.transform.gameObject;
                 if(_input.interact)
                 {
                     _input.interact = false;
                     if (!change)
                     {
-                        text.SetActive(false);
+                        textInteract.SetActive(false);
                         change = true;
                         materialObj = obj.GetComponent<Renderer>();
                         materialObj.material.color = Color.red;
                         Debug.Log("Interagido");
                     }
                     else{
-                        text.SetActive(false);
+                        textInteract.SetActive(false);
                     }
                     Invoke("ColldownInteract", 0.1f);
                 }
             }
             else{
-                text.SetActive(false);
+                textInteract.SetActive(false);
             }
 
             if (hit.transform.gameObject.tag =="NPC"){
-                if(_input.interact){
+                textInteract.SetActive(true);
+                var obj = hit.transform.gameObject;
+                if (_input.interact){
                     //Interagir com NPC
+                    textInteract.SetActive(false);
                     _npcCam.gameObject.SetActive(true);
                     ativarControles = false;
                     textNPC.SetActive(true);
@@ -213,7 +216,7 @@ public class Personagem : MonoBehaviour
             
         }
          else{
-                text.SetActive(false);
+                textInteract.SetActive(false);
             }
         
     }
