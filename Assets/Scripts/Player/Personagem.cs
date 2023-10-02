@@ -28,6 +28,7 @@ public class Personagem : MonoBehaviour
     [Header("Camera")]
     [SerializeField] private CinemachineVirtualCamera _cam;
     
+    [SerializeField] private Transform headRay;
     [SerializeField] private float normalSensivity = 1f;
     [SerializeField] private float aimSensivity = .5f;
     [SerializeField] private float ShakeForce = 0.1f;
@@ -177,9 +178,9 @@ public class Personagem : MonoBehaviour
     private void InteractInput()
     {
         RaycastHit hit;
-        if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out hit, maxDistance))
+        if (Physics.Raycast(headRay.transform.position, Camera.main.transform.forward, out hit, maxDistance))
         {
-            Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * maxDistance, Color.green);
+            Debug.DrawRay(headRay.transform.position, Camera.main.transform.forward * maxDistance, Color.green);
             if(hit.transform.gameObject.tag == "Interactable")
             {
                 textInteract.SetActive(true);
