@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DialogueHolder : MonoBehaviour
 {
-    public List<SODialogue> NpcDialogue;
+    public SODialogue NpcDialogue;
 
     // Update is called once per frame
     void Start()

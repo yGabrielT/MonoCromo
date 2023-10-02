@@ -53,11 +53,11 @@ public class MudarSaturacao : MonoBehaviour
         }
         else
         {
-            Debug.Log("Fora do tempo");
+
             t = 0f;
             SatCor = 0f;
             colorAdjustments.hueShift.value = 0;
-            Debug.Log("Função voltar");
+
             if(isChangeNow){
                 isChangeNow = false;
                 DOVirtual.Float(0f,lensIntensity,.25f, v => lens.intensity.value = v).SetEase(Ease.InBounce).OnComplete(() => DOVirtual.Float(lensIntensity,0,.25f, v => lens.intensity.value = v).SetEase(Ease.OutBounce));

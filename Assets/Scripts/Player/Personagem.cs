@@ -20,34 +20,30 @@ public class Personagem : MonoBehaviour
     public float gravidade = -15f;
     
     private float AddSpeed = 4f;
-    private bool isDouble = false;
-    private float baseSpeed;
+    
 
     
 
     public bool ativarControles = true;
 
+    [Header("Camera")]
     [SerializeField] private CinemachineVirtualCamera _cam;
-
     [SerializeField] private CinemachineVirtualCamera _npcCam;
     [SerializeField] private float normalSensivity = 1f;
     [SerializeField] private float aimSensivity = .5f;
-    [SerializeField] private LayerMask _mask;
     [SerializeField] private float ShakeForce = 0.1f;
     [SerializeField] private GameObject _crosshair;
+    [SerializeField] private LayerMask _mask;
     public RaycastHit raycastHit;
     public bool isLooking;
+
+
     public AudioSource audioMorte;
     [SerializeField] private float maxDistance = 10;
     
-    private bool change = false;
-    public Renderer materialObj;
-    private float contador;
-    private CinemachineImpulseSource impulseSource;
-    private Animator _anim;
-    private Equipamento _throwScript;
-    private ThirdPersonController _controller;
-    private StarterAssetsInputs _input;
+    
+    [HideInInspector] public Renderer materialObj;
+    
     public Inimigo inimigo;
 
     [Header("VFX")]
@@ -60,22 +56,13 @@ public class Personagem : MonoBehaviour
     [Range(0f, 2f)]
     [SerializeField] private float tempoFormacaoPoeiraSprint;
     [SerializeField] private Transform vfxPos;
-    private bool isInAir = false;
-    private float contadorWalk;
-    private float contadorSprint;
+    
+    
     [SerializeField] private GameObject textInteract;
-
-    [SerializeField] private GameObject textNPC;
     [SerializeField] private GameObject weaponObj;
 
-    private CharacterController _char;
-
     [Header("Crouch")]
-    private bool isCrouch;
     [SerializeField] private float crouchSpeed;
-    private float baseHeight;
-    private Vector3 baseCenter;
-    private float baseJump;
     public float crouchHeight = 0.85f;
     [SerializeField] private float smoothTime = 2f;
 
@@ -83,10 +70,30 @@ public class Personagem : MonoBehaviour
     [SerializeField] Rig rigger;
 
 
+    private bool isCrouch;
+    private float contador;
+    private CinemachineImpulseSource impulseSource;
+    private Animator _anim;
+    private Equipamento _throwScript;
+    private ThirdPersonController _controller;
+    private StarterAssetsInputs _input;
+    private float baseHeight;
+    private Vector3 baseCenter;
+    private float baseJump;
+    private CharacterController _char;
+    private float contadorWalk;
+    private float contadorSprint;
+    private bool isInAir = false;
+    private bool change = false;
+    private bool isDouble = false;
+    private float baseSpeed;
+    private DialogueManager _diag;
+
+
     // Start is called before the first frame update
     private void Awake()
     {
-        
+        _diag = GetComponent<DialogueManager>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
         _anim = GetComponent<Animator>();
         _controller = GetComponent<ThirdPersonController>();
@@ -207,7 +214,9 @@ public class Personagem : MonoBehaviour
                     textInteract.SetActive(false);
                     _npcCam.gameObject.SetActive(true);
                     ativarControles = false;
-                    textNPC.SetActive(true);
+                    SODialogue diagData = obj.GetComponent<DialogueHolder>().NpcDialogue;
+                    Debug.Log(diagData);
+                    _diag.Dialogue(diagData);
                 }
                 
                 

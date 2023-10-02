@@ -56183,10 +56183,10 @@ RectTransform:
   m_Father: {fileID: 8195042574615748028}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 96}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5109774339737107090
 CanvasRenderer:
@@ -56218,15 +56218,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Aperte F para interagir
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294046193
-  m_fontColor: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
+    rgba: 4278217268
+  m_fontColor: {r: 0.20564146, g: 0.41509432, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -56243,15 +56243,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -63569,7 +63569,6 @@ GameObject:
   - component: {fileID: 5771668568968049985}
   - component: {fileID: 8819803275213068172}
   - component: {fileID: 2772700608448218927}
-  - component: {fileID: 7427811643544012072}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -63680,7 +63679,7 @@ MonoBehaviour:
   tempoFormacaoPoeiraWalk: 0.73
   tempoFormacaoPoeiraSprint: 0.17
   vfxPos: {fileID: 739507003025224303}
-  text: {fileID: 5838836128725217339}
+  textInteract: {fileID: 5838836128725217339}
   textNPC: {fileID: 5215439456991818867}
   weaponObj: {fileID: 2524702343786387741}
   crouchSpeed: 2
@@ -64058,20 +64057,6 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0, y: -1, z: 0}
---- !u!114 &7427811643544012072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8538803506469575073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86cc76d0eefffd945a4a961db5935d0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetCam: {fileID: 0}
-  actualCam: {fileID: 0}
 --- !u!1 &8559908361597940080
 GameObject:
   m_ObjectHideFlags: 0

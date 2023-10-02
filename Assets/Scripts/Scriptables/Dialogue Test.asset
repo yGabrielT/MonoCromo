@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44befd833153a6489307217f79d52cd, type: 3}
   m_Name: Dialogue Test
   m_EditorClassIdentifier: 
-  Dialogue: []
+  Dialogue:
+  - NpcName: Paizao
+    NpcDescription: "Manda Salve Guriz\xE3o"
+  - NpcName: Arthur
+    NpcDescription: Eai cara de boi
+  - NpcName: Paizao
+    NpcDescription: Oxi ta loco?
+  - NpcName: Arthur
+    NpcDescription: tu q ta
+  - NpcName: Paizao
+    NpcDescription: 'a... ent ta joia '
