@@ -6,7 +6,6 @@ using Cinemachine;
 using StarterAssets;
 using UnityEngine.Animations.Rigging;
 using DG.Tweening;
-
 public class Personagem : MonoBehaviour
 {   
     [Header("Atributos do Player")]
@@ -28,7 +27,7 @@ public class Personagem : MonoBehaviour
 
     [Header("Camera")]
     [SerializeField] private CinemachineVirtualCamera _cam;
-    [SerializeField] private CinemachineVirtualCamera _npcCam;
+    
     [SerializeField] private float normalSensivity = 1f;
     [SerializeField] private float aimSensivity = .5f;
     [SerializeField] private float ShakeForce = 0.1f;
@@ -210,23 +209,27 @@ public class Personagem : MonoBehaviour
                 textInteract.SetActive(true);
                 var obj = hit.transform.gameObject;
                 if (_input.interact){
+                    _input.interact = false;
                     //Interagir com NPC
                     textInteract.SetActive(false);
-                    _npcCam.gameObject.SetActive(true);
-                    ativarControles = false;
                     SODialogue diagData = obj.GetComponent<DialogueHolder>().NpcDialogue;
                     Debug.Log(diagData);
-                    _diag.Dialogue(diagData);
+                    Debug.Log(obj.transform);
+                    _diag.Dialogue(diagData, obj.transform);
                 }
                 
                 
 
             }
-            
-        }
-         else{
+            else{
                 textInteract.SetActive(false);
             }
+            
+        }
+        else
+        {
+            textInteract.SetActive(false);
+        }
         
     }
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Cinemachine;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float diagMaxCooldown = 2f;
     [SerializeField] private GameObject objPainelNPC;                       // Painel do Dialogo
     
+    [SerializeField] private CinemachineVirtualCamera _npcCam;
+
+    [SerializeField] private CinemachineTargetGroup _targetGroup;
+
+
+
     private List<NpcDesc> _npc = new List<NpcDesc>();                        // Retirado do ScriptableObject
     private int _ActualIndex = 0;                                            // Index da conversa
 
@@ -22,8 +29,11 @@ public class DialogueManager : MonoBehaviour
     private StarterAssetsInputs _input;
     private bool _alreadyChatitng;
 
+    private Personagem _pers;
+
     private void Start()
     {
+        _pers = GetComponent<Personagem>();
         _input = GetComponent<StarterAssetsInputs>();    
     }
 
@@ -41,17 +51,22 @@ public class DialogueManager : MonoBehaviour
 
         if (_input.interact && _alreadyChatitng && !isInCooldown)
         {
+            _input.interact = false;
+            Debug.Log("Next Conv");
             ContinueConversation();
         }
         
     }
 
     // Invocado quando jogador interage com NPC
-    public void Dialogue(SODialogue diag)
+    public void Dialogue(SODialogue diag, Transform npcPos)
     { 
         
         if (diag != null && !isInCooldown)
         {
+            _targetGroup.m_Targets[1].target = npcPos;
+            _npcCam.gameObject.SetActive(true);
+            _pers.ativarControles = false;
             _alreadyChatitng = true;
             Debug.Log(_npc);
             objPainelNPC.SetActive(true);
@@ -72,7 +87,7 @@ public class DialogueManager : MonoBehaviour
     {
         
         isInCooldown = true;
-        // Verificar se a quantidade de dialogos foi ou não foi excedida 
+        // Verificar se a quantidade de dialogos foi ou nï¿½o foi excedida 
         if (_ActualIndex < _npc.Count)
         {
             AdvanceConversation();
@@ -100,6 +115,8 @@ public class DialogueManager : MonoBehaviour
         _ActualIndex = 0;
         _npc.Clear();
         _alreadyChatitng = false;
+        _npcCam.gameObject.SetActive(false);
+        _pers.ativarControles = true;
     }
 
     void DisplayDiag()
