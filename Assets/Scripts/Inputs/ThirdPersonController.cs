@@ -208,7 +208,7 @@ namespace StarterAssets
                 //Don't multiply mouse input by Time.deltaTime;
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.unscaledDeltaTime;
 
-                lookingLerp = Vector2.Lerp(lookingLerp, _input.look, Time.deltaTime * _mouseLerpSpeed );
+                lookingLerp = Vector2.Lerp(lookingLerp, _input.look, Time.unscaledDeltaTime * _mouseLerpSpeed );
 
                 _cinemachineTargetYaw += lookingLerp.x  * Sensivity;
                 _cinemachineTargetPitch += lookingLerp.y * Sensivity;
