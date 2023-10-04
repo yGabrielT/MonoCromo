@@ -117,6 +117,9 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
+        Vector2 lookingLerp;
+
+        [SerializeField] private float _mouseLerpSpeed = 2f;
         private bool IsCurrentDeviceMouse
         {
             get
@@ -200,13 +203,15 @@ namespace StarterAssets
         private void CameraRotation()
         {
             // if there is an input and camera position is not fixed
-            if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
+            if (!LockCameraPosition)
             {
                 //Don't multiply mouse input by Time.deltaTime;
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.unscaledDeltaTime;
 
-                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier * Sensivity;
-                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier * Sensivity;
+                lookingLerp = Vector2.Lerp(lookingLerp, _input.look, Time.deltaTime * _mouseLerpSpeed );
+
+                _cinemachineTargetYaw += lookingLerp.x  * Sensivity;
+                _cinemachineTargetPitch += lookingLerp.y * Sensivity;
             }
 
             // clamp our rotations so our values are limited 360 degrees

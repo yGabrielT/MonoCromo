@@ -31,6 +31,8 @@ public class DialogueManager : MonoBehaviour
 
     private Personagem _pers;
 
+	public float letterDelay = 0.2f;
+
     private void Start()
     {
         _pers = GetComponent<Personagem>();
@@ -121,8 +123,20 @@ public class DialogueManager : MonoBehaviour
 
     void DisplayDiag()
     {
-        TextName.text = _nameText;
-        TextDesc.text = _descText;
-
+        //TextName.text = _nameText;
+        //TextDesc.text = _descText;
+        StartCoroutine(nameof(EnterFullDesc));
     }
+
+    IEnumerator EnterFullDesc () {
+		char[] fullTxtArray = _descText.ToCharArray();
+		string nextTxt = "";
+		for (int i = 0; i < fullTxtArray.Length; i++){
+			nextTxt += fullTxtArray[i];
+
+			TextDesc.text = nextTxt;
+
+			yield return new WaitForSeconds(letterDelay);
+		}
+	}
 }
