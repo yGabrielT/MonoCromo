@@ -39,7 +39,7 @@ public class Personagem : MonoBehaviour
 
 
     public AudioSource audioMorte;
-    [SerializeField] private float maxDistance = 10;
+    [SerializeField] private float maxInteractDistance = 10;
     
     
     [HideInInspector] public Renderer materialObj;
@@ -67,7 +67,7 @@ public class Personagem : MonoBehaviour
     [SerializeField] private float smoothTime = 2f;
 
     [Header("Rig")]
-    [SerializeField] Rig rigger;
+    [SerializeField] TwoBoneIKConstraint WeaponRigger;
 
 
     private bool isCrouch;
@@ -138,7 +138,7 @@ public class Personagem : MonoBehaviour
         }
         else
         {
-            rigger.weight = 0;
+            WeaponRigger.weight = 0;
             _controller.enabled = false;
             _anim.SetFloat("Speed",0);
         }
@@ -178,9 +178,9 @@ public class Personagem : MonoBehaviour
     private void InteractInput()
     {
         RaycastHit hit;
-        if (Physics.Raycast(headRay.transform.position, Camera.main.transform.forward, out hit, maxDistance))
+        if (Physics.Raycast(headRay.transform.position, Camera.main.transform.forward, out hit, maxInteractDistance))
         {
-            Debug.DrawRay(headRay.transform.position, Camera.main.transform.forward * maxDistance, Color.green);
+            Debug.DrawRay(headRay.transform.position, Camera.main.transform.forward * maxInteractDistance, Color.green);
             if(hit.transform.gameObject.tag == "Interactable")
             {
                 textInteract.SetActive(true);
@@ -301,7 +301,7 @@ public class Personagem : MonoBehaviour
                 _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 1, Time.deltaTime * 15f));
 
                 //Riggar o bra�o do jogador
-                rigger.weight = Mathf.Lerp(rigger.weight, 1f, Time.deltaTime * 20);
+                WeaponRigger.weight = Mathf.Lerp(WeaponRigger.weight, 1f, Time.deltaTime * 20);
                 
 
 
@@ -317,7 +317,7 @@ public class Personagem : MonoBehaviour
                 _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 0, Time.deltaTime * 15f));
 
                 //voltar o rig ao normal
-                rigger.weight = Mathf.Lerp(rigger.weight, 0f, Time.deltaTime * 20);
+                WeaponRigger.weight = Mathf.Lerp(WeaponRigger.weight, 0f, Time.deltaTime * 20);
                 
                 _crosshair.gameObject.SetActive(false);
                 _cam.gameObject.SetActive(false);

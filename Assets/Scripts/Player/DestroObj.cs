@@ -5,6 +5,7 @@ using UnityEngine;
 public class DestroObj : MonoBehaviour
 {
     public GameObject ExploHitFX;
+    public GameObject HitImpactFX;
     [SerializeField]private float raio = 10f;
     void OnTriggerEnter(Collider other)
     {
@@ -13,9 +14,15 @@ public class DestroObj : MonoBehaviour
             Explode();
         }
 
-        if (this.gameObject.tag != ("Bombs") && other.gameObject.tag == ("Inimigo"))
+        if (this.gameObject.tag != ("Bombs"))
         {
-            other.GetComponent<Inimigo>().TomarDano(10);
+            if(other.gameObject.tag == ("Inimigo"))
+            {
+                other.GetComponent<Inimigo>().TomarDano(10);
+            }
+            
+            
+            Instantiate(HitImpactFX, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
             Debug.Log("Atingido");
         }

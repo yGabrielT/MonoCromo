@@ -86,7 +86,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.05
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0.03, z: 0}
 --- !u!114 &4752907461872237854
 MonoBehaviour:
@@ -102,7 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExploHitFX: {fileID: 7772036036455896148, guid: c2eb4ef866a8de14cbb91d86815e4630,
     type: 3}
-  raio: 5
+  HitImpactFX: {fileID: 6108591459793359004, guid: 3597eceafd6de95489b44b54c5e12b69,
+    type: 3}
+  raio: 3
 --- !u!1 &1689266904010388926
 GameObject:
   m_ObjectHideFlags: 0

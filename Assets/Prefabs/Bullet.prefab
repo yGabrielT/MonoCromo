@@ -5286,6 +5286,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExploHitFX: {fileID: 7772036036455896148, guid: c2eb4ef866a8de14cbb91d86815e4630,
     type: 3}
+  HitImpactFX: {fileID: 6108591459793359004, guid: 3597eceafd6de95489b44b54c5e12b69,
+    type: 3}
   raio: 10
 --- !u!65 &3262958787684058233
 BoxCollider:

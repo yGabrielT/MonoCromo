@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
     private List<NpcDesc> _npc = new List<NpcDesc>();                        // Retirado do ScriptableObject
     private int _ActualIndex = 0;                                            // Index da conversa
 
-    private float _diagCooldown;
+
     private string _nameText;
     private string _descText;
     private bool isInCooldown = false;
@@ -43,14 +43,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (isInCooldown)
         {
-            _diagCooldown += Time.deltaTime;
-            if(_diagCooldown > diagMaxCooldown )
-            {
-                isInCooldown = false;
-                _diagCooldown = 0;
-            }
+            _input.interact = false;
         }
-
         if (_input.interact && _alreadyChatitng && !isInCooldown)
         {
             _input.interact = false;
@@ -123,7 +117,7 @@ public class DialogueManager : MonoBehaviour
 
     void DisplayDiag()
     {
-        //TextName.text = _nameText;
+        TextName.text = _nameText;
         //TextDesc.text = _descText;
         StartCoroutine(nameof(EnterFullDesc));
     }
@@ -131,12 +125,19 @@ public class DialogueManager : MonoBehaviour
     IEnumerator EnterFullDesc () {
 		char[] fullTxtArray = _descText.ToCharArray();
 		string nextTxt = "";
-		for (int i = 0; i < fullTxtArray.Length; i++){
+        int i = 0;
+		for (i = 0; i < fullTxtArray.Length; i++){
 			nextTxt += fullTxtArray[i];
 
 			TextDesc.text = nextTxt;
 
 			yield return new WaitForSeconds(letterDelay);
 		}
+        if (i <= fullTxtArray.Length)
+        {
+            Debug.Log("Acabou o texto");
+            isInCooldown = false;
+        }
+
 	}
 }

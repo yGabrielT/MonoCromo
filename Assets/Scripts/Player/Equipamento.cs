@@ -18,6 +18,7 @@ public class Equipamento : MonoBehaviour
     public int municaoPrincipal;
     [SerializeField] private float forceShake = 0.1f;
     public AudioSource audioPrincipal;
+    [SerializeField] private ParticleSystem muzzleShock;
 
 
     [Header("SecundaryEquip")]
@@ -87,6 +88,7 @@ public class Equipamento : MonoBehaviour
                 {
                     audioPrincipal.Play();
                     impulseSource.GenerateImpulse(forceShake);
+                    muzzleShock.Play();
                 }
                 else{
                     audioSecundario.Play();
@@ -176,7 +178,7 @@ public class Equipamento : MonoBehaviour
     {
         if (isPrincipal && !_isSecundario)
         {
-            MunicaoText.SetText(municaoPrincipal.ToString() + "/20");
+            MunicaoText.SetText(municaoPrincipal.ToString() + "/" + municao1Max.ToString());
             armaPrincipal.enabled = true;
             GranadaText.SetText("");
             Granada1.enabled = false;
