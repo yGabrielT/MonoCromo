@@ -36,6 +36,9 @@ public class DialogueManager : MonoBehaviour
 
 	public float letterDelay = 0.2f;
 
+    private int audioIndex1;
+    private int audioIndex2;
+
     private void Start()
     {
         
@@ -116,14 +119,21 @@ public class DialogueManager : MonoBehaviour
     // Esvaziar valores e esconder dialogo
     void EndConversation()
     {
+        _npcAudios.Clear();
+        _primaryAudios.Clear();
         objPainelNPC.SetActive(false);
         _ActualIndex = 0;
         _npc.Clear();
-        _alreadyChatitng = false;
+        
         _npcCam.gameObject.SetActive(false);
         _pers.ativarControles = true;
-        _npcAudios.Clear();
-        _primaryAudios.Clear();
+
+        Invoke(nameof(ReturnCooldown),5f);
+    }
+
+    void ReturnCooldown()
+    {
+        _alreadyChatitng = false;
         isInCooldown = false;
     }
 
@@ -140,16 +150,8 @@ public class DialogueManager : MonoBehaviour
         int i = 0;
 		for (i = 0; i < fullTxtArray.Length; i++){
 
-            if (!_isPrimary)
-            {
-                int audioIndex1 = Random.Range(0, _npcAudios.Count);
-                _audioSource.PlayOneShot(_npcAudios[audioIndex1]);
-            }
-            else
-            {
-                int audioIndex2 = Random.Range(0, _primaryAudios.Count);
-                _audioSource.PlayOneShot(_primaryAudios[audioIndex2]);
-            }
+
+            PlayDialogueAudio();
             nextTxt += fullTxtArray[i];
 
 			TextDesc.text = nextTxt;
@@ -166,4 +168,21 @@ public class DialogueManager : MonoBehaviour
         }
 
 	}
+
+    void PlayDialogueAudio()
+    {
+        audioIndex1 = Random.Range(0, _npcAudios.Count);
+        audioIndex2 = Random.Range(0, _primaryAudios.Count);
+
+        if (!_isPrimary && isInCooldown)
+        {
+
+            _audioSource.PlayOneShot(_npcAudios[audioIndex1]);
+        }
+        else
+        {
+
+            _audioSource.PlayOneShot(_npcAudios[audioIndex2]);
+        }
+    }
 }

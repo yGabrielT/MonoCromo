@@ -168,7 +168,7 @@ MonoBehaviour:
   isStealth: 1
   newPosCooldown: 10
   AggroRange: 10
-  offSetWalk: 10
+  offSetWalk: 20
 --- !u!1 &1733407589685014281
 GameObject:
   m_ObjectHideFlags: 0

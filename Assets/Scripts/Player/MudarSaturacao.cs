@@ -19,12 +19,19 @@ public class MudarSaturacao : MonoBehaviour
 
     private ManuseioTemp _manuseio;
 
+    private float hueStart;
+    private float satStart;
+
     private void Start()
     {
         _manuseio = GetComponent<ManuseioTemp>();
         // Obtem o componente Color Adjustments do volume
         volume.profile.TryGet(out colorAdjustments);
         volume.profile.TryGet(out lens);
+
+        
+        satStart = colorAdjustments.saturation.value;
+        hueStart = colorAdjustments.hueShift.value;
     }
 
     private void Update()
@@ -42,7 +49,7 @@ public class MudarSaturacao : MonoBehaviour
             Debug.Log("Mudando tempo");
             
             t += Time.unscaledDeltaTime;
-            SatCor = Mathf.Lerp(-100, 0, t);
+            SatCor = Mathf.Lerp(-100, satStart, t);
 
             colorAdjustments.hueShift.value = -HueCor;
             if(t < 1f)
@@ -55,8 +62,8 @@ public class MudarSaturacao : MonoBehaviour
         {
 
             t = 0f;
-            SatCor = 0f;
-            colorAdjustments.hueShift.value = 0;
+            SatCor = satStart;
+            colorAdjustments.hueShift.value = hueStart;
 
             if(isChangeNow){
                 isChangeNow = false;
