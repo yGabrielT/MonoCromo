@@ -15,11 +15,26 @@ MonoBehaviour:
   Dialogue:
   - NpcName: Paizao
     NpcDescription: "Manda Salve Guriz\xE3o"
+    isPrimary: 0
   - NpcName: Arthur
     NpcDescription: Eai cara de boi
+    isPrimary: 1
   - NpcName: Paizao
     NpcDescription: Oxi ta loco?
+    isPrimary: 0
   - NpcName: Arthur
     NpcDescription: tu q ta
+    isPrimary: 1
   - NpcName: Paizao
     NpcDescription: 'a... ent ta joia '
+    isPrimary: 0
+  AudioNpc:
+  - {fileID: 8300000, guid: f415c835e7170494b928551058d7e6dc, type: 3}
+  - {fileID: 8300000, guid: 3cd923b9efdb6c840972e510b20e98e3, type: 3}
+  - {fileID: 8300000, guid: 3a4678c78e07a714d9a851766826ab3b, type: 3}
+  - {fileID: 8300000, guid: 59e6319835c0e474a8b183bfa9a9cf2e, type: 3}
+  AudioPrimary:
+  - {fileID: 8300000, guid: f391910165f5b9f4abf9c28228c4cee3, type: 3}
+  - {fileID: 8300000, guid: d9bb07bf6a186b24a8eee271afd8dc21, type: 3}
+  - {fileID: 8300000, guid: 435e9ffce99bd424db1759faaf4e4928, type: 3}
+  - {fileID: 8300000, guid: 35fc57a1ffa78704f82fb263d4ea5f42, type: 3}

@@ -16,13 +16,16 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _npcCam;
 
     [SerializeField] private CinemachineTargetGroup _targetGroup;
+    private List<AudioClip> _npcAudios = new List<AudioClip>();
+    private List<AudioClip> _primaryAudios = new List<AudioClip>();
 
+    [SerializeField] private AudioSource _audioSource;
 
 
     private List<NpcDesc> _npc = new List<NpcDesc>();                        // Retirado do ScriptableObject
     private int _ActualIndex = 0;                                            // Index da conversa
 
-
+    private bool _isPrimary;
     private string _nameText;
     private string _descText;
     private bool isInCooldown = false;
@@ -35,6 +38,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        
         _pers = GetComponent<Personagem>();
         _input = GetComponent<StarterAssetsInputs>();    
     }
@@ -66,11 +70,15 @@ public class DialogueManager : MonoBehaviour
             _alreadyChatitng = true;
             Debug.Log(_npc);
             objPainelNPC.SetActive(true);
+            _npcAudios.AddRange(diag.AudioNpc);
+            _primaryAudios.AddRange(diag.AudioPrimary);
+            
             // Pega valores do npc caso esteja vazio
             if (_npc.Count == 0)
             {
                 _npc.AddRange(diag.Dialogue);
             }
+            
 
             ContinueConversation();
 
@@ -101,6 +109,7 @@ public class DialogueManager : MonoBehaviour
         NpcDesc npcvar = _npc[_ActualIndex];
         _nameText = npcvar.NpcName;
         _descText = npcvar.NpcDescription;
+        _isPrimary = npcvar.isPrimary;
         DisplayDiag();
     }
 
@@ -113,6 +122,9 @@ public class DialogueManager : MonoBehaviour
         _alreadyChatitng = false;
         _npcCam.gameObject.SetActive(false);
         _pers.ativarControles = true;
+        _npcAudios.Clear();
+        _primaryAudios.Clear();
+        isInCooldown = false;
     }
 
     void DisplayDiag()
@@ -127,11 +139,25 @@ public class DialogueManager : MonoBehaviour
 		string nextTxt = "";
         int i = 0;
 		for (i = 0; i < fullTxtArray.Length; i++){
-			nextTxt += fullTxtArray[i];
+
+            if (!_isPrimary)
+            {
+                int audioIndex1 = Random.Range(0, _npcAudios.Count);
+                _audioSource.PlayOneShot(_npcAudios[audioIndex1]);
+            }
+            else
+            {
+                int audioIndex2 = Random.Range(0, _primaryAudios.Count);
+                _audioSource.PlayOneShot(_primaryAudios[audioIndex2]);
+            }
+            nextTxt += fullTxtArray[i];
 
 			TextDesc.text = nextTxt;
+            
+            
 
-			yield return new WaitForSeconds(letterDelay);
+
+            yield return new WaitForSeconds(letterDelay);
 		}
         if (i <= fullTxtArray.Length)
         {

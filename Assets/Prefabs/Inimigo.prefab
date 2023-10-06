@@ -153,7 +153,7 @@ MonoBehaviour:
   quantidade: 0
   vidaMax: 30
   velocidade: 4
-  dano: 2
+  dano: 20
   AtordTimer: 7.2
   atordoadoMaterial: {fileID: 2100000, guid: c229628907afddb4a8ef291c8565329e, type: 2}
   TempoPraAtirar: 2
@@ -459,7 +459,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8554586281766505660, guid: 8c82976af34757f4082da22904073db5,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: a06a25f415d214342bbb099583743432, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 609feb4dba665af42abe5d3bb1df556f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
