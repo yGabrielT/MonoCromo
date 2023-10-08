@@ -106,8 +106,14 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: dee53973bfb486842b666132ae7e42ed
+    name: VolMaster
+  - guid: e7112c9b6b10ebb44867d807ccb1919f
+    name: VolMusica
   - guid: 1683372237d06b342b331e8568233021
     name: SFXpitch
+  - guid: 3267dfe4f5a051e4f9dec270d41f8b3e
+    name: VolSFX
   m_AudioMixerGroupViews:
   - guids:
     - cc4fee382809c5645a4ac95020067f13
