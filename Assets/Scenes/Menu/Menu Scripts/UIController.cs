@@ -38,11 +38,6 @@ public class UIController : MonoBehaviour
         menuCreditos.SetActive(false);
     }
 
-    public void AtualNomeMusica()
-    {
-
-    }
-
     public void Sair()
     {
         Application.Quit();
