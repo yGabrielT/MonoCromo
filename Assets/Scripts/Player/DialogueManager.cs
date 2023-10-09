@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TextDesc;
     [SerializeField] private float diagMaxCooldown = 2f;
     [SerializeField] private GameObject objPainelNPC;                       // Painel do Dialogo
-    
+    [SerializeField] private GameObject setaCooldown;                       // Seta ativada quando o jogador puder interagir
     [SerializeField] private CinemachineVirtualCamera _npcCam;
 
     [SerializeField] private CinemachineTargetGroup _targetGroup;
@@ -75,7 +75,8 @@ public class DialogueManager : MonoBehaviour
             objPainelNPC.SetActive(true);
             _npcAudios.AddRange(diag.AudioNpc);
             _primaryAudios.AddRange(diag.AudioPrimary);
-            
+
+
             // Pega valores do npc caso esteja vazio
             if (_npc.Count == 0)
             {
@@ -92,7 +93,7 @@ public class DialogueManager : MonoBehaviour
 
     public void ContinueConversation()
     {
-        
+        setaCooldown.SetActive(false);
         isInCooldown = true;
         // Verificar se a quantidade de dialogos foi ou n�o foi excedida 
         if (_ActualIndex < _npc.Count)
@@ -124,16 +125,16 @@ public class DialogueManager : MonoBehaviour
         objPainelNPC.SetActive(false);
         _ActualIndex = 0;
         _npc.Clear();
-        
+        _alreadyChatitng = false;
         _npcCam.gameObject.SetActive(false);
         _pers.ativarControles = true;
 
-        Invoke(nameof(ReturnCooldown),5f);
+        Invoke(nameof(ReturnCooldown),.5f);
     }
 
     void ReturnCooldown()
     {
-        _alreadyChatitng = false;
+        setaCooldown.SetActive(true);
         isInCooldown = false;
     }
 
@@ -164,25 +165,29 @@ public class DialogueManager : MonoBehaviour
         if (i <= fullTxtArray.Length)
         {
             Debug.Log("Acabou o texto");
-            isInCooldown = false;
+            Invoke(nameof(ReturnCooldown), 1.5f);
         }
 
 	}
 
     void PlayDialogueAudio()
     {
-        audioIndex1 = Random.Range(0, _npcAudios.Count);
-        audioIndex2 = Random.Range(0, _primaryAudios.Count);
-
-        if (!_isPrimary && isInCooldown)
+        
+        if (_npcAudios.Count != 0 && _primaryAudios.Count != 0)
         {
-
-            _audioSource.PlayOneShot(_npcAudios[audioIndex1]);
+            audioIndex1 = Random.Range(0, _npcAudios.Count);
+            audioIndex2 = Random.Range(0, _primaryAudios.Count);
+            if (!_isPrimary)
+            {
+                Debug.Log(_npcAudios[audioIndex1]);
+                _audioSource.PlayOneShot(_npcAudios[audioIndex1]);
+            }
+            else
+            {
+                Debug.Log(_primaryAudios[audioIndex2]);
+                _audioSource.PlayOneShot(_primaryAudios[audioIndex2]);
+            }
         }
-        else
-        {
-
-            _audioSource.PlayOneShot(_npcAudios[audioIndex2]);
-        }
+        
     }
 }
