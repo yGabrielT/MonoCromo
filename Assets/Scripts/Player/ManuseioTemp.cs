@@ -21,8 +21,11 @@ using TMPro;
         public bool timeToggle = false, startcooldown;
         private float defaultTimeScale = 1f, defaultFixedDeltaTime = 0.02f;
 
+        private Personagem _pers;
+
         private void Awake()
         {
+            _pers = GetComponentInParent<Personagem>();
             _input = GetComponent<StarterAssetsInputs>();
         }
         void Start()
@@ -32,9 +35,19 @@ using TMPro;
 
         void Update()
         {
-            PararTempo();
-            AtualizarCanvas();
-            audioMix.SetFloat("SFXpitch", Time.timeScale);
+            if(_pers.ativarControles){
+                PararTempo();
+                AtualizarCanvas();
+                audioMix.SetFloat("SFXpitch", Time.timeScale);
+            }
+            else
+            {
+                _input.slow = false;
+                timeToggle = false;
+                startcooldown = false;
+                Time.timeScale = 1f;
+            }
+            
         }
 
         void PararTempo()

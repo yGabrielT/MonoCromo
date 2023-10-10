@@ -76,7 +76,7 @@ public class Personagem : MonoBehaviour
     private Animator _anim;
     private Equipamento _throwScript;
     private ThirdPersonController _controller;
-    private StarterAssetsInputs _input;
+    public StarterAssetsInputs _input;
     private float baseHeight;
     private Vector3 baseCenter;
     private float baseJump;

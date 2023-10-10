@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
     private string _descText;
     private bool isInCooldown = false;
     private StarterAssetsInputs _input;
-    private bool _alreadyChatitng;
+    public bool _alreadyChatitng;
 
     private Personagem _pers;
 

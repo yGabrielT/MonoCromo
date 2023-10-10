@@ -1181,7 +1181,7 @@ Transform:
   - {fileID: 3633747271230439923}
   - {fileID: 5173724477065893402}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1233005950757824647
 GameObject:
@@ -57865,7 +57865,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6606120075081615357}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -27.203915, y: -12.611805, z: 40.175926}
+  m_LocalPosition: {x: -27.773914, y: -14.873142, z: 37.10927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64939,6 +64939,7 @@ MonoBehaviour:
   crouchHeight: 0.85
   smoothTime: 100
   WeaponRigger: {fileID: 7624218075133741507}
+  _input: {fileID: 0}
 --- !u!114 &7350520310317784771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65327,6 +65328,7 @@ MonoBehaviour:
   TextDesc: {fileID: 4141141662515980356}
   diagMaxCooldown: 1
   objPainelNPC: {fileID: 5215439456991818867}
+  setaCooldown: {fileID: 4630648207836491870}
   _npcCam: {fileID: 3926481504939183611}
   _targetGroup: {fileID: 5103693050347518977}
   _audioSource: {fileID: 8589691036825790896}
