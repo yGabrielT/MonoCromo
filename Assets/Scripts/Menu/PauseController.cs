@@ -21,6 +21,7 @@ public class PauseController : MonoBehaviour
     private void Start() 
     {
         _pers = GameObject.FindGameObjectWithTag("Player").GetComponent<Personagem>();
+        _diag = GameObject.FindGameObjectWithTag("Player").GetComponent<DialogueManager>();
 
     }
     // Update is called once per frame
@@ -60,12 +61,12 @@ public class PauseController : MonoBehaviour
 
     public void Voltar()
     {
-        if(!_diag._alreadyChatitng){
-            pauseUI.SetActive(false);
-            Time.timeScale = 1f;
-            estaPausado = false;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+        pauseUI.SetActive(false);
+        Time.timeScale = 1f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        estaPausado = false;
+        if (!_diag._alreadyChatitng){
             _pers.ativarControles = true;
         }
         

@@ -41,6 +41,11 @@ public class DestroObj : MonoBehaviour
                 nearbyObjs.GetComponent<Inimigo>().TomarDano(30);
                 Debug.Log("Raio Atingido");
             }
+            if(nearbyObjs != null && nearbyObjs.gameObject.tag == ("Botao"))
+            {
+                nearbyObjs.GetComponent<EnableDoors>().isReseted = true;
+                Debug.Log("Portas Desbloqueadas");
+            }
 
         }
          
