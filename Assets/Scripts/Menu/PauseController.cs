@@ -13,6 +13,8 @@ public class PauseController : MonoBehaviour
     [SerializeField] private GameObject primeiraTelaUI;
     [SerializeField] private GameObject ajustesUI;
 
+    [SerializeField] private ManuseioTemp _temp; 
+
     private Personagem _pers;
 
     private DialogueManager _diag;
@@ -33,7 +35,7 @@ public class PauseController : MonoBehaviour
         }else{
             
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !_temp.timeToggle)
         {
             Debug.Log("clicou");
             if (estaPausado)
