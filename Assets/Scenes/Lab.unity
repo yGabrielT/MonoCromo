@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.19621617, g: 0.21216768, b: 0.44074142, a: 1}
+  m_IndirectSpecularColor: {r: 0.19617595, g: 0.21215397, b: 0.44074804, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3998,17 +3998,17 @@ PrefabInstance:
     - target: {fileID: 1107197214752217632, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -69.34
+      value: -69.36
       objectReference: {fileID: 0}
     - target: {fileID: 1107197214752217632, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.15
+      value: 32.3
       objectReference: {fileID: 0}
     - target: {fileID: 1107197214752217632, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -75.21
+      value: -103.77
       objectReference: {fileID: 0}
     - target: {fileID: 1107197214752217632, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
@@ -4044,6 +4044,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059393250019414788, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: AddSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4495360720462152137, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
@@ -4139,16 +4144,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056455983007545104, guid: ed584ddbd1491534f9e8ed572cd57fdd,
-        type: 3}
-      propertyPath: _forcaSecundaria
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7850103120539607162, guid: ed584ddbd1491534f9e8ed572cd57fdd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -11.264805
       objectReference: {fileID: 0}
     - target: {fileID: 8467929944315155507, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
@@ -9666,12 +9661,12 @@ GameObject:
   - component: {fileID: 8482381506867776302}
   - component: {fileID: 8418640412999583099}
   - component: {fileID: 8482381506867776303}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2079618063254043927
 Transform:

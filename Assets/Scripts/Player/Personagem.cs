@@ -18,7 +18,7 @@ public class Personagem : MonoBehaviour
     public float sprintVelocidade = 10f;
     public float gravidade = -15f;
     
-    private float AddSpeed = 4f;
+    public float AddSpeed = 4f;
     
 
     

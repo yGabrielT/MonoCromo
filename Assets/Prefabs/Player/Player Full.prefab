@@ -195,7 +195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59817948480062622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.547253, y: -11.264805, z: 27.60259}
+  m_LocalPosition: {x: -26.547253, y: -11.264805, z: 28.935925}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1171,7 +1171,7 @@ Transform:
   m_GameObject: {fileID: 1057975643334163164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.667254, y: -10.948805, z: -19.52259}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 231124155871297177}
@@ -1181,7 +1181,7 @@ Transform:
   - {fileID: 3633747271230439923}
   - {fileID: 5173724477065893402}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1233005950757824647
 GameObject:
@@ -57865,7 +57865,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6606120075081615357}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -27.773914, y: -14.873142, z: 37.10927}
+  m_LocalPosition: {x: -27.373919, y: -12.862027, z: 22.580368}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58802,7 +58802,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7309793584991475494}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.547253, y: -11.264805, z: 27.60259}
+  m_LocalPosition: {x: -26.547253, y: -11.264805, z: 28.935925}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64874,7 +64874,7 @@ MonoBehaviour:
   _tipoSecundario: {fileID: 76866827463003559, guid: 94885afc29dffb24c9100ccf596f7f38,
     type: 3}
   _isSecundario: 0
-  _forcaSecundaria: 10
+  _forcaSecundaria: 20
   _forcaCimaSecundaria: 3
   _tempoDeRecargaSecundaria: 1.5
   _municaoSecundaria: 0
@@ -65332,6 +65332,7 @@ MonoBehaviour:
   _npcCam: {fileID: 3926481504939183611}
   _targetGroup: {fileID: 5103693050347518977}
   _audioSource: {fileID: 8589691036825790896}
+  _alreadyChatitng: 0
   letterDelay: 0.05
 --- !u!1 &8559908361597940080
 GameObject:
