@@ -75,6 +75,9 @@ public class Inimigo : MonoBehaviour
 
     private void Update()
     {
+        if(playerPos == null){
+            AtacarBool = false;
+        }
         Stealth();
         Movimentar();
         AtacarPersonagem();

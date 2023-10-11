@@ -45,7 +45,7 @@ using TMPro;
                 _input.slow = false;
                 timeToggle = false;
                 startcooldown = false;
-                Time.timeScale = 1f;
+                //Time.timeScale = 1f;
             }
             
         }

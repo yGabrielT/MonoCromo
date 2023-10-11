@@ -195,7 +195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59817948480062622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.547253, y: -11.264805, z: 28.935925}
+  m_LocalPosition: {x: -26.547253, y: -11.264806, z: 28.935925}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -369,6 +369,7 @@ RectTransform:
   - {fileID: 1213800717019921040}
   - {fileID: 4848767358635301979}
   - {fileID: 1419771211604478020}
+  - {fileID: 3721242643512932339}
   m_Father: {fileID: 1107197214752217632}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4006,6 +4007,42 @@ Transform:
   m_Father: {fileID: 6630980196894085317}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4615367483917463971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3721242643512932339}
+  m_Layer: 5
+  m_Name: TelaCapturado
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3721242643512932339
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4615367483917463971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8195042574615748028}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4622288786527432330
 GameObject:
   m_ObjectHideFlags: 0
@@ -57865,7 +57902,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6606120075081615357}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -27.373919, y: -12.862027, z: 22.580368}
+  m_LocalPosition: {x: -4.809475, y: -12.613139, z: 81.93148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58802,7 +58839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7309793584991475494}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.547253, y: -11.264805, z: 28.935925}
+  m_LocalPosition: {x: -26.547253, y: -11.264806, z: 28.935925}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64909,6 +64946,7 @@ MonoBehaviour:
   velocidade: 4
   sprintVelocidade: 10
   gravidade: -15
+  AddSpeed: 20
   ativarControles: 1
   _cam: {fileID: 4351255655597718630}
   headRay: {fileID: 3853434767105595059}
@@ -64921,7 +64959,7 @@ MonoBehaviour:
     m_Bits: 1920
   isLooking: 0
   audioMorte: {fileID: 4074664989459313480}
-  maxInteractDistance: 10
+  maxInteractDistance: 2
   materialObj: {fileID: 0}
   inimigo: {fileID: 1500782727885953526, guid: b1c84f33a169e86418152d4608a4af01, type: 3}
   SmokeWalkTrail: {fileID: 6996756950803211603}

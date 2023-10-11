@@ -46,8 +46,7 @@ public class MudarSaturacao : MonoBehaviour
                 //DOVirtual.Float(lensIntensity,0,.4f, v => lens.intensity.value = v).SetEase(Ease.InOutExpo);
             }
             
-            Debug.Log("Mudando tempo");
-            
+
             t += Time.unscaledDeltaTime;
             SatCor = Mathf.Lerp(-100, satStart, t);
 

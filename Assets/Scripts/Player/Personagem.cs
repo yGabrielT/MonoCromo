@@ -89,6 +89,8 @@ public class Personagem : MonoBehaviour
     private float baseSpeed;
     private DialogueManager _diag;
 
+    private bool isDead = false;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -148,7 +150,7 @@ public class Personagem : MonoBehaviour
     private void PerderVida()
     {
 
-        if(vidaAtual >= 0)
+        if(vidaAtual > 0)
         {
             //levar dano
             vidaAtual -= inimigo.dano;
@@ -161,13 +163,15 @@ public class Personagem : MonoBehaviour
             //morte
             audioMorte.Play();
             vidaAtual = 0;
-            Destroy(this.gameObject);
+            isDead = true;
+            ativarControles = false;
+            _anim.SetTrigger("isDead");
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "InProj")
+        if(other.gameObject.tag == "InProj" && !isDead)
         {
             Destroy(other.gameObject);
             PerderVida();
