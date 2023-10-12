@@ -29,7 +29,7 @@ public class PauseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Time.timeScale);
+        
         if(estaPausado){
             _pers._input.interact = false;
         }else{
