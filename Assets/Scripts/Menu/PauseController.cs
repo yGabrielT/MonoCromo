@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PauseController : MonoBehaviour
@@ -12,6 +13,9 @@ public class PauseController : MonoBehaviour
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject primeiraTelaUI;
     [SerializeField] private GameObject ajustesUI;
+
+    [SerializeField] private Image imgNormal;
+    [SerializeField] private Image imgPause;
 
     [SerializeField] private ManuseioTemp _temp; 
 
@@ -32,7 +36,8 @@ public class PauseController : MonoBehaviour
         
         if(estaPausado){
             _pers._input.interact = false;
-        }else{
+        }
+        else{
             
         }
         if (Input.GetKeyDown(KeyCode.Escape) && !_temp.timeToggle)
@@ -54,6 +59,8 @@ public class PauseController : MonoBehaviour
     public void Pausar()
     {
         pauseUI.SetActive(true);
+        imgPause.enabled = true;
+        imgNormal.enabled = false;
         Time.timeScale = 0f;
         estaPausado = true;
         Cursor.visible = true;
@@ -65,6 +72,8 @@ public class PauseController : MonoBehaviour
     public void Voltar()
     {
         pauseUI.SetActive(false);
+        imgNormal.enabled = true;
+        imgPause.enabled = false;
         Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -89,6 +98,7 @@ public class PauseController : MonoBehaviour
 
     public void VoltarMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 }

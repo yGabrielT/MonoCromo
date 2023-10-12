@@ -44,12 +44,12 @@ public class Equipamento : MonoBehaviour
     private StarterAssetsInputs _input;
     private Personagem _Personagem;
     private RaycastHit hit;
-    public TMP_Text MunicaoText;
+    public TMP_Text MunicaoPrincipalText;
+    public TMP_Text MunicaoMaxText;
     public TMP_Text GranadaText;
     public Image armaPrincipal;
     public Image Granada1;
-    public Image Granada2;
-    public Image Granada3;
+    public TMP_Text GranadaPincipalText;
 
     private float forcaAtual;
     private float forcaCimaAtual;
@@ -178,62 +178,44 @@ public class Equipamento : MonoBehaviour
     {
         if (isPrincipal && !_isSecundario)
         {
-            MunicaoText.SetText(municaoPrincipal.ToString() + "/" + municao1Max.ToString());
-            armaPrincipal.enabled = true;
+            MunicaoPrincipalText.SetText(municaoPrincipal.ToString());
+            MunicaoMaxText.SetText(municao1Max.ToString());
             GranadaText.SetText("");
+            armaPrincipal.enabled = true;
+            GranadaPincipalText.SetText("");
             Granada1.enabled = false;
-            Granada2.enabled = false;
-            Granada3.enabled = false;
         }
         else if (isPrincipal && municaoPrincipal == 0)
         {
             GranadaText.SetText("Não há munição!");
         }
-        else if (_isSecundario && _municaoSecundaria == 1)
+        else if (_isSecundario && _municaoSecundaria > 0)
         {
             armaPrincipal.enabled = false;
-            MunicaoText.SetText("");
+            MunicaoPrincipalText.SetText("");
+            MunicaoMaxText.SetText("");
             Granada1.enabled = true;
-            Granada2.enabled = false;
-            Granada3.enabled = false;
-            GranadaText.SetText("");
+            GranadaPincipalText.SetText(_municaoSecundaria.ToString());
         }
-        else if (_isSecundario && _municaoSecundaria == 2)
-        {
-            armaPrincipal.enabled = false;
-            MunicaoText.SetText("");
-            Granada1.enabled = true;
-            Granada2.enabled = true;
-            Granada3.enabled = false;
-            GranadaText.SetText("");
-        }
-        else if (_isSecundario && _municaoSecundaria == 3)
-        {
-            armaPrincipal.enabled = false;
-            MunicaoText.SetText("");
-            Granada1.enabled = true; 
-            Granada2.enabled = true;
-            Granada3.enabled = true;
-            GranadaText.SetText("");
-        }
+  
         else if (_isSecundario && _municaoSecundaria == 0)
         {
             armaPrincipal.enabled = false;
-            MunicaoText.SetText("");
+            MunicaoPrincipalText.SetText("");
+            MunicaoMaxText.SetText("");
             Granada1.enabled = false;
-            Granada2.enabled = false;
-            Granada3.enabled = false;
-            GranadaText.SetText("N�o h� granadas!");
+            GranadaPincipalText.SetText(_municaoSecundaria.ToString());
+            GranadaText.SetText("Não há granadas!");
         }
         
         if (!isPrincipal && !_isSecundario)
         {
-            MunicaoText.SetText("");
+            MunicaoPrincipalText.SetText("");
+            MunicaoMaxText.SetText("");
             GranadaText.SetText("");
+            GranadaPincipalText.SetText("");
             armaPrincipal.enabled = false;
             Granada1.enabled = false; 
-            Granada2.enabled = false;
-            Granada3.enabled = false;
         }
 
     }

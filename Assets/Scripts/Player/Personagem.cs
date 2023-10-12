@@ -6,6 +6,7 @@ using Cinemachine;
 using StarterAssets;
 using UnityEngine.Animations.Rigging;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 public class Personagem : MonoBehaviour
 {   
     [Header("Atributos do Player")]
@@ -89,6 +90,9 @@ public class Personagem : MonoBehaviour
     private float baseSpeed;
     private DialogueManager _diag;
 
+    [Header("Elementos da Morte")]
+    [SerializeField] private GameObject telaCaptura;
+
     private bool isDead = false;
 
 
@@ -119,7 +123,13 @@ public class Personagem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isDead)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                SceneManager.LoadScene(1);
+            }
+        }
         
         Controlar();
     }
@@ -162,6 +172,7 @@ public class Personagem : MonoBehaviour
         {
             //morte
             audioMorte.Play();
+            telaCaptura.SetActive(true);
             vidaAtual = 0;
             isDead = true;
             ativarControles = false;
