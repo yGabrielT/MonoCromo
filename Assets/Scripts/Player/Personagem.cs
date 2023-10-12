@@ -7,28 +7,29 @@ using StarterAssets;
 using UnityEngine.Animations.Rigging;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
 public class Personagem : MonoBehaviour
-{   
+{
     [Header("Atributos do Player")]
     public int playerVida;
     public int vidaAtual;
     public HealthBar barraDeVida;
-    [Range(4f,7f)]
+    [Range(4f, 7f)]
     public float velocidade = 4f;
-    [Range(10f,30f)]
+    [Range(10f, 30f)]
     public float sprintVelocidade = 10f;
     public float gravidade = -15f;
-    
-    public float AddSpeed = 4f;
-    
 
-    
+    public float AddSpeed = 4f;
+
+
+
 
     public bool ativarControles = true;
 
     [Header("Camera")]
     [SerializeField] private CinemachineVirtualCamera _cam;
-    
+
     [SerializeField] private Transform headRay;
     [SerializeField] private float normalSensivity = 1f;
     [SerializeField] private float aimSensivity = .5f;
@@ -41,10 +42,10 @@ public class Personagem : MonoBehaviour
 
     public AudioSource audioMorte;
     [SerializeField] private float maxInteractDistance = 10;
-    
-    
+
+
     [HideInInspector] public Renderer materialObj;
-    
+
     public Inimigo inimigo;
 
     [Header("VFX")]
@@ -57,8 +58,8 @@ public class Personagem : MonoBehaviour
     [Range(0f, 2f)]
     [SerializeField] private float tempoFormacaoPoeiraSprint;
     [SerializeField] private Transform vfxPos;
-    
-    
+
+
     [SerializeField] private GameObject textInteract;
     [SerializeField] private GameObject weaponObj;
 
@@ -90,6 +91,8 @@ public class Personagem : MonoBehaviour
     private float baseSpeed;
     private DialogueManager _diag;
 
+    private bool isInteracting;
+
     [Header("Elementos da Morte")]
     [SerializeField] private GameObject telaCaptura;
 
@@ -105,7 +108,7 @@ public class Personagem : MonoBehaviour
         _controller = GetComponent<ThirdPersonController>();
         _input = GetComponent<StarterAssetsInputs>();
         _throwScript = GetComponent<Equipamento>();
-        _char = GetComponent<CharacterController>(); 
+        _char = GetComponent<CharacterController>();
     }
 
     void Start()
@@ -130,13 +133,13 @@ public class Personagem : MonoBehaviour
                 SceneManager.LoadScene(1);
             }
         }
-        
+
         Controlar();
     }
 
     public void Controlar()
     {
-        if(ativarControles)
+        if (ativarControles)
         {
             InteractInput();
             DoubleSpeed();
@@ -152,15 +155,15 @@ public class Personagem : MonoBehaviour
         {
             WeaponRigger.weight = 0;
             _controller.enabled = false;
-            _anim.SetFloat("Speed",0);
+            _anim.SetFloat("Speed", 0);
         }
-        
+
     }
 
     private void PerderVida()
     {
 
-        if(vidaAtual > 0)
+        if (vidaAtual > 0)
         {
             //levar dano
             vidaAtual -= inimigo.dano;
@@ -182,71 +185,103 @@ public class Personagem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "InProj" && !isDead)
+        if (other.gameObject.tag == "InProj" && !isDead)
         {
             Destroy(other.gameObject);
             PerderVida();
         }
-        
+
     }
 
     private void InteractInput()
     {
+        if (_input.interact)
+        {
+
+            _input.interact = false;
+            isInteracting = true;
+            
+
+        }
+
         RaycastHit hit;
+
+
+
+
+
+
+
         if (Physics.Raycast(headRay.transform.position, Camera.main.transform.forward, out hit, maxInteractDistance))
         {
             Debug.DrawRay(headRay.transform.position, Camera.main.transform.forward * maxInteractDistance, Color.green);
-            if(hit.transform.gameObject.tag == "Interactable")
+            var obj = hit.transform.gameObject;
+            if ((hit.transform.gameObject.tag == "Interactable") || (hit.transform.gameObject.tag == "NPC"))
             {
-                textInteract.SetActive(true);
-                var obj = hit.transform.gameObject;
-                if(_input.interact)
+
+                if (hit.transform.gameObject.tag == "Interactable")
                 {
-                    _input.interact = false;
-                    if (!change)
+                    textInteract.SetActive(true);
+
+                    if (!change && isInteracting)
                     {
+                        isInteracting = false;
                         textInteract.SetActive(false);
                         change = true;
                         materialObj = obj.GetComponent<Renderer>();
                         materialObj.material.color = Color.red;
                         Debug.Log("Interagido");
                     }
-                    else{
+                    else
+                    {
                         textInteract.SetActive(false);
                     }
                     Invoke("ColldownInteract", 0.1f);
                 }
-            }
-            else{
-                textInteract.SetActive(false);
-            }
-
-            if (hit.transform.gameObject.tag =="NPC"){
-                textInteract.SetActive(true);
-                var obj = hit.transform.gameObject;
-                if (_input.interact){
-                    _input.interact = false;
-                    //Interagir com NPC
+                else
+                {
                     textInteract.SetActive(false);
-                    SODialogue diagData = obj.GetComponent<DialogueHolder>().NpcDialogue;
-                    Debug.Log(diagData);
-                    Debug.Log(obj.transform);
-                    _diag.Dialogue(diagData, obj.transform);
                 }
-                
-                
+
+                if (hit.transform.gameObject.tag == "NPC")
+                {
+                    textInteract.SetActive(true);
+                    if (isInteracting)
+                    {
+                        isInteracting = false;
+                        //Interagir com NPC
+                        textInteract.SetActive(false);
+                        SODialogue diagData = obj.GetComponent<DialogueHolder>().NpcDialogue;
+                        Debug.Log(diagData);
+                        Debug.Log(obj.transform);
+                        _diag.Dialogue(diagData, obj.transform);
+
+                    }
+                }
+                else
+                {
+                    textInteract.SetActive(false);
+                }
 
             }
-            else{
+            else
+            {
+                isInteracting = false;
                 textInteract.SetActive(false);
             }
-            
         }
         else
         {
             textInteract.SetActive(false);
         }
-        
+
+
+
+
+
+
+
+
     }
 
     private void ColldownInteract()
@@ -254,19 +289,26 @@ public class Personagem : MonoBehaviour
         change = false;
     }
 
+    private void CollInter()
+    {
+        isInteracting = false;
+    }
+
+
+
 
     private void SmokeUpdate()
     {
         //Rastro para quando estiver andando
         contadorWalk += Time.deltaTime;
-        if (SmokeWalkTrail != null && !_input.sprint && _controller._controller.isGrounded && _controller._controller.velocity != Vector3.zero) 
+        if (SmokeWalkTrail != null && !_input.sprint && _controller._controller.isGrounded && _controller._controller.velocity != Vector3.zero)
         {
             if (contadorWalk > tempoFormacaoPoeiraWalk)
             {
                 SmokeWalkTrail.Play();
                 contadorWalk = 0;
             }
-                
+
         }
         //Rastro pra correr
         contadorSprint += Time.deltaTime;
@@ -306,7 +348,8 @@ public class Personagem : MonoBehaviour
         {
             isLooking = false;
         }
-        if(ativarControles){
+        if (ativarControles)
+        {
             if (_input.aim)
             {
                 _cam.gameObject.SetActive(true);
@@ -317,15 +360,15 @@ public class Personagem : MonoBehaviour
 
                 //Riggar o bra�o do jogador
                 WeaponRigger.weight = Mathf.Lerp(WeaponRigger.weight, 1f, Time.deltaTime * 20);
-                
+
 
 
                 Vector3 worldAimTarget = mouseWorldPosition;
                 worldAimTarget.y = transform.position.y;
                 Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
-                
+
                 transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 15f);
-                
+
             }
             else
             {
@@ -333,14 +376,14 @@ public class Personagem : MonoBehaviour
 
                 //voltar o rig ao normal
                 WeaponRigger.weight = Mathf.Lerp(WeaponRigger.weight, 0f, Time.deltaTime * 20);
-                
+
                 _crosshair.gameObject.SetActive(false);
                 _cam.gameObject.SetActive(false);
                 _controller.SetSensivity(normalSensivity);
                 _controller.SetRotateOnMove(true);
             }
         }
-        
+
 
         if (_throwScript._isSecundario && _throwScript._municaoSecundaria != 0)
         {
@@ -352,7 +395,7 @@ public class Personagem : MonoBehaviour
                 {
                     _anim.SetTrigger("Throw");
                 }
-                
+
             }
         }
         else
@@ -366,9 +409,9 @@ public class Personagem : MonoBehaviour
     {
         if (_input.crouch && !isCrouch && !_input.sprint)
         {
-            
+
             isCrouch = true;
-            
+
             _char.height = Mathf.Lerp(_char.height, crouchHeight, smoothTime * Time.deltaTime);
             _char.center = new Vector3(0, Mathf.Lerp(_char.center.y, .45f, smoothTime * Time.deltaTime), 0f);
             velocidade = crouchSpeed;

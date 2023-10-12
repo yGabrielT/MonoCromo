@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using EasyTransition;
 
 public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject menuPrincipal;
     [SerializeField] private GameObject menuOpcoes;
     [SerializeField] private GameObject menuCreditos;
+    [SerializeField] private string NomeDaCena;
+    [SerializeField] private float delay;
+    [SerializeField] private TransitionSettings set;
 
     public void IniciarGame()
     {
-        SceneManager.LoadScene(1);
+        TransitionManager.Instance().Transition(NomeDaCena, set, delay);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
     }
 
     public void AbrirOpcoes()
