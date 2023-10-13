@@ -95,8 +95,9 @@ public class Personagem : MonoBehaviour
 
     [Header("Elementos da Morte")]
     [SerializeField] private GameObject telaCaptura;
+    [SerializeField] private Animator animacaoCaptura;
 
-    private bool isDead = false;
+    [SerializeField] private bool isDead = false;
 
 
     // Start is called before the first frame update
@@ -121,6 +122,7 @@ public class Personagem : MonoBehaviour
         // Chamando script para que a barra de vida fique no total
         barraDeVida.vidaMaxima(playerVida);
         baseSpeed = _controller.MoveSpeed;
+        animacaoCaptura = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -128,14 +130,17 @@ public class Personagem : MonoBehaviour
     {
         if (isDead)
         {
+            animacaoCaptura.Play("telaVermelha");
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
 
         Controlar();
     }
+
+
 
     public void Controlar()
     {
