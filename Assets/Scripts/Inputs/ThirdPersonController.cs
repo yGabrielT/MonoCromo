@@ -1,6 +1,7 @@
 ﻿ using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.HID;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -8,10 +9,7 @@ using UnityEngine.InputSystem;
 
 namespace StarterAssets
 {
-    [RequireComponent(typeof(CharacterController))]
-#if ENABLE_INPUT_SYSTEM 
-    [RequireComponent(typeof(PlayerInput))]
-#endif
+
     public class ThirdPersonController : MonoBehaviour
     {
         
@@ -108,14 +106,17 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
 #endif
-        private Animator _animator;
+        public Animator _animator;
         public CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
 
+        private bool _isClimbing;
+
         private const float _threshold = 0.01f;
 
-        private bool _hasAnimator;
+        public bool _hasAnimator = true;
+        bool startClimb;
 
         Vector2 lookingLerp;
 
@@ -146,7 +147,7 @@ namespace StarterAssets
         {
             
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            _hasAnimator = TryGetComponent(out _animator);
+            //_hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM 
@@ -165,7 +166,7 @@ namespace StarterAssets
         private void Update()
         {
             
-            _hasAnimator = TryGetComponent(out _animator);
+            //_hasAnimator = TryGetComponent(out _animator);
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -282,8 +283,65 @@ namespace StarterAssets
 
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
-            
+
             // move the player
+            
+            if (!_isClimbing)
+            {
+                float aboveOrigin = .4f;
+                float checkLadderDistance = 1f;
+                if (Physics.Raycast(transform.position + Vector3.up * aboveOrigin, targetDirection, out RaycastHit ladderHit, checkLadderDistance))
+                {
+                    if (ladderHit.transform.gameObject.tag == "Ladder")
+                    {
+                        SubirEscada();
+                        StartClimbAnimation();
+                    }
+                }
+            }
+            else
+            {
+                float aboveOrigin = .4f;
+                float checkLadderDistance = 1f;
+                if (Physics.Raycast(transform.position + Vector3.up * aboveOrigin, targetDirection, out RaycastHit ladderHit, checkLadderDistance))
+                {
+                    if (ladderHit.transform.gameObject.tag != "Ladder")
+                    {
+                        SairDaEscada();
+                        StopClimbAnimation();
+                        _verticalVelocity = 5f;
+                    }
+
+                }
+                else
+                {
+                    SairDaEscada();
+                    StopClimbAnimation();
+                    _verticalVelocity = 5f;
+                }
+            }
+            
+            
+            if (_isClimbing)
+            {
+                Debug.Log("Encontrado escada");
+                targetDirection.x = 0f;
+                targetDirection.y = -targetDirection.z;
+                targetDirection.z = 0f;
+                _verticalVelocity = 0f;
+                Grounded = true;
+                
+                _speed = targetSpeed;
+                
+                _animator.SetBool("isClimbing", true);
+            }
+            else{
+                _animator.SetBool("isClimbing", false);
+            }
+
+            
+
+
             
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
@@ -294,6 +352,15 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
+        }
+
+        private void SubirEscada()
+        {
+            _isClimbing = true;
+        }
+        private void SairDaEscada()
+        {
+            _isClimbing = false; 
         }
 
         private void JumpAndGravity()
@@ -386,7 +453,7 @@ namespace StarterAssets
                 GroundedRadius);
         }
 
-        private void OnFootstep(AnimationEvent animationEvent)
+        public void OnFootstep(AnimationEvent animationEvent)
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
@@ -398,7 +465,7 @@ namespace StarterAssets
             }
         }
 
-        private void OnLand(AnimationEvent animationEvent)
+        public void OnLand(AnimationEvent animationEvent)
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
@@ -416,7 +483,16 @@ namespace StarterAssets
             _rotateOnMove = rotate;
         }
 
-        
+        private void StartClimbAnimation(){
+            if(!startClimb){
+                startClimb = true;
+                _animator.SetTrigger("StartClimbing");
+            }
+        }
+        private void StopClimbAnimation(){
+            startClimb = false;
+
+        }
 
        
     }

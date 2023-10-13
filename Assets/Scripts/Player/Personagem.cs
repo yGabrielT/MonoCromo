@@ -8,6 +8,8 @@ using UnityEngine.Animations.Rigging;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
+using UnityEngine.Events;
+
 public class Personagem : MonoBehaviour
 {
     [Header("Atributos do Player")]
@@ -41,10 +43,17 @@ public class Personagem : MonoBehaviour
 
 
     public AudioSource audioMorte;
+
+
+
+
+    [Header("Interação")]
     [SerializeField] private float maxInteractDistance = 10;
+    [SerializeField] private UnityEvent onInteract;
 
 
     [HideInInspector] public Renderer materialObj;
+    
 
     public Inimigo inimigo;
 
@@ -105,7 +114,7 @@ public class Personagem : MonoBehaviour
     {
         _diag = GetComponent<DialogueManager>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
-        _anim = GetComponent<Animator>();
+        _anim = GetComponentInChildren<Animator>();
         _controller = GetComponent<ThirdPersonController>();
         _input = GetComponent<StarterAssetsInputs>();
         _throwScript = GetComponent<Equipamento>();
@@ -122,7 +131,7 @@ public class Personagem : MonoBehaviour
         // Chamando script para que a barra de vida fique no total
         barraDeVida.vidaMaxima(playerVida);
         baseSpeed = _controller.MoveSpeed;
-        animacaoCaptura = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -233,20 +242,14 @@ public class Personagem : MonoBehaviour
                         isInteracting = false;
                         textInteract.SetActive(false);
                         change = true;
-                        materialObj = obj.GetComponent<Renderer>();
-                        materialObj.material.color = Color.red;
+                        onInteract.Invoke();
+                        BoxCollider box = hit.transform.GetComponent<BoxCollider>();
+                        Destroy(box);
                         Debug.Log("Interagido");
                     }
-                    else
-                    {
-                        textInteract.SetActive(false);
-                    }
-                    Invoke("ColldownInteract", 0.1f);
+                    Invoke("ColldownInteract", 1f);
                 }
-                else
-                {
-                    textInteract.SetActive(false);
-                }
+                
 
                 if (hit.transform.gameObject.tag == "NPC")
                 {
@@ -263,10 +266,7 @@ public class Personagem : MonoBehaviour
 
                     }
                 }
-                else
-                {
-                    textInteract.SetActive(false);
-                }
+                
 
             }
             else

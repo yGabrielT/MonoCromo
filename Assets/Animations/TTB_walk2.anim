@@ -31819,14 +31819,15 @@ AnimationClip:
   m_HasMotionFloatCurves: 1
   m_Events:
   - time: 0.24
-    functionName: OnFootstep
+    functionName: EventOnFootstep
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11500000, guid: 26e54e5a728a9234ab24fcf1460ed8a2,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.64
-    functionName: OnFootstep
+    functionName: EventOnFootstep
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

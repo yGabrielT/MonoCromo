@@ -15,6 +15,7 @@ TagManager:
   - Interactable
   - NPC
   - Botao
+  - Ladder
   layers:
   - Default
   - TransparentFX
