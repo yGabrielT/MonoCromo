@@ -299,9 +299,6 @@ public class Personagem : MonoBehaviour
         isInteracting = false;
     }
 
-
-
-
     private void SmokeUpdate()
     {
         //Rastro para quando estiver andando

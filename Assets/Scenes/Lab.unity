@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.19617595, g: 0.21215397, b: 0.44074804, a: 1}
+  m_IndirectSpecularColor: {r: 0.19620463, g: 0.2121614, b: 0.4407429, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1667,6 +1667,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.03726803, y: 0.023429884, z: 0.102790765}
   m_Center: {x: 0.009249328, y: 0.0103562595, z: -0.043563414}
+--- !u!1 &817203005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4750983487792549359, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+    type: 3}
+  m_PrefabInstance: {fileID: 15637227753780257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &839105824
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,6 +2484,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225903595}
   m_Mesh: {fileID: 6416302070336371891, guid: 9e6890a4f8ea09b458b342cfa4689c46, type: 3}
+--- !u!95 &1284297655 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7621251738172687940, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+    type: 3}
+  m_PrefabInstance: {fileID: 15637227753780257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1360539810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2487,6 +2499,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1360539811}
+  - component: {fileID: 1360539813}
+  - component: {fileID: 1360539812}
+  - component: {fileID: 1360539815}
+  - component: {fileID: 1360539814}
   m_Layer: 0
   m_Name: Lab 1 Cenario
   m_TagString: Untagged
@@ -2513,6 +2529,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1360539812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360539810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee45d634dcafbf3408330b70dba4265a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colisao: {fileID: 1360539813}
+  alertBox: {fileID: 817203005}
+  alertaAnimator: {fileID: 1284297655}
+  textoAplicado: "Voc\xEA deve baixar este port\xE3o para poder passar"
+  alertaTxt: {fileID: 15637227753780258}
+--- !u!65 &1360539813
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360539810}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 19.05, y: 5.08, z: 1}
+  m_Center: {x: 1.55, y: 1.2, z: -48.14}
+--- !u!65 &1360539814
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360539810}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 19.68, y: 5.08, z: 1}
+  m_Center: {x: 1.55, y: 1.05, z: -59.9}
+--- !u!114 &1360539815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360539810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee45d634dcafbf3408330b70dba4265a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colisao: {fileID: 1360539814}
+  alertBox: {fileID: 817203005}
+  alertaAnimator: {fileID: 1284297655}
+  textoAplicado: Abaixe as alavancas e liberar as portas dos outros corredores
+  alertaTxt: {fileID: 15637227753780258}
 --- !u!1 &1362785467
 GameObject:
   m_ObjectHideFlags: 0
@@ -5707,6 +5799,11 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7784866409433291063, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cc351e6cd44c4304cb5c07d78e48f308, type: 3}
     - target: {fileID: 7837996130825245828, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
       propertyPath: m_IsActive
@@ -5807,6 +5904,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8392929705353896189, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.213919
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392929705353896189, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.439805
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392929705353896189, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.438147
+      objectReference: {fileID: 0}
     - target: {fileID: 8467929944315155507, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5878,6 +5990,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed584ddbd1491534f9e8ed572cd57fdd, type: 3}
+--- !u!114 &15637227753780258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1200065582606424175, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+    type: 3}
+  m_PrefabInstance: {fileID: 15637227753780257}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &19156295260734492
 MeshFilter:
   m_ObjectHideFlags: 0

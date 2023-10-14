@@ -201,9 +201,9 @@ public class Equipamento : MonoBehaviour
         else if (_isSecundario && _municaoSecundaria == 0)
         {
             armaPrincipal.enabled = false;
+            Granada1.enabled = true;
             MunicaoPrincipalText.SetText("");
             MunicaoMaxText.SetText("");
-            Granada1.enabled = false;
             GranadaPincipalText.SetText(_municaoSecundaria.ToString());
             GranadaText.SetText("Não há granadas!");
         }
