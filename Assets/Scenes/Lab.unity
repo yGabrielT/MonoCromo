@@ -2501,8 +2501,6 @@ GameObject:
   - component: {fileID: 1360539811}
   - component: {fileID: 1360539813}
   - component: {fileID: 1360539812}
-  - component: {fileID: 1360539815}
-  - component: {fileID: 1360539814}
   m_Layer: 0
   m_Name: Lab 1 Cenario
   m_TagString: Untagged
@@ -2567,44 +2565,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 19.05, y: 5.08, z: 1}
   m_Center: {x: 1.55, y: 1.2, z: -48.14}
---- !u!65 &1360539814
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360539810}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 19.68, y: 5.08, z: 1}
-  m_Center: {x: 1.55, y: 1.05, z: -59.9}
---- !u!114 &1360539815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360539810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee45d634dcafbf3408330b70dba4265a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colisao: {fileID: 1360539814}
-  alertBox: {fileID: 817203005}
-  alertaAnimator: {fileID: 1284297655}
-  textoAplicado: Abaixe as alavancas e liberar as portas dos outros corredores
-  alertaTxt: {fileID: 15637227753780258}
 --- !u!1 &1362785467
 GameObject:
   m_ObjectHideFlags: 0
@@ -8299,6 +8259,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652243711737}
+  - component: {fileID: 919132148504497220}
+  - component: {fileID: 919132148504497221}
   m_Layer: 7
   m_Name: Refeitorio
   m_TagString: Untagged
@@ -8306,6 +8268,44 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!65 &919132148504497220
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148504497219}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: -14.6, y: 2.56, z: -0.9}
+  m_Center: {x: -24.26, y: 0.93, z: -65.72}
+--- !u!114 &919132148504497221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148504497219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee45d634dcafbf3408330b70dba4265a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colisao: {fileID: 919132148504497220}
+  alertBox: {fileID: 817203005}
+  alertaAnimator: {fileID: 1284297655}
+  textoAplicado: Abaixe as duas alanvancas para liberar as portas trancadas.
+  alertaTxt: {fileID: 15637227753780258}
 --- !u!1 &919132148666524962
 GameObject:
   m_ObjectHideFlags: 0
