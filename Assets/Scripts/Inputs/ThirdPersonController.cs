@@ -287,12 +287,70 @@ namespace StarterAssets
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
-            // move the player
+
+            // Escalar //
+
+            if (!_isClimbing)
+            {
+                float aboveOrigin = 2.4f;
+                float checkLadderDistance = .5f;
+                if (Physics.Raycast(transform.position + Vector3.up * aboveOrigin, targetDirection, out RaycastHit ladderHit, checkLadderDistance))
+                {
+                    Debug.DrawRay(transform.position + Vector3.up * aboveOrigin, targetDirection, Color.red,checkLadderDistance);
+                    if (ladderHit.transform.gameObject.tag == "Ladder")
+                    {
+                        SubirEscada(targetDirection);
+                        StartClimbAnimation();
+                    }
+                }
+            }
+            else
+            {
+                float aboveOrigin = 2.4f;
+                float checkLadderDistance = .5f;
+                if (Physics.Raycast(transform.position + Vector3.up * aboveOrigin, lastGrabDir, out RaycastHit ladderHit, checkLadderDistance))
+                {
+                    Debug.DrawRay(transform.position + Vector3.up * aboveOrigin, lastGrabDir, Color.red,checkLadderDistance);
+                    if (ladderHit.transform.gameObject.tag != "Ladder")
+                    {
+                        SairDaEscada();
+                        StopClimbAnimation();
+                        _verticalVelocity = 10f;
+                    }
+
+                }
+                else
+                {
+                    SairDaEscada();
+                    StopClimbAnimation();
+                    _verticalVelocity = 10f;
+                }
+            }
+
+            
+            if (_isClimbing)
+            {
+                
+                Debug.Log("Encontrado escada");
+                
+                targetDirection.y = _input.move.y;
+                targetDirection.x = 0f;
+                targetDirection.z = 0f;
+                _verticalVelocity = 0f;
+                _rotateOnMove = false;
+                Grounded = true;
+                Debug.Log(targetDirection);
+                _speed = targetSpeed;
+                
+                _animator.SetBool("isClimbing", true);
+            }
+            else
+            {
+                _animator.SetBool("isClimbing", false);
+            }
 
 
-            Escalar(targetSpeed, targetDirection);
-
-
+            // Movimento //
 
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
@@ -305,64 +363,6 @@ namespace StarterAssets
             }
         }
 
-        public void Escalar(float targetSpeed, Vector3 targetDirection)
-        {
-            if (!_isClimbing)
-            {
-                float aboveOrigin = .4f;
-                float checkLadderDistance = 1f;
-                if (Physics.Raycast(transform.position + Vector3.up * aboveOrigin, targetDirection, out RaycastHit ladderHit, checkLadderDistance))
-                {
-                    if (ladderHit.transform.gameObject.tag == "Ladder")
-                    {
-                        SubirEscada(targetDirection);
-                        StartClimbAnimation();
-                    }
-                }
-            }
-            else
-            {
-                float aboveOrigin = .4f;
-                float checkLadderDistance = 1f;
-                if (Physics.Raycast(transform.position + Vector3.up * aboveOrigin, -lastGrabDir, out RaycastHit ladderHit, checkLadderDistance))
-                {
-                    if (ladderHit.transform.gameObject.tag != "Ladder")
-                    {
-                        SairDaEscada();
-                        StopClimbAnimation();
-                        _verticalVelocity = 5f;
-                    }
-
-                }
-                else
-                {
-                    SairDaEscada();
-                    StopClimbAnimation();
-                    _verticalVelocity = 5f;
-                }
-            }
-
-
-            if (_isClimbing)
-            {
-                Debug.Log("Encontrado escada");
-                targetDirection.x = 0f;
-                targetDirection.y = -targetDirection.z;
-                targetDirection.z = 0f;
-                _verticalVelocity = 0f;
-                Grounded = true;
-
-                _speed = targetSpeed;
-
-                _animator.SetBool("isClimbing", true);
-            }
-            else
-            {
-                _animator.SetBool("isClimbing", false);
-            }
-
-
-        }
 
 
         private void SubirEscada(Vector3 escadaDir)
