@@ -18,7 +18,7 @@ Material:
   - _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 1
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2050
   stringTagMap:
     RenderType: Opaque
@@ -126,7 +126,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _Cull: 0
+    - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -186,12 +186,12 @@ Material:
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _SpecClipMaskScale: 1
-    - _SpecShadowStrength: 1
+    - _SpecShadowStrength: 0.397
     - _SpecSource: 0
     - _SpecularClipStrength: 0
-    - _SpecularFalloff: 0.371
+    - _SpecularFalloff: 1
     - _SpecularHighlights: 0
-    - _SpecularSize: 0.03
+    - _SpecularSize: 0.648
     - _SpherizeNormalEnabled: 0
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
@@ -215,7 +215,7 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineDistancFade: {r: -25, g: 50, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 0.223}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.304}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.272}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 2}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
