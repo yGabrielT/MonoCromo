@@ -142,6 +142,31 @@ MonoBehaviour:
   bladeRotation:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-3806857518513084171
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
+  m_Name: FilmGrain
+  m_EditorClassIdentifier: 
+  active: 1
+  type:
+    m_OverrideState: 1
+    m_Value: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.149
+  response:
+    m_OverrideState: 1
+    m_Value: 0.264
+  texture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +186,8 @@ MonoBehaviour:
   - {fileID: -4467357601162200048}
   - {fileID: -5725727598430453356}
   - {fileID: -4239209431463522246}
+  - {fileID: 7772751662296498128}
+  - {fileID: -3806857518513084171}
 --- !u!114 &6818830587431383316
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -179,22 +206,22 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.6
+    m_Value: 0.1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.4
+    m_Value: 0.2
   scatter:
     m_OverrideState: 1
-    m_Value: 0.894
+    m_Value: 0
   clamp:
     m_OverrideState: 1
-    m_Value: 65472
+    m_Value: 200
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   highQualityFiltering:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   downscale:
     m_OverrideState: 0
     m_Value: 0
@@ -232,7 +259,23 @@ MonoBehaviour:
     m_Value: 0.346
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.293
+    m_Value: 0.417
   rounded:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &7772751662296498128
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.193

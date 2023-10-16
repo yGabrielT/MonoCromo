@@ -14,7 +14,8 @@ Material:
   m_ValidKeywords:
   - _HALFTONESHAPE_DOT
   - _SPECULAR_COLOR
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -150,7 +151,7 @@ Material:
     - _SpecularClipStrength: 0
     - _SpecularFalloff: 0
     - _SpecularHighlights: 0
-    - _SpecularSize: 1
+    - _SpecularSize: 0
     - _SpherizeNormalEnabled: 0
     - _SrcBlend: 1
     - _StencilComp: 0

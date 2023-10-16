@@ -1,4 +1,5 @@
-﻿ using UnityEngine;
+﻿
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.HID;
@@ -12,16 +13,16 @@ namespace StarterAssets
 
     public class ThirdPersonController : MonoBehaviour
     {
-        
+
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
-        
+
         public float Sensivity = 1f;
         public bool _rotateOnMove = true;
-        
+
         private bool temp;
-        
+
 
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
@@ -133,6 +134,8 @@ namespace StarterAssets
             }
         }
 
+        private Vector3 lastGrabDir;
+
 
         private void Awake()
         {
@@ -145,7 +148,7 @@ namespace StarterAssets
 
         private void Start()
         {
-            
+
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             //_hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
@@ -165,7 +168,7 @@ namespace StarterAssets
 
         private void Update()
         {
-            
+
             //_hasAnimator = TryGetComponent(out _animator);
             JumpAndGravity();
             GroundedCheck();
@@ -209,9 +212,9 @@ namespace StarterAssets
                 //Don't multiply mouse input by Time.deltaTime;
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.unscaledDeltaTime;
 
-                lookingLerp = Vector2.Lerp(lookingLerp, _input.look, Time.unscaledDeltaTime * _mouseLerpSpeed );
+                lookingLerp = Vector2.Lerp(lookingLerp, _input.look, Time.unscaledDeltaTime * _mouseLerpSpeed);
 
-                _cinemachineTargetYaw += lookingLerp.x  * Sensivity;
+                _cinemachineTargetYaw += lookingLerp.x * Sensivity;
                 _cinemachineTargetPitch += lookingLerp.y * Sensivity;
             }
 
@@ -278,14 +281,32 @@ namespace StarterAssets
                 {
                     transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
                 }
-                
+
             }
 
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
-            
+
+
+            Escalar(targetSpeed, targetDirection);
+
+
+
+            _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
+                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+
+            // update animator if using character
+            if (_hasAnimator)
+            {
+                _animator.SetFloat(_animIDSpeed, _animationBlend);
+                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+            }
+        }
+
+        public void Escalar(float targetSpeed, Vector3 targetDirection)
+        {
             if (!_isClimbing)
             {
                 float aboveOrigin = .4f;
@@ -294,7 +315,7 @@ namespace StarterAssets
                 {
                     if (ladderHit.transform.gameObject.tag == "Ladder")
                     {
-                        SubirEscada();
+                        SubirEscada(targetDirection);
                         StartClimbAnimation();
                     }
                 }
@@ -303,7 +324,7 @@ namespace StarterAssets
             {
                 float aboveOrigin = .4f;
                 float checkLadderDistance = 1f;
-                if (Physics.Raycast(transform.position + Vector3.up * aboveOrigin, targetDirection, out RaycastHit ladderHit, checkLadderDistance))
+                if (Physics.Raycast(transform.position + Vector3.up * aboveOrigin, -lastGrabDir, out RaycastHit ladderHit, checkLadderDistance))
                 {
                     if (ladderHit.transform.gameObject.tag != "Ladder")
                     {
@@ -320,8 +341,8 @@ namespace StarterAssets
                     _verticalVelocity = 5f;
                 }
             }
-            
-            
+
+
             if (_isClimbing)
             {
                 Debug.Log("Encontrado escada");
@@ -330,37 +351,28 @@ namespace StarterAssets
                 targetDirection.z = 0f;
                 _verticalVelocity = 0f;
                 Grounded = true;
-                
+
                 _speed = targetSpeed;
-                
+
                 _animator.SetBool("isClimbing", true);
             }
-            else{
+            else
+            {
                 _animator.SetBool("isClimbing", false);
             }
 
-            
 
-
-            
-            _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-
-            // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
-            }
         }
 
-        private void SubirEscada()
+
+        private void SubirEscada(Vector3 escadaDir)
         {
             _isClimbing = true;
+            this.lastGrabDir = escadaDir;
         }
         private void SairDaEscada()
         {
-            _isClimbing = false; 
+            _isClimbing = false;
         }
 
         private void JumpAndGravity()
@@ -432,6 +444,7 @@ namespace StarterAssets
             }
         }
 
+       
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
             if (lfAngle < -360f) lfAngle += 360f;
@@ -483,17 +496,20 @@ namespace StarterAssets
             _rotateOnMove = rotate;
         }
 
-        private void StartClimbAnimation(){
-            if(!startClimb){
+        private void StartClimbAnimation()
+        {
+            if (!startClimb)
+            {
                 startClimb = true;
                 _animator.SetTrigger("StartClimbing");
             }
         }
-        private void StopClimbAnimation(){
+        private void StopClimbAnimation()
+        {
             startClimb = false;
 
         }
 
-       
+
     }
 }
