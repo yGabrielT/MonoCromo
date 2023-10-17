@@ -26,7 +26,7 @@ public class PickBomb : MonoBehaviour
         {
             
             Destroy(other.gameObject);
-            _throw.municaoPrincipal += 5;
+            _throw._municaoPrincipal += 5;
             _throw.prontoPraJogar = true;
             _throw._isSecundario = false;
             _throw.isPrincipal = true;

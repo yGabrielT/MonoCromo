@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8340553829059058691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7afc38c2d1fc5794db8af8261ba5f3b1, type: 3}
+  m_Name: OutlineObjectFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  mask:
+    serializedVersion: 2
+    m_Bits: 8
+  Event: 0
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +95,8 @@ MonoBehaviour:
   - {fileID: -1878332245247344467}
   - {fileID: 842732484475550573}
   - {fileID: -715079728250416697}
-  m_RendererFeatureMap: adc0de57c6d2eee56dfbd8c9bafcb10bc7118d9bc68613f6
+  - {fileID: -8340553829059058691}
+  m_RendererFeatureMap: adc0de57c6d2eee56dfbd8c9bafcb10bc7118d9bc68613f6fd23e98c7b66408c
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}

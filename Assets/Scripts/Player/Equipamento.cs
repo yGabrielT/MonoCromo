@@ -15,7 +15,7 @@ public class Equipamento : MonoBehaviour
     public float forcaPrincipal;
     public float forcaCimaPrincipal;
     public float tempoDeRecargaPrincipal;
-    public int municaoPrincipal;
+    public int _municaoPrincipal;
     [SerializeField] private float forceShake = 0.1f;
     public AudioSource audioPrincipal;
     [SerializeField] private ParticleSystem muzzleShock;
@@ -118,7 +118,7 @@ public class Equipamento : MonoBehaviour
         projetilRb.AddForce(forcaAdicional, ForceMode.Impulse);
         if(isPrincipal && !_isSecundario)
         {
-            municaoPrincipal--;
+            _municaoPrincipal--;
         }
         if(!isPrincipal && _isSecundario)
         {
@@ -136,9 +136,9 @@ public class Equipamento : MonoBehaviour
     }
     private void LimitarMunicao()
     {
-        if(municaoPrincipal > municao1Max)
+        if(_municaoPrincipal > municao1Max)
         {
-            municaoPrincipal = municao1Max;
+            _municaoPrincipal = municao1Max;
         }
         if(_municaoSecundaria > municao2Max)
         {
@@ -155,7 +155,7 @@ public class Equipamento : MonoBehaviour
             cooldownAtual = tempoDeRecargaPrincipal; 
             forcaAtual = forcaPrincipal;
             forcaCimaAtual = forcaCimaPrincipal;
-            municaoAtual = municaoPrincipal;
+            municaoAtual = _municaoPrincipal;
         }
         //Usando Granada de tinta
         else if (!isPrincipal && _isSecundario)
@@ -178,14 +178,14 @@ public class Equipamento : MonoBehaviour
     {
         if (isPrincipal && !_isSecundario)
         {
-            MunicaoPrincipalText.SetText(municaoPrincipal.ToString());
+            MunicaoPrincipalText.SetText(_municaoPrincipal.ToString());
             MunicaoMaxText.SetText(municao1Max.ToString());
             GranadaText.SetText("");
             armaPrincipal.enabled = true;
             GranadaPincipalText.SetText("");
             Granada1.enabled = false;
         }
-        else if (isPrincipal && municaoPrincipal == 0)
+        else if (isPrincipal && _municaoPrincipal == 0)
         {
             GranadaText.SetText("Não há munição!");
         }
@@ -201,11 +201,12 @@ public class Equipamento : MonoBehaviour
         else if (_isSecundario && _municaoSecundaria == 0)
         {
             armaPrincipal.enabled = false;
-            Granada1.enabled = true;
+            Granada1.enabled = false;
             MunicaoPrincipalText.SetText("");
             MunicaoMaxText.SetText("");
+            _isSecundario = false;
             GranadaPincipalText.SetText(_municaoSecundaria.ToString());
-            GranadaText.SetText("Não há granadas!");
+            //GranadaText.SetText("Não há granadas!");
         }
         
         if (!isPrincipal && !_isSecundario)
@@ -222,14 +223,14 @@ public class Equipamento : MonoBehaviour
 
     private void trocarArma()
     {
-        if(_input.scroll > 0)
+        if(_input.scroll > 0 && _municaoPrincipal > 0)
         {
             Debug.Log("Mouse Scroll cima");
             isPrincipal = true;
             _isSecundario = false;
 
         }
-        else if (_input.scroll < 0)
+        else if (_input.scroll < 0 && _municaoSecundaria > 0) 
         {
            Debug.Log("Mouse Scroll baixo");
             isPrincipal = false;

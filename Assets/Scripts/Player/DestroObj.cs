@@ -13,6 +13,7 @@ public class DestroObj : MonoBehaviour
         {
             Explode();
         }
+        
 
         if (this.gameObject.tag != ("Bombs"))
         {

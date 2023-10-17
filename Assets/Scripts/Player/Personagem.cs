@@ -352,7 +352,7 @@ public class Personagem : MonoBehaviour
         }
         if (ativarControles)
         {
-            if (_input.aim)
+            if (_input.aim && (_throwScript.isPrincipal || _throwScript._isSecundario))
             {
                 _cam.gameObject.SetActive(true);
                 _crosshair.gameObject.SetActive(true);
@@ -386,7 +386,9 @@ public class Personagem : MonoBehaviour
             }
         }
 
-
+        if(!_throwScript.isPrincipal && !_throwScript._isSecundario){
+            weaponObj.SetActive(false);
+        }
         if (_throwScript._isSecundario && _throwScript._municaoSecundaria != 0)
         {
             weaponObj.SetActive(false);
@@ -402,7 +404,7 @@ public class Personagem : MonoBehaviour
         }
         else
         {
-            weaponObj.SetActive(true);
+            
             _anim.SetBool("isAiming", false);
         }
     }
