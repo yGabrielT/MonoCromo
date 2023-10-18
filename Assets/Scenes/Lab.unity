@@ -8941,6 +8941,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4059393250019414788, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
+      propertyPath: AddSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059393250019414788, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -9028,6 +9033,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392929705353896189, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -26.645031
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392929705353896189, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.342029
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392929705353896189, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 33.10037
       objectReference: {fileID: 0}
     - target: {fileID: 8467929944315155507, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
@@ -10557,7 +10577,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148504497219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.21, y: -0.26, z: 6.53}
+  m_LocalPosition: {x: 27.05, y: -0.14999962, z: 6.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11392,8 +11412,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652243711737}
-  - component: {fileID: 919132148504497220}
   - component: {fileID: 919132148504497221}
+  - component: {fileID: 919132148504497222}
   m_Layer: 7
   m_Name: Refeitorio
   m_TagString: Untagged
@@ -11401,7 +11421,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!65 &919132148504497220
+--- !u!114 &919132148504497221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148504497219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee45d634dcafbf3408330b70dba4265a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colisao: {fileID: 8593251044018431469}
+  alertBox: {fileID: 817203005}
+  alertaAnimator: {fileID: 1284297655}
+  textoAplicado: Abaixe as duas alanvancas para liberar as portas trancadas.
+  alertaTxt: {fileID: 15637227753780258}
+--- !u!65 &919132148504497222
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11416,29 +11453,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: -14.6, y: 2.56, z: -0.9}
-  m_Center: {x: -24.26, y: 0.93, z: -65.72}
---- !u!114 &919132148504497221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148504497219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee45d634dcafbf3408330b70dba4265a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colisao: {fileID: 919132148504497220}
-  alertBox: {fileID: 817203005}
-  alertaAnimator: {fileID: 1284297655}
-  textoAplicado: Abaixe as duas alanvancas para liberar as portas trancadas.
-  alertaTxt: {fileID: 15637227753780258}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: -24.71, y: 1.83, z: -70.01}
 --- !u!33 &919861472399253808
 MeshFilter:
   m_ObjectHideFlags: 0

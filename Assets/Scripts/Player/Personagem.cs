@@ -109,6 +109,8 @@ public class Personagem : MonoBehaviour
 
     [SerializeField] private bool isDead = false;
 
+    private float sprintVelocidadebase;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -132,6 +134,7 @@ public class Personagem : MonoBehaviour
         // Chamando script para que a barra de vida fique no total
         barraDeVida.vidaMaxima(playerVida);
         baseSpeed = _controller.MoveSpeed;
+        sprintVelocidadebase = sprintVelocidade;
 
     }
 
@@ -455,12 +458,15 @@ public class Personagem : MonoBehaviour
         if (_input.slow && !isDouble && !isCrouch)
         {
             isDouble = true;
-            velocidade = velocidade + AddSpeed;
+            velocidade *= AddSpeed;
+            sprintVelocidade *= AddSpeed;
         }
         else if (!_input.slow && !isCrouch)
         {
             isDouble = false;
             velocidade = baseSpeed;
+            sprintVelocidade = sprintVelocidadebase;
+        
         }
     }
 
