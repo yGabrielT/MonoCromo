@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 24681316}
   - component: {fileID: 24681317}
   m_Layer: 0
-  m_Name: Pivot
+  m_Name: PivotEsq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -699,7 +699,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104394401}
   m_LocalRotation: {x: 0.70755607, y: -0, z: -0, w: 0.7066573}
-  m_LocalPosition: {x: -5.7019844, y: 24.552551, z: -129.86922}
+  m_LocalPosition: {x: -4.03, y: 24.552551, z: -127.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -741,7 +741,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 80
+  m_Intensity: 645.8
   m_Range: 30.112194
   m_SpotAngle: 73.806244
   m_InnerSpotAngle: 73.806244
@@ -2478,7 +2478,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &686440818
 Transform:
@@ -5639,7 +5639,7 @@ GameObject:
   - component: {fileID: 1502322748}
   - component: {fileID: 1502322749}
   m_Layer: 0
-  m_Name: Pivot
+  m_Name: PivotDir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7258,6 +7258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1871762511}
   - component: {fileID: 1871762512}
+  - component: {fileID: 1871762513}
   m_Layer: 0
   m_Name: Alavanca Direita
   m_TagString: Interactable
@@ -7303,6 +7304,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3, y: 1.66, z: 1.27}
   m_Center: {x: -0.98, y: 0.3, z: -1.6}
+--- !u!114 &1871762513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871762510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98c9b8f8a3117d4784b64feb5bc7a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Trigger: TriggerDir
+  isReseted: 0
+  animator: {fileID: 1502322749}
 --- !u!1001 &1901049268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7860,6 +7876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1972132822}
   - component: {fileID: 1972132823}
+  - component: {fileID: 1972132824}
   m_Layer: 7
   m_Name: Alavanca Esquerda
   m_TagString: Interactable
@@ -7905,6 +7922,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.05, y: 0.11318197, z: 0.12545477}
   m_Center: {x: 3.3475917e-17, y: -0.008409013, z: -0.03689843}
+--- !u!114 &1972132824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972132821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98c9b8f8a3117d4784b64feb5bc7a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Trigger: TriggerEsq
+  isReseted: 0
+  animator: {fileID: 24681317}
 --- !u!1 &1972607713
 GameObject:
   m_ObjectHideFlags: 0
@@ -8432,6 +8464,18 @@ Transform:
   m_Father: {fileID: 1850601677}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &2056543319 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2303908893290524580, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+    type: 3}
+  m_PrefabInstance: {fileID: 15637227753780257}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ff6fe9944665d47ac3d4c3d298cbea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2129366436
 GameObject:
   m_ObjectHideFlags: 0
@@ -8820,10 +8864,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2364068842843219426, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+    - target: {fileID: 1532025498962330333, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
-      propertyPath: Damping.y
-      value: 0.8
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532025498962330333, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532025498962330333, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2056543319}
+    - target: {fileID: 1532025498962330333, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532025498962330333, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ContinueConversation
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532025498962330333, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DialogueManager, Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532025498962330333, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2748481515517924162, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
@@ -8863,6 +8937,11 @@ PrefabInstance:
     - target: {fileID: 2983524813819708890, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059393250019414788, guid: ed584ddbd1491534f9e8ed572cd57fdd,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4059393250019414788, guid: ed584ddbd1491534f9e8ed572cd57fdd,
@@ -8949,21 +9028,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8250105428136910918, guid: ed584ddbd1491534f9e8ed572cd57fdd,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 8250105428136910918, guid: ed584ddbd1491534f9e8ed572cd57fdd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 8250105428136910918, guid: ed584ddbd1491534f9e8ed572cd57fdd,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.24
       objectReference: {fileID: 0}
     - target: {fileID: 8467929944315155507, guid: ed584ddbd1491534f9e8ed572cd57fdd,
         type: 3}
@@ -20044,7 +20108,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!65 &4657202160522488963
 BoxCollider:
@@ -24129,7 +24193,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!23 &6395083534651569884
 MeshRenderer:
@@ -30976,6 +31040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097acc0092be082439bd26d366138617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interectableTriggerDir: {fileID: 1871762513}
+  interectableTriggerEsq: {fileID: 1972132824}
   isReseted: 0
   isChanged: 0
   TopLight: {fileID: 104394404}

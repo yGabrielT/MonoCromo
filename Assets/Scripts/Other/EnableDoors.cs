@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using other;
 using UnityEngine;
 
 public class EnableDoors : MonoBehaviour
 {
+    public InterectableTrigger interectableTriggerDir;
+    public InterectableTrigger interectableTriggerEsq;
     public bool isReseted  = false;
     public bool isChanged = false;
     public Light TopLight;
@@ -29,7 +32,8 @@ public class EnableDoors : MonoBehaviour
             
 
         }
-        if(AlavancaCount == 2 && !isReseted){
+        if((interectableTriggerDir.isReseted && interectableTriggerEsq.isReseted) && !isReseted){
+            Debug.Log("Portas destrancadas");
             isReseted = true;
             Door1.hasBeenReseted = true;
             Door2.hasBeenReseted = true;

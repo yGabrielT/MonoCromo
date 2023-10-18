@@ -75,6 +75,31 @@ MonoBehaviour:
   rounded:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-6231469554024390915
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
+  m_Name: FilmGrain
+  m_EditorClassIdentifier: 
+  active: 1
+  type:
+    m_OverrideState: 1
+    m_Value: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.073
+  response:
+    m_OverrideState: 1
+    m_Value: 0.048
+  texture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
 --- !u!114 &-2377274127070893178
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -103,6 +128,22 @@ MonoBehaviour:
   scale:
     m_OverrideState: 0
     m_Value: 1
+--- !u!114 &-1815387557381479574
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.274
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +163,8 @@ MonoBehaviour:
   - {fileID: 184913755460892808}
   - {fileID: -2377274127070893178}
   - {fileID: 6555938152770704689}
+  - {fileID: -1815387557381479574}
+  - {fileID: -6231469554024390915}
 --- !u!114 &184913755460892808
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -140,7 +183,7 @@ MonoBehaviour:
     m_Value: 2
   contrast:
     m_OverrideState: 1
-    m_Value: -4
+    m_Value: 1
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -149,7 +192,7 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 37
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3

@@ -9,6 +9,7 @@ using DG.Tweening;
 using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
 using UnityEngine.Events;
+using other;
 
 public class Personagem : MonoBehaviour
 {
@@ -53,7 +54,7 @@ public class Personagem : MonoBehaviour
 
 
     [HideInInspector] public Renderer materialObj;
-    
+
 
     public Inimigo inimigo;
 
@@ -131,7 +132,7 @@ public class Personagem : MonoBehaviour
         // Chamando script para que a barra de vida fique no total
         barraDeVida.vidaMaxima(playerVida);
         baseSpeed = _controller.MoveSpeed;
-        
+
     }
 
     // Update is called once per frame
@@ -207,6 +208,18 @@ public class Personagem : MonoBehaviour
 
     }
 
+    private IEnumerator onInteractEnum(RaycastHit hit)
+    {
+        onInteract.Invoke();
+        BoxCollider box = hit.transform.GetComponent<BoxCollider>();
+        InterectableTrigger interact = hit.transform.GetComponent<InterectableTrigger>();
+        Debug.Log(hit.transform.name + "Detectado no Enumerator");
+        interact.onAlavancaTrigger();
+        box.enabled = false;
+        yield return new WaitForSeconds(4.5f);
+        box.enabled = true;
+    }
+
     private void InteractInput()
     {
         if (_input.interact)
@@ -214,7 +227,7 @@ public class Personagem : MonoBehaviour
 
             _input.interact = false;
             isInteracting = true;
-            
+
 
         }
 
@@ -242,14 +255,13 @@ public class Personagem : MonoBehaviour
                         isInteracting = false;
                         textInteract.SetActive(false);
                         change = true;
-                        onInteract.Invoke();
-                        BoxCollider box = hit.transform.GetComponent<BoxCollider>();
-                        Destroy(box);
+
+                        StartCoroutine(onInteractEnum(hit));
                         Debug.Log("Interagido");
                     }
                     Invoke("ColldownInteract", 1f);
                 }
-                
+
 
                 if (hit.transform.gameObject.tag == "NPC")
                 {
@@ -266,7 +278,7 @@ public class Personagem : MonoBehaviour
 
                     }
                 }
-                
+
 
             }
             else
@@ -386,7 +398,8 @@ public class Personagem : MonoBehaviour
             }
         }
 
-        if(!_throwScript.isPrincipal && !_throwScript._isSecundario){
+        if (!_throwScript.isPrincipal && !_throwScript._isSecundario)
+        {
             weaponObj.SetActive(false);
         }
         if (_throwScript._isSecundario && _throwScript._municaoSecundaria != 0)
@@ -404,7 +417,7 @@ public class Personagem : MonoBehaviour
         }
         else
         {
-            
+
             _anim.SetBool("isAiming", false);
         }
     }

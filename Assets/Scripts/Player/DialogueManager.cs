@@ -51,12 +51,21 @@ public class DialogueManager : MonoBehaviour
         if (isInCooldown)
         {
             _input.interact = false;
+            _input.jump = false;
         }
-        if (_input.interact && _alreadyChatitng && !isInCooldown)
+        if (_input.jump && _alreadyChatitng && !isInCooldown)
         {
-            _input.interact = false;
+            _input.jump = false;
             Debug.Log("Next Conv");
             ContinueConversation();
+        }
+        if(_alreadyChatitng){
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else{
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
         
     }

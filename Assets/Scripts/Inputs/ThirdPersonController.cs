@@ -353,7 +353,7 @@ namespace StarterAssets
             // Movimento //
 
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.unscaledDeltaTime);
 
             // update animator if using character
             if (_hasAnimator)
@@ -440,7 +440,7 @@ namespace StarterAssets
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
             if (_verticalVelocity < _terminalVelocity)
             {
-                _verticalVelocity += Gravity * Time.deltaTime;
+                _verticalVelocity += Gravity * Time.unscaledDeltaTime;
             }
         }
 
