@@ -23,14 +23,14 @@ Material:
   m_Name: screw 1
   m_Shader: {fileID: 4800000, guid: e88aeddd2ef1f934d805981244872e27, type: 3}
   m_Parent: {fileID: 2100000, guid: bdc685137fbc9d043be31e8efd692bf0, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
   - _HALFTONESHAPE_DOT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2050
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
@@ -45,4 +45,5 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.07999084, g: 0.07999084, b: 0.07999084, a: 1}
     - _Color: {r: 0.07999083, g: 0.07999083, b: 0.07999083, a: 1}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.95}
   m_BuildTextureStacks: []

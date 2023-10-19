@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Cinemachine;
-
+using Menu;
 public class DialogueManager : MonoBehaviour
 {
 
@@ -20,7 +20,6 @@ public class DialogueManager : MonoBehaviour
     private List<AudioClip> _primaryAudios = new List<AudioClip>();
 
     [SerializeField] private AudioSource _audioSource;
-
 
     private List<NpcDesc> _npc = new List<NpcDesc>();                        // Retirado do ScriptableObject
     private int _ActualIndex = 0;                                            // Index da conversa
@@ -63,7 +62,7 @@ public class DialogueManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        else{
+        if(_alreadyChatitng && !PauseController.estaPausado){
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
