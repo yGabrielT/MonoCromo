@@ -28,7 +28,19 @@ public class DataController : MonoBehaviour
 
     private void Start()
     {
-        CarregarValores();
+        if (PlayerPrefs.GetFloat("VolumeGeral") == 0 && PlayerPrefs.GetFloat("VolumeMusica") == 0 && PlayerPrefs.GetFloat("VolumeEfeitos") == 0)
+        {
+            float valorQualquer = 0.5f;
+
+            PlayerPrefs.SetFloat("VolumeGeral", valorQualquer);
+            PlayerPrefs.SetFloat("VolumeMusica", valorQualquer);
+            PlayerPrefs.SetFloat("VolumeEfeitos", valorQualquer);
+        }
+        else
+        {
+            CarregarValores();
+        }
+        
     }
 
     public void SalvarVolume()

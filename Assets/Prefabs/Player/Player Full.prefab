@@ -1859,7 +1859,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 423, y: -85}
+  m_AnchoredPosition: {x: 0, y: -88}
   m_SizeDelta: {x: 290, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6581992272948708904
@@ -3357,7 +3357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 424, y: 258}
+  m_AnchoredPosition: {x: 0, y: 258}
   m_SizeDelta: {x: 310, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8619155003643345674
@@ -3902,6 +3902,7 @@ MonoBehaviour:
   pauseUI: {fileID: 4705351928181593730}
   primeiraTelaUI: {fileID: 2856876417193530452}
   ajustesUI: {fileID: 7837996130825245828}
+  controlesUI: {fileID: 0}
   imgNormal: {fileID: 885125295545721235}
   imgPause: {fileID: 6090981894007133418}
   _temp: {fileID: 7858946705295571962}
@@ -4868,7 +4869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1419771211604478020
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59032,7 +59033,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6606120075081615357}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -26.50281, y: -12.439805, z: 33.038143}
+  m_LocalPosition: {x: -26.547253, y: -12.639805, z: 31.60259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -59098,7 +59099,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 423, y: 145}
+  m_AnchoredPosition: {x: 0, y: 145}
   m_SizeDelta: {x: 290, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9047595027806607261
@@ -60590,7 +60591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3974465341425909095
 RectTransform:
   m_ObjectHideFlags: 0
@@ -67308,7 +67309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 423, y: 30}
+  m_AnchoredPosition: {x: 0, y: 30}
   m_SizeDelta: {x: 290, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5974834418519282713
@@ -67863,12 +67864,12 @@ PrefabInstance:
     - target: {fileID: 1160695226083075832, guid: feef5e88f3c23664ba3c4adad8b14baf,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 645
+      value: -516
       objectReference: {fileID: 0}
     - target: {fileID: 1160695226083075832, guid: feef5e88f3c23664ba3c4adad8b14baf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 287
+      value: 406
       objectReference: {fileID: 0}
     - target: {fileID: 1314149589846721973, guid: feef5e88f3c23664ba3c4adad8b14baf,
         type: 3}
@@ -68116,6 +68117,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5094847681850593535, guid: feef5e88f3c23664ba3c4adad8b14baf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5433175136279297423, guid: feef5e88f3c23664ba3c4adad8b14baf,
         type: 3}
       propertyPath: m_Layer
@@ -68243,6 +68249,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7035263528808373990, guid: feef5e88f3c23664ba3c4adad8b14baf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7039185410926740202, guid: feef5e88f3c23664ba3c4adad8b14baf,
         type: 3}
       propertyPath: m_Layer
@@ -68312,6 +68323,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563270671337888232, guid: feef5e88f3c23664ba3c4adad8b14baf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9063717459683543329, guid: feef5e88f3c23664ba3c4adad8b14baf,
         type: 3}

@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject menuPrincipal;
     [SerializeField] private GameObject menuOpcoes;
+    [SerializeField] private GameObject menuControles;
     [SerializeField] private GameObject menuCreditos;
     [SerializeField] private string NomeDaCena;
     [SerializeField] private float delay;
@@ -30,6 +31,18 @@ public class UIController : MonoBehaviour
     {
         menuPrincipal.SetActive(true);
         menuOpcoes.SetActive(false);
+    }
+
+    public void AbrirControles()
+    {
+        menuOpcoes.SetActive(false);
+        menuControles.SetActive(true);
+    }
+
+    public void FecharControles()
+    {
+        menuControles.SetActive(false);
+        menuOpcoes.SetActive(true);
     }
 
     public void AbrirCreditos()

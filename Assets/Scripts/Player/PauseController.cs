@@ -15,6 +15,7 @@ namespace Menu
         [SerializeField] private GameObject pauseUI;
         [SerializeField] private GameObject primeiraTelaUI;
         [SerializeField] private GameObject ajustesUI;
+        [SerializeField] private GameObject controlesUI;
 
         [SerializeField] private Image imgNormal;
         [SerializeField] private Image imgPause;
@@ -99,6 +100,18 @@ namespace Menu
         {
             ajustesUI.SetActive(false);
             primeiraTelaUI.SetActive(true);
+        }
+
+        public void AbrirControles()
+        {
+            controlesUI.SetActive(true);
+            ajustesUI.SetActive(false);
+        }
+
+        public void FecharControles()
+        {
+            controlesUI.SetActive(false);
+            ajustesUI.SetActive(true);
         }
 
         public void VoltarMenu()
