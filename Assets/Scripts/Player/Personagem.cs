@@ -15,7 +15,7 @@ public class Personagem : MonoBehaviour
 {
     [Header("Atributos do Player")]
     public int playerVida;
-    public int vidaAtual;
+    public static int vidaAtual;
     public HealthBar barraDeVida;
     [Range(4f, 7f)]
     public float velocidade = 4f;
@@ -140,9 +140,10 @@ public class Personagem : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {           
         if (isDead)
         {
+            ativarControles = false;
             animacaoCaptura.Play("telaVermelha");
             if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -151,6 +152,8 @@ public class Personagem : MonoBehaviour
         }
 
         Controlar();
+        
+        
     }
 
 
@@ -200,6 +203,7 @@ public class Personagem : MonoBehaviour
             _anim.SetTrigger("isDead");
         }
     }
+ 
 
     private void OnTriggerEnter(Collider other)
     {
