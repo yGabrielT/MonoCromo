@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    // nomeie de qqlr jeito pq nn sei o q fala só queria separar
+    // nomeie de qqlr jeito pq nn sei o q fala sï¿½ queria separar
     [Header("Coisas Importantes")]
     public Transform player;
     [SerializeField] private Animator anim;
-    [SerializeField] private Collider colisaoMao;
+    [SerializeField] private Collider colisaoMaoR;
+    [SerializeField] private Collider colisaoMaoL;
 
-    [Header("Coisas Secundárias")]
+    [Header("Coisas Secundï¿½rias")]
     public int dano = 1;
 
     [SerializeField] private bool atacando;
     [SerializeField] private bool podeAtacar;
     [SerializeField] private float tempoAtaque;
     [SerializeField] private float distancia;
+    [SerializeField] private float smoothTime;
+
+
     private int damage = 20;
 
     // Update is called once per frame
@@ -29,10 +33,10 @@ public class Boss : MonoBehaviour
     {
         if (!atacando)
         {
-            // Acompanha o player com a rotação do boss. "olhando" para ele
+            // Acompanha o player com a rotaï¿½ï¿½o do boss. "olhando" para ele
             Vector3 lookDir = player.position - transform.position;
             lookDir.y = 0;
-            transform.rotation = Quaternion.LookRotation(lookDir);
+            transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.LookRotation(lookDir),smoothTime * Time.unscaledDeltaTime);
         }
 
         distancia = Vector3.Distance(transform.position, player.position);
@@ -54,22 +58,32 @@ public class Boss : MonoBehaviour
             int numeroAtaque = Random.Range(1, 2);
             anim.SetTrigger(numeroAtaque.ToString());
             // acionar dano por meio de um colider seguindo a mao do personagem
-            // penso em colocar isso por meio do rigging, o touro que peguei nn tem aniaçao por rigging no mixamo, mas sim por mudança de posição ent o collider nn acompanha
+            // penso em colocar isso por meio do rigging, o touro que peguei nn tem aniaï¿½ao por rigging no mixamo, mas sim por mudanï¿½a de posiï¿½ï¿½o ent o collider nn acompanha
             // mudo esse personagem dps
         }
 
-        // caso fique longe laça um ataque em área no chão
+        // caso fique longe laï¿½a um ataque em ï¿½rea no chï¿½o
         if(distancia > 8 && podeAtacar)
         {
             podeAtacar = false;
             int numeroAtaque = 3;
             anim.SetTrigger(numeroAtaque.ToString());
 
-            // criar dano em área
-            // buscar uma animação disso
+            // criar dano em ï¿½rea
+            // buscar uma animaï¿½ï¿½o disso
         }
 
-        // tava pensando em adicionar uma parte onde o personagem ficando distante por dois ataques ao chao o robo se aproxima e lança um surpresa
+        // tava pensando em adicionar uma parte onde o personagem ficando distante por dois ataques ao chao o robo se aproxima e lanï¿½a um surpresa
     }
+
+    public void AtivarCollider(){
+        colisaoMaoR.enabled = true;
+        colisaoMaoL.enabled = true;
+    }
+
+    public void DesativarCollider(){
+        colisaoMaoL.enabled = false;
+        colisaoMaoR.enabled = false;
+    }   
 
 }

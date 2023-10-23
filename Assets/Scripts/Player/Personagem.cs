@@ -209,7 +209,7 @@ public class Personagem : MonoBehaviour
     {
         if (other.gameObject.tag == "InProj" && !isDead)
         {
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
             PerderVida();
         }
 

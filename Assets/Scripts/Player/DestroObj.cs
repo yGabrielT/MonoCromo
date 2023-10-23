@@ -9,6 +9,7 @@ public class DestroObj : MonoBehaviour
     [SerializeField]private float raio = 10f;
     void OnTriggerEnter(Collider other)
     {
+        
         if (this.gameObject.tag == ("Bombs"))
         {
             Explode();
