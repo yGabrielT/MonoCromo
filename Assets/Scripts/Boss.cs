@@ -36,7 +36,7 @@ public class Boss : MonoBehaviour
             // Acompanha o player com a rota��o do boss. "olhando" para ele
             Vector3 lookDir = player.position - transform.position;
             lookDir.y = 0;
-            transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.LookRotation(lookDir),smoothTime * Time.unscaledDeltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.LookRotation(lookDir),smoothTime * Time.deltaTime);
         }
 
         distancia = Vector3.Distance(transform.position, player.position);
@@ -47,7 +47,12 @@ public class Boss : MonoBehaviour
             if(tempoAtaque > 3)
             {
                 tempoAtaque = 0;
+                
                 podeAtacar = true;
+                
+            }
+            else{
+                atacando = false;
             }
         }
 
@@ -55,7 +60,8 @@ public class Boss : MonoBehaviour
         if(distancia < 7 && podeAtacar)
         {
             podeAtacar = false;
-            int numeroAtaque = Random.Range(1, 2);
+            atacando = true;
+            int numeroAtaque = Random.Range(1, 3);
             anim.SetTrigger(numeroAtaque.ToString());
             // acionar dano por meio de um colider seguindo a mao do personagem
             // penso em colocar isso por meio do rigging, o touro que peguei nn tem ania�ao por rigging no mixamo, mas sim por mudan�a de posi��o ent o collider nn acompanha
@@ -65,6 +71,7 @@ public class Boss : MonoBehaviour
         // caso fique longe la�a um ataque em �rea no ch�o
         if(distancia > 8 && podeAtacar)
         {
+            atacando = true;
             podeAtacar = false;
             int numeroAtaque = 3;
             anim.SetTrigger(numeroAtaque.ToString());
