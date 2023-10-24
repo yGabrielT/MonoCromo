@@ -6,12 +6,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
+
 namespace Menu
 {
     public class PauseController : MonoBehaviour
     {
         public static bool estaPausado = false;
-
+        
         [SerializeField] private GameObject pauseUI;
         [SerializeField] private GameObject primeiraTelaUI;
         [SerializeField] private GameObject ajustesUI;
@@ -116,8 +118,9 @@ namespace Menu
 
         public void VoltarMenu()
         {
+            GameManager.Instance.VoltarMenuGame();
             Time.timeScale = 1f;
-            SceneManager.LoadScene(0);
+            
         }
     }
 

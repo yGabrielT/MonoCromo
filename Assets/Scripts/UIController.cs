@@ -10,13 +10,11 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject menuOpcoes;
     [SerializeField] private GameObject menuControles;
     [SerializeField] private GameObject menuCreditos;
-    [SerializeField] private string NomeDaCena;
-    [SerializeField] private float delay;
-    [SerializeField] private TransitionSettings set;
+    
 
     public void IniciarGame()
     {
-        TransitionManager.Instance().Transition(NomeDaCena, set, delay);
+        GameManager.Instance.AvancarCena(1);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
     }
