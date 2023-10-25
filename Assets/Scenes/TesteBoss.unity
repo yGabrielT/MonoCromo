@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 60965305}
   - component: {fileID: 60965304}
   - component: {fileID: 60965303}
+  - component: {fileID: 60965307}
   m_Layer: 7
   m_Name: "Ch\xE3o"
   m_TagString: Untagged
@@ -229,6 +230,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &60965307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60965302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.17333333
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 4c7ee8dc4e5868f4992f2bb1889f5b7a, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &460381395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 460332, guid: b89e0c3c675d2f6468bb44ecbf17fb04,
@@ -1476,6 +1508,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1341544675}
+    - targetCorrespondingSourceObject: {fileID: 113944, guid: b89e0c3c675d2f6468bb44ecbf17fb04,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1341544676}
   m_SourcePrefab: {fileID: 100100000, guid: b89e0c3c675d2f6468bb44ecbf17fb04, type: 3}
 --- !u!1 &632916605
 GameObject:
@@ -1694,6 +1730,8 @@ MonoBehaviour:
   tempoAtaque: 0
   distancia: 0
   smoothTime: 2
+  distanciaParaAndar: 10
+  _nav: {fileID: 1341544676}
 --- !u!136 &1341544675
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1717,6 +1755,28 @@ CapsuleCollider:
   m_Height: 1.8444072
   m_Direction: 1
   m_Center: {x: 0, y: 0.66220295, z: 0.27}
+--- !u!195 &1341544676
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341544671}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 9
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1484005853
 GameObject:
   m_ObjectHideFlags: 0

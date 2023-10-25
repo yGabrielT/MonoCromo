@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Boss : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class Boss : MonoBehaviour
     [SerializeField] private float distancia;
     [SerializeField] private float smoothTime;
 
+    [SerializeField] private float distanciaParaAndar;
+
+    [SerializeField] NavMeshAgent _nav;
+
+    private bool canRun;
+
 
     private int damage = 20;
 
@@ -27,8 +34,27 @@ public class Boss : MonoBehaviour
     void Update()
     {
         Atacar();
+        SeguirJogador();
     }
 
+
+    public void SeguirJogador(){
+       if(distanciaParaAndar < distancia && !podeAtacar){
+        _nav.SetDestination(player.position);
+        canRun = true;
+
+       } 
+       else{
+        anim.SetTrigger("Back");
+       }
+       if(canRun)
+        {
+            canRun = false;
+            anim.SetTrigger("run");
+        }
+
+
+    }
     public void Atacar()
     {
         if (!atacando)
@@ -69,7 +95,7 @@ public class Boss : MonoBehaviour
         }
 
         // caso fique longe la�a um ataque em �rea no ch�o
-        if(distancia > 8 && podeAtacar)
+        if((distancia > 8 && distancia < 10) &&  podeAtacar)
         {
             atacando = true;
             podeAtacar = false;
@@ -78,6 +104,10 @@ public class Boss : MonoBehaviour
 
             // criar dano em �rea
             // buscar uma anima��o disso
+        }
+        if(distancia > 10){
+            atacando = false;
+            podeAtacar = false;
         }
 
         // tava pensando em adicionar uma parte onde o personagem ficando distante por dois ataques ao chao o robo se aproxima e lan�a um surpresa

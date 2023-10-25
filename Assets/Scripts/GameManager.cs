@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public void AvancarCena(int numCena)
     {
+        Time.timeScale = 1f;
         _transition.Transition(numCena, set, delay);
     }
 
