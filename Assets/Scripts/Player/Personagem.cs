@@ -374,6 +374,7 @@ public class Personagem : MonoBehaviour
             if (_input.aim && (_throwScript.isPrincipal || _throwScript._isSecundario))
             {
                 _cam.gameObject.SetActive(true);
+                
                 _crosshair.gameObject.SetActive(true);
                 _controller.SetSensivity(aimSensivity);
                 _controller.SetRotateOnMove(false);
@@ -404,7 +405,9 @@ public class Personagem : MonoBehaviour
                 _controller.SetRotateOnMove(true);
             }
         }
-
+        if(_throwScript.isPrincipal){
+            weaponObj.SetActive(true);
+        }
         if (!_throwScript.isPrincipal && !_throwScript._isSecundario)
         {
             weaponObj.SetActive(false);

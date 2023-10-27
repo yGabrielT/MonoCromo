@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using StarterAssets;
 
 
 
@@ -29,6 +30,7 @@ namespace Menu
         private DialogueManager _diag;
 
 
+
         private void Start()
         {
             _pers = GameObject.FindGameObjectWithTag("Player").GetComponent<Personagem>();
@@ -47,8 +49,9 @@ namespace Menu
             {
 
             }
-            if (Input.GetKeyDown(KeyCode.Escape) && !_temp.timeToggle)
+            if (_pers._input.pause && !_temp.timeToggle)
             {
+                _pers._input.pause = false;
                 Debug.Log("clicou");
                 if (estaPausado)
                 {

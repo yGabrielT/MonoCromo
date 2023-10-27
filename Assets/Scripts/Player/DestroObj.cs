@@ -20,7 +20,17 @@ public class DestroObj : MonoBehaviour
         {
             if(other.gameObject.tag == ("Inimigo"))
             {
-                other.GetComponent<Inimigo>().TomarDano(10);
+                other.TryGetComponent<Inimigo>(out Inimigo _inim);
+                if(_inim != null){
+                    _inim.TomarDano(10);
+                }
+                else{
+                    other.TryGetComponent<Boss>(out Boss _boss);
+                    if(_boss !=null){
+                        _boss.TomarDano(2);
+                    }
+                }
+                
             }
             
             

@@ -17,7 +17,7 @@ public class DataController : MonoBehaviour
     [Header("Volume Geral")]
     public Slider volumeSliderGeral = null;
 
-    [Header("Volume Música")]
+    [Header("Volume Mï¿½sica")]
     public Slider volumeSliderMusica = null;
 
     [Header("Volume Efeitos")]
@@ -54,7 +54,7 @@ public class DataController : MonoBehaviour
         float valorVolumeMusica = volumeSliderMusica.value;
         float valorVolumeEfeitos = volumeSliderEfeitos.value;
 
-        // Armazena as informações
+        // Armazena as informaï¿½ï¿½es
         PlayerPrefs.SetFloat("VolumeGeral", valorVolumeGeral);
         PlayerPrefs.SetFloat("VolumeMusica", valorVolumeMusica);
         PlayerPrefs.SetFloat("VolumeEfeitos", valorVolumeEfeitos);

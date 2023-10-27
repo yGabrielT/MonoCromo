@@ -8,6 +8,7 @@ public class Boss : MonoBehaviour
     // nomeie de qqlr jeito pq nn sei o q fala s� queria separar
     [Header("Coisas Importantes")]
     public Transform player;
+    public int VidaAtual;
     [SerializeField] private Animator anim;
     [SerializeField] private Collider colisaoMaoR;
     [SerializeField] private Collider colisaoMaoL;
@@ -20,6 +21,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private float tempoAtaque;
     [SerializeField] private float distancia;
     [SerializeField] private float smoothTime;
+    [SerializeField] private float cooldownAtaque = 3;
 
     [SerializeField] private float distanciaParaAndar;
 
@@ -27,15 +29,35 @@ public class Boss : MonoBehaviour
 
     private bool canRun;
 
-
+    private int numbersOfHits;
+    [SerializeField] int hitsToStunItself;
     private int damage = 20;
+    public bool isStunned;
 
+    [SerializeField] float _cooldownStun;
+
+
+    void Start() {
+        numbersOfHits = 0;    
+    }
     // Update is called once per frame
     void Update()
     {
-        Atacar();
-        SeguirJogador();
+        if(!isStunned){
+            Atacar();
+            SeguirJogador();
+        }
+        if(VidaAtual <= 0){
+            Destroy(gameObject);
+        }
         
+    }
+
+    
+    public void TomarDano(int dano)
+    {
+        this.VidaAtual -= dano;
+        Debug.Log("Boss Danificado");
     }
 
 
@@ -44,7 +66,7 @@ public class Boss : MonoBehaviour
        {
             _nav.SetDestination(player.position);
             canRun = true;
-            anim.SetTrigger("run"); 
+            
        } 
        else
        {
@@ -73,7 +95,7 @@ public class Boss : MonoBehaviour
         if (!podeAtacar)
         {
             tempoAtaque += Time.deltaTime; // falar cm biel para usar o input dele
-            if(tempoAtaque > 3)
+            if(tempoAtaque > cooldownAtaque)
             {
                 tempoAtaque = 0;
                 canRun = false;
@@ -90,7 +112,8 @@ public class Boss : MonoBehaviour
         if(distancia < 7 && podeAtacar)
         {
             podeAtacar = false;
-             anim.SetTrigger("run");
+            numbersOfHits++;
+            
             canRun = false;
             atacando = true;
             int numeroAtaque = Random.Range(1, 3);
@@ -101,6 +124,7 @@ public class Boss : MonoBehaviour
         // caso fique longe la�a um ataque em �rea no ch�o
         if((distancia > 8 && distancia < 10) &&  podeAtacar)
         {
+            numbersOfHits++;
             atacando = true;
             podeAtacar = false;
             int numeroAtaque = 3;
@@ -113,6 +137,11 @@ public class Boss : MonoBehaviour
             atacando = false;
             podeAtacar = false;
             canRun = true;
+        }
+        //Boss se atordoa após certa quantidade de ataques
+        if(numbersOfHits >= hitsToStunItself){
+            numbersOfHits = 0;
+            StartCoroutine(nameof(Atordoarse));
         }
 
         // tava pensando em adicionar uma parte onde o personagem ficando distante por dois ataques ao chao o robo se aproxima e lan�a um surpresa
@@ -128,8 +157,12 @@ public class Boss : MonoBehaviour
         colisaoMaoR.enabled = false;
     }   
 
-    public void Atordoarse()
+    //Fica atordoado e enquanto isso ativar os pontos fracos do Boss
+    public IEnumerator Atordoarse()
     {
-        
+        isStunned = true;
+        Debug.Log("Atordoado");
+        yield return new WaitForSeconds(_cooldownStun);
+        isStunned = false;
     }
 }
