@@ -35,23 +35,26 @@ public class Boss : MonoBehaviour
     {
         Atacar();
         SeguirJogador();
+        
     }
 
 
     public void SeguirJogador(){
-       if(distanciaParaAndar < distancia && !podeAtacar){
-        _nav.SetDestination(player.position);
-        canRun = true;
-
+       if(distanciaParaAndar < distancia && !podeAtacar)
+       {
+            _nav.SetDestination(player.position);
+            canRun = true;
+            anim.SetTrigger("run"); 
        } 
-       else{
-        anim.SetTrigger("Back");
+       else
+       {
+            anim.SetTrigger("Back");
        }
        if(canRun)
-        {
+       {
             canRun = false;
             anim.SetTrigger("run");
-        }
+       }
 
 
     }
@@ -73,12 +76,13 @@ public class Boss : MonoBehaviour
             if(tempoAtaque > 3)
             {
                 tempoAtaque = 0;
-                
+                canRun = false;
                 podeAtacar = true;
                 
             }
             else{
                 atacando = false;
+                canRun = true;
             }
         }
 
@@ -86,12 +90,12 @@ public class Boss : MonoBehaviour
         if(distancia < 7 && podeAtacar)
         {
             podeAtacar = false;
+             anim.SetTrigger("run");
+            canRun = false;
             atacando = true;
             int numeroAtaque = Random.Range(1, 3);
             anim.SetTrigger(numeroAtaque.ToString());
-            // acionar dano por meio de um colider seguindo a mao do personagem
-            // penso em colocar isso por meio do rigging, o touro que peguei nn tem ania�ao por rigging no mixamo, mas sim por mudan�a de posi��o ent o collider nn acompanha
-            // mudo esse personagem dps
+            
         }
 
         // caso fique longe la�a um ataque em �rea no ch�o
@@ -108,6 +112,7 @@ public class Boss : MonoBehaviour
         if(distancia > 10){
             atacando = false;
             podeAtacar = false;
+            canRun = true;
         }
 
         // tava pensando em adicionar uma parte onde o personagem ficando distante por dois ataques ao chao o robo se aproxima e lan�a um surpresa
@@ -123,4 +128,8 @@ public class Boss : MonoBehaviour
         colisaoMaoR.enabled = false;
     }   
 
+    public void Atordoarse()
+    {
+        
+    }
 }
