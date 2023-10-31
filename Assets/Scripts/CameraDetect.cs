@@ -23,7 +23,13 @@ public class CameraDetect : MonoBehaviour
     {
         if(_fov.canSeePlayer){
             _light.DOColor(_colorActivated,.5f);
-            isRotating = true;
+            DOTween.Pause(CameraPos);
+            this.CameraPos.transform.LookAt(_fov.playerRef.transform);
+            Debug.Log(_fov.playerRef.transform);
+            var angle = transform.rotation.eulerAngles;
+            angle.x = 0;
+            angle.z = 0;
+            transform.rotation = Quaternion.Euler(angle);
         }
         else{
             _light.DOColor(_colorDeactivated,.5f);

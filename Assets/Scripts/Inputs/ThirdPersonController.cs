@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
@@ -274,7 +275,7 @@ namespace StarterAssets
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
                                   _mainCamera.transform.eulerAngles.y;
                 float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
-                    RotationSmoothTime);
+                    RotationSmoothTime, Mathf.Infinity, Time.unscaledDeltaTime);
 
                 // rotate to face input direction relative to camera position
                 if (_rotateOnMove)
@@ -296,7 +297,7 @@ namespace StarterAssets
                 float checkLadderDistance = .5f;
                 if (Physics.Raycast(transform.position + Vector3.up * aboveOrigin, targetDirection, out RaycastHit ladderHit, checkLadderDistance))
                 {
-                    Debug.DrawRay(transform.position + Vector3.up * aboveOrigin, targetDirection, Color.red,checkLadderDistance);
+                    Debug.DrawRay(transform.position + Vector3.up * aboveOrigin, targetDirection, Color.red, checkLadderDistance);
                     if (ladderHit.transform.gameObject.tag == "Ladder")
                     {
                         SubirEscada(targetDirection);
@@ -310,7 +311,7 @@ namespace StarterAssets
                 float checkLadderDistance = .5f;
                 if (Physics.Raycast(transform.position + Vector3.up * aboveOrigin, lastGrabDir, out RaycastHit ladderHit, checkLadderDistance))
                 {
-                    Debug.DrawRay(transform.position + Vector3.up * aboveOrigin, lastGrabDir, Color.red,checkLadderDistance);
+                    Debug.DrawRay(transform.position + Vector3.up * aboveOrigin, lastGrabDir, Color.red, checkLadderDistance);
                     if (ladderHit.transform.gameObject.tag != "Ladder")
                     {
                         SairDaEscada();
@@ -327,12 +328,12 @@ namespace StarterAssets
                 }
             }
 
-            
+
             if (_isClimbing)
             {
-                
+
                 Debug.Log("Encontrado escada");
-                
+
                 targetDirection.y = _input.move.y;
                 targetDirection.x = 0f;
                 targetDirection.z = 0f;
@@ -341,7 +342,7 @@ namespace StarterAssets
                 Grounded = true;
                 Debug.Log(targetDirection);
                 _speed = targetSpeed;
-                
+
                 _animator.SetBool("isClimbing", true);
             }
             else
@@ -444,7 +445,7 @@ namespace StarterAssets
             }
         }
 
-       
+
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
             if (lfAngle < -360f) lfAngle += 360f;
@@ -472,7 +473,7 @@ namespace StarterAssets
             {
                 if (FootstepAudioClips.Length > 0)
                 {
-                    var index = Random.Range(0, FootstepAudioClips.Length);
+                    var index = UnityEngine.Random.Range(0, FootstepAudioClips.Length);
                     AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
                 }
             }
