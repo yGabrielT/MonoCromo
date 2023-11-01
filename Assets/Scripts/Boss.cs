@@ -34,10 +34,13 @@ public class Boss : MonoBehaviour
     private int damage = 20;
     public bool isStunned;
 
+    private Transform target;
+
     [SerializeField] float _cooldownStun;
 
 
     void Start() {
+        target = player;
         numbersOfHits = 0;    
     }
     // Update is called once per frame
@@ -46,11 +49,20 @@ public class Boss : MonoBehaviour
         if(!isStunned){
             Atacar();
             SeguirJogador();
+        }else{
+            canRun = false;
         }
         if(VidaAtual <= 0){
             Destroy(gameObject);
         }
-        
+        if(canRun){
+            target = player;
+            anim.SetBool("CanRun",true);
+        }
+        else{
+            target = gameObject.transform;
+            anim.SetBool("CanRun",false);
+        }
     }
 
     
@@ -64,20 +76,15 @@ public class Boss : MonoBehaviour
     public void SeguirJogador(){
        if(distanciaParaAndar < distancia && !podeAtacar)
        {
-            _nav.SetDestination(player.position);
+            _nav.SetDestination(target.position);
             canRun = true;
-            
        } 
        else
        {
-            anim.SetTrigger("Back");
-       }
-       if(canRun)
-       {
             canRun = false;
-            anim.SetTrigger("run");
        }
 
+        
 
     }
     public void Atacar()
@@ -111,25 +118,26 @@ public class Boss : MonoBehaviour
         // AO ENTRAR EM UM RANGE MELEE ELE ATACA DE PERTO
         if(distancia < 7 && podeAtacar)
         {
-            podeAtacar = false;
+            
             numbersOfHits++;
             
             canRun = false;
             atacando = true;
             int numeroAtaque = Random.Range(1, 3);
             anim.SetTrigger(numeroAtaque.ToString());
+            podeAtacar = false;
             
         }
 
         // caso fique longe la�a um ataque em �rea no ch�o
-        if((distancia > 8 && distancia < 10) &&  podeAtacar)
+        if((distancia >= 7 && distancia <= 10) &&  podeAtacar)
         {
             numbersOfHits++;
             atacando = true;
-            podeAtacar = false;
+            
             int numeroAtaque = 3;
             anim.SetTrigger(numeroAtaque.ToString());
-
+            podeAtacar = false;
             // criar dano em �rea
             // buscar uma anima��o disso
         }
@@ -161,8 +169,11 @@ public class Boss : MonoBehaviour
     public IEnumerator Atordoarse()
     {
         isStunned = true;
+        canRun = false;
         Debug.Log("Atordoado");
         yield return new WaitForSeconds(_cooldownStun);
         isStunned = false;
+        canRun = true;
+        podeAtacar = false;
     }
 }

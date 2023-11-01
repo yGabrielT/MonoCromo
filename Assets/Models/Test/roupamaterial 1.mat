@@ -170,7 +170,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineEnabled: 1
     - _OutlineMode: 0
-    - _OutlineWidth: 10.2
+    - _OutlineWidth: 4.24
     - _OverrideShadowColor: 0
     - _Parallax: 0.02
     - _QueueOffset: 3
@@ -212,7 +212,7 @@ Material:
     - _HalfToneColor: {r: 0, g: 0, b: 0, a: 0.382}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineDistancFade: {r: -25, g: 50, b: 0, a: 0}
+    - _OutlineDistancFade: {r: -164.38358, g: 35.616447, b: 0, a: 0}
     - _RimColor: {r: 0.7830189, g: 0.21208447, b: 0, a: 0.573}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.496}
     - _SpecColor: {r: 0.19999993, g: 0.19999993, b: 0.19999993, a: 0.5}
