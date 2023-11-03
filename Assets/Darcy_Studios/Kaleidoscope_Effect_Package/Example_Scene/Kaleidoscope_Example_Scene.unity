@@ -104,7 +104,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -153,14 +153,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 1
+  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
+  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 1
 --- !u!108 &1237926443
 Light:
   m_ObjectHideFlags: 0
@@ -243,6 +246,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 167923608945428346, guid: 6078a43a44763446ab6eec65e0c39026,
@@ -401,12 +405,16 @@ PrefabInstance:
       value: 0.042515323
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6078a43a44763446ab6eec65e0c39026, type: 3}
 --- !u!1001 &1970538408
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3651356135165207172, guid: df94ea62ade6b6a4eae95b70cb4e88cb,
@@ -439,6 +447,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3651356135165207173, guid: df94ea62ade6b6a4eae95b70cb4e88cb,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4700772369543945432, guid: df94ea62ade6b6a4eae95b70cb4e88cb,
         type: 3}
       propertyPath: m_IsActive
@@ -448,6 +461,11 @@ PrefabInstance:
         type: 3}
       propertyPath: prewarm
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700772369543945434, guid: df94ea62ade6b6a4eae95b70cb4e88cb,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4700772369543945435, guid: df94ea62ade6b6a4eae95b70cb4e88cb,
         type: 3}
@@ -514,6 +532,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8178929115382924507, guid: df94ea62ade6b6a4eae95b70cb4e88cb,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8178929115382924509, guid: df94ea62ade6b6a4eae95b70cb4e88cb,
         type: 3}
       propertyPath: m_IsActive
@@ -575,12 +598,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df94ea62ade6b6a4eae95b70cb4e88cb, type: 3}
 --- !u!1001 &3053713999978452850
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3053713999737278317, guid: 6e592ed28d0504b15a312adc7bf4ceb9,
@@ -644,4 +671,7 @@ PrefabInstance:
       value: Global Volume
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e592ed28d0504b15a312adc7bf4ceb9, type: 3}

@@ -25,7 +25,7 @@ public class DestroObj : MonoBehaviour
                     _inim.TomarDano(10);
                 }
                 else{
-                    other.TryGetComponent<Boss>(out Boss _boss);
+                    Boss _boss = other.GetComponentInParent<Boss>();
                     if(_boss !=null){
                         _boss.TomarDano(2);
                     }
