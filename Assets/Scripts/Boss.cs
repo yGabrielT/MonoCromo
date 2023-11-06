@@ -22,6 +22,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private float distancia;
     [SerializeField] private float smoothTime;
     [SerializeField] private float cooldownAtaque = 3;
+    private AudioSource _bossAudio;
 
     [SerializeField] private float distanciaParaAndar;
 
@@ -38,8 +39,16 @@ public class Boss : MonoBehaviour
 
     [SerializeField] float _cooldownStun;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip[] _passosAudios; 
+    private float _delayPassoAudio;
+    [SerializeField] float _delayAteOProximoPasso = .5f;
+    [SerializeField] AudioClip _ataque1;
+    [SerializeField] AudioClip _ataque2;
+
 
     void Start() {
+        _bossAudio = GetComponent<AudioSource>();
         target = player;
         numbersOfHits = 0;    
     }
@@ -58,8 +67,12 @@ public class Boss : MonoBehaviour
         if(canRun){
             target = player;
             anim.SetBool("CanRun",true);
+            
+            
+            
         }
         else{
+          
             target = gameObject.transform;
             anim.SetBool("CanRun",false);
         }
@@ -104,6 +117,7 @@ public class Boss : MonoBehaviour
             tempoAtaque += Time.deltaTime; // falar cm biel para usar o input dele
             if(tempoAtaque > cooldownAtaque)
             {
+              
                 tempoAtaque = 0;
                 canRun = false;
                 podeAtacar = true;
@@ -112,13 +126,20 @@ public class Boss : MonoBehaviour
             else{
                 atacando = false;
                 canRun = true;
+                if(_delayPassoAudio >= _delayAteOProximoPasso){
+                EscolherPassoAleatorio();
+                _delayPassoAudio= 0f;
+            }else{
+                _delayPassoAudio += Time.deltaTime;
+            }
             }
         }
 
         // AO ENTRAR EM UM RANGE MELEE ELE ATACA DE PERTO
         if(distancia < 7 && podeAtacar)
         {
-            
+            _bossAudio.clip = _ataque1;
+            _bossAudio.Play();
             numbersOfHits++;
             
             canRun = false;
@@ -132,6 +153,9 @@ public class Boss : MonoBehaviour
         // caso fique longe la�a um ataque em �rea no ch�o
         if((distancia >= 7 && distancia <= 10) &&  podeAtacar)
         {
+            _bossAudio.clip = _ataque2;
+            _bossAudio.Play();
+            canRun = false;
             numbersOfHits++;
             atacando = true;
             
@@ -175,5 +199,13 @@ public class Boss : MonoBehaviour
         isStunned = false;
         canRun = true;
         podeAtacar = false;
+    }
+
+    private void EscolherPassoAleatorio(){
+        int Randnumb = Random.Range(0,1);
+        _bossAudio.volume = Random.Range(0.2f,.7f);
+        _bossAudio.clip= _passosAudios[Randnumb];
+        _bossAudio.Play();
+
     }
 }

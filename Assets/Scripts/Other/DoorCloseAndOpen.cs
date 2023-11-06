@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class DoorCloseAndOpen : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class DoorCloseAndOpen : MonoBehaviour
     public Light PointLight;
     public Color AfterResetColor;
     private bool isChangedColor = false;
+    private AudioSource _portAudio;
 
     // Start is called before the first frame update
     void Start()
     {
         _anim = GetComponent<Animator>();
+        _portAudio = GetComponentInChildren<AudioSource>();
     }
 
     private void Update()
@@ -22,8 +25,8 @@ public class DoorCloseAndOpen : MonoBehaviour
         if (hasBeenReseted && !isChangedColor)
         {
             isChangedColor = true;
-            SpotLight.color = AfterResetColor;
-            PointLight.color = AfterResetColor;
+            SpotLight.DOColor(AfterResetColor,.5f);
+            PointLight.DOColor(AfterResetColor,.5f);
         }
     }
 
@@ -34,6 +37,7 @@ public class DoorCloseAndOpen : MonoBehaviour
         if(other.gameObject.tag == "Player" && !hasBeenReseted)
         {
             _anim.SetTrigger("IsPlayerClose");
+            _portAudio.Play();
         }
     }
 
@@ -42,6 +46,7 @@ public class DoorCloseAndOpen : MonoBehaviour
         if (other.gameObject.tag == "Player" && !hasBeenReseted)
         {
             _anim.SetTrigger("PlayerLeft");
+            _portAudio.Play();
         }
     }
 }

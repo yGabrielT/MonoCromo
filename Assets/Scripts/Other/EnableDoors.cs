@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using other;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnableDoors : MonoBehaviour
 {
@@ -15,10 +16,12 @@ public class EnableDoors : MonoBehaviour
     public DoorCloseAndOpen Door2;
     public Animator _doorAnim;
     private int AlavancaCount;
+    private AudioSource _botAudio;
+    public AudioSource _alavSucessoAudio;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _botAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -29,15 +32,16 @@ public class EnableDoors : MonoBehaviour
             isReseted = false;
             isChanged = true;
             _doorAnim.SetTrigger("CanOpen");
-            
+            _botAudio.Play();
 
         }
         if((interectableTriggerDir.isReseted && interectableTriggerEsq.isReseted) && !isReseted){
             Debug.Log("Portas destrancadas");
+            _alavSucessoAudio.Play();
             isReseted = true;
             Door1.hasBeenReseted = true;
             Door2.hasBeenReseted = true;
-            TopLight.color = LightAfterColor;
+            TopLight.DOColor(LightAfterColor,.5f);
         }
     }
 
