@@ -45,6 +45,7 @@ public class Boss : MonoBehaviour
     [SerializeField] float _delayAteOProximoPasso = .5f;
     [SerializeField] AudioClip _ataque1;
     [SerializeField] AudioClip _ataque2;
+    [SerializeField] AudioClip _ataqueEspecial;
 
 
     void Start() {
@@ -138,13 +139,18 @@ public class Boss : MonoBehaviour
         // AO ENTRAR EM UM RANGE MELEE ELE ATACA DE PERTO
         if(distancia < 7 && podeAtacar)
         {
-            _bossAudio.clip = _ataque1;
-            _bossAudio.Play();
+            
             numbersOfHits++;
             
             canRun = false;
             atacando = true;
             int numeroAtaque = Random.Range(1, 3);
+            if(numeroAtaque == 1){
+                _bossAudio.PlayOneShot(_ataque1);
+            }
+            else{
+                _bossAudio.PlayOneShot(_ataque2);
+            }
             anim.SetTrigger(numeroAtaque.ToString());
             podeAtacar = false;
             
@@ -153,8 +159,7 @@ public class Boss : MonoBehaviour
         // caso fique longe la�a um ataque em �rea no ch�o
         if((distancia >= 7 && distancia <= 10) &&  podeAtacar)
         {
-            _bossAudio.clip = _ataque2;
-            _bossAudio.Play();
+            _bossAudio.PlayOneShot(_ataqueEspecial);
             canRun = false;
             numbersOfHits++;
             atacando = true;
@@ -203,9 +208,9 @@ public class Boss : MonoBehaviour
 
     private void EscolherPassoAleatorio(){
         int Randnumb = Random.Range(0,1);
-        _bossAudio.volume = Random.Range(0.2f,.7f);
-        _bossAudio.clip= _passosAudios[Randnumb];
-        _bossAudio.Play();
+        float volume = Random.Range(0.2f,.7f);
+        
+        _bossAudio.PlayOneShot(_passosAudios[Randnumb], volume);
 
     }
 }

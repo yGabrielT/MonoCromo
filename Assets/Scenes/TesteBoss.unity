@@ -5739,7 +5739,7 @@ MonoBehaviour:
   tempoAtaque: 2
   distancia: 0
   smoothTime: 2
-  cooldownAtaque: 1
+  cooldownAtaque: 1.5
   distanciaParaAndar: 5
   _nav: {fileID: 1341544676}
   hitsToStunItself: 3
@@ -5751,6 +5751,7 @@ MonoBehaviour:
   _delayAteOProximoPasso: 0.5
   _ataque1: {fileID: 8300000, guid: 4f737f88c700cad4e9c9a09eb313d22a, type: 3}
   _ataque2: {fileID: 8300000, guid: bf94a8f0ec9b00147b02e817236c9e39, type: 3}
+  _ataqueEspecial: {fileID: 8300000, guid: 48b59a184a9127747b2c6816796a8dc7, type: 3}
 --- !u!136 &1341544675
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22833,7 +22834,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3308671504156075709
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -23181,7 +23182,7 @@ Transform:
   m_GameObject: {fileID: 3549505878183314043}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 7.38, y: 0.306, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4.6593, y: 4.6593, z: 4.307103}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3555548344884417661}
@@ -23196,7 +23197,7 @@ Transform:
   m_GameObject: {fileID: 3548938793721441257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.5253158, y: -0.0057725906, z: 58.83219}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.139, y: 3.139, z: 3.139}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3555242025797965307}
@@ -23525,7 +23526,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3549505878183314043}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 1
@@ -23600,7 +23601,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -23771,7 +23772,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -24689,7 +24690,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 1
   RotationModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -24746,7 +24747,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1.3962634
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -24799,7 +24800,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7853982
+      scalar: 0
       minScalar: 0.7853982
       maxCurve:
         serializedVersion: 2
@@ -24849,7 +24850,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    separateAxes: 0
+    separateAxes: 1
   ColorModule:
     enabled: 1
     gradient:
@@ -25908,7 +25909,7 @@ ParticleSystem:
     multiplierCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.98
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -27170,9 +27171,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -27349,7 +27350,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 8
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -29169,7 +29170,7 @@ AudioSource:
     m_RotationOrder: 4
 --- !u!114 &4084996231797703124
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -32268,7 +32269,7 @@ MonoBehaviour:
   lensIntensity: -0.8
 --- !u!114 &5775755629628124135
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -40804,7 +40805,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7627204185239873065
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -41147,7 +41148,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7743994368894476020
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

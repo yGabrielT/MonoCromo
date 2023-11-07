@@ -148,7 +148,7 @@ Material:
     - _Cutoff: 0.197
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DiffuseStep: 0.98
+    - _DiffuseStep: 0.8
     - _DitherTexelSize: 1
     - _DitherThreshold: 1
     - _DstBlend: 10
@@ -204,7 +204,7 @@ Material:
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _SpecClipMaskScale: 1
-    - _SpecShadowStrength: 0.254
+    - _SpecShadowStrength: 0.648
     - _SpecSource: 0
     - _SpecularClipStrength: 0
     - _SpecularFalloff: 1
@@ -223,7 +223,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 0.14117648}
-    - _Color: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 0.21176471}
+    - _Color: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 0.14117648}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FaceFrontDirection: {r: 0, g: 0, b: 1, a: 0}
     - _FaceRightDirection: {r: 1, g: 0, b: 0, a: 0}
@@ -233,7 +233,7 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineDistancFade: {r: -25, g: 50, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 0.117}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.982}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.952}
     - _SpecColor: {r: 0.19999874, g: 0.19999874, b: 0.19999874, a: 1.53}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
