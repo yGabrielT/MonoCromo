@@ -26,8 +26,6 @@ Material:
   m_ModifiedSerializedProperties: 18
   m_ValidKeywords:
   - _EMISSION
-  - _METALLICSPECGLOSSMAP
-  - _OCCLUSIONMAP
   m_InvalidKeywords:
   - _HALFTONESHAPE_DOT
   - _METALLICGLOSSMAP

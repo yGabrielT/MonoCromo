@@ -16,6 +16,7 @@ TagManager:
   - NPC
   - Botao
   - Ladder
+  - Wind
   layers:
   - Default
   - TransparentFX

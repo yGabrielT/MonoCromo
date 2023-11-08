@@ -28,6 +28,11 @@ public class Boss : MonoBehaviour
 
     [SerializeField] NavMeshAgent _nav;
 
+    [SerializeField] GameObject _windPrefab;
+    [SerializeField] float DestroyWindTime;
+
+    [SerializeField] Transform _transformWind;
+
     private bool canRun;
 
     private int numbersOfHits;
@@ -157,9 +162,10 @@ public class Boss : MonoBehaviour
         }
 
         // caso fique longe la�a um ataque em �rea no ch�o
-        if((distancia >= 7 && distancia <= 10) &&  podeAtacar)
+        if((distancia >= 10 ) &&  podeAtacar)
         {
             _bossAudio.PlayOneShot(_ataqueEspecial);
+            Invoke(nameof(InstanciarAbilidadeEspecial),1.5f);
             canRun = false;
             numbersOfHits++;
             atacando = true;
@@ -212,5 +218,10 @@ public class Boss : MonoBehaviour
         
         _bossAudio.PlayOneShot(_passosAudios[Randnumb], volume);
 
+    }
+
+    public void InstanciarAbilidadeEspecial(){
+        GameObject wind = Instantiate(_windPrefab,_transformWind.position,Quaternion.identity);
+        Destroy(wind,DestroyWindTime);
     }
 }

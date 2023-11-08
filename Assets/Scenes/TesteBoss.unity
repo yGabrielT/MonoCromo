@@ -3022,6 +3022,7 @@ Transform:
   m_Children:
   - {fileID: 554038820}
   - {fileID: 553969676}
+  - {fileID: 1986687305}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5739,9 +5740,13 @@ MonoBehaviour:
   tempoAtaque: 2
   distancia: 0
   smoothTime: 2
-  cooldownAtaque: 1.5
+  cooldownAtaque: 5
   distanciaParaAndar: 5
   _nav: {fileID: 1341544676}
+  _windPrefab: {fileID: 410425800986256984, guid: 86e4dd2f801c9214f9af5cd503544f9d,
+    type: 3}
+  DestroyWindTime: 6
+  _transformWind: {fileID: 1986687305}
   hitsToStunItself: 3
   isStunned: 0
   _cooldownStun: 5
@@ -6199,7 +6204,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh242382
+  m_Name: pb_Mesh32316
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -6622,6 +6627,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 573a4a6d409ac734da9aa6a8d62a81dd, type: 3}
+--- !u!1 &1986687304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1986687305}
+  m_Layer: 8
+  m_Name: WindPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1986687305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986687304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 553993356}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1987158729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2786030947824466222, guid: ca9f45c76d426ab41ac2e2d8ac13346a,
@@ -23154,7 +23190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &3549505878183314043
 GameObject:
   m_ObjectHideFlags: 0
@@ -23181,7 +23217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3549505878183314043}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 7.38, y: 0.306, z: 0}
+  m_LocalPosition: {x: 7.38, y: -0.03, z: 0}
   m_LocalScale: {x: 4.6593, y: 4.6593, z: 4.307103}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23526,7 +23562,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3549505878183314043}
   serializedVersion: 8
-  lengthInSec: 3
+  lengthInSec: 6
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 1
@@ -23601,7 +23637,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 6
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -23772,7 +23808,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 15
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -23825,7 +23861,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 10
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -23878,7 +23914,7 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 15
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -24091,7 +24127,7 @@ ParticleSystem:
     gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
-    size3D: 0
+    size3D: 1
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
@@ -24584,17 +24620,26 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 1.1829695
-          outSlope: 1.1829695
+          inSlope: 1.3249997
+          outSlope: 1.3249997
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.23127745
+        - serializedVersion: 3
+          time: 0.22897492
+          value: 0.07443504
+          inSlope: 0.06398749
+          outSlope: 0.06398749
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.22180489
-          value: 0.19373214
-          inSlope: 0.00000047272127
-          outSlope: 0.00000047272127
+          time: 0.5281737
+          value: 0.0833333
+          inSlope: -0.065485
+          outSlope: -0.065485
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
@@ -27171,7 +27216,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -42624,6 +42669,7 @@ GameObject:
   - component: {fileID: 8819803274687326121}
   - component: {fileID: 2772700609141716746}
   - component: {fileID: 2303908893702987649}
+  - component: {fileID: 8819803274687326122}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -43275,6 +43321,29 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 1, g: 0.6640023, b: 0, a: 1}
   lerpTime: 1
+--- !u!136 &8819803274687326122
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538803506143619460}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 1.8592124
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.76084447, z: 0}
 --- !u!114 &8854941402403017145
 MonoBehaviour:
   m_ObjectHideFlags: 0
