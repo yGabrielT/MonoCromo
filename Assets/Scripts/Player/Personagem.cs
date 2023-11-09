@@ -213,17 +213,17 @@ public class Personagem : MonoBehaviour
             PerderVida();
         }
 
-    }
-
-    private void OnCollisionEnter(Collision other) {
-        Debug.Log(other.gameObject.name);
+        
         if (other.gameObject.tag == "Wind")
         {
             Debug.Log("Perdeu Vida com o vento");
             //Destroy(other.gameObject);
             PerderVida();
         }
+
     }
+
+    
 
     private IEnumerator onInteractEnum(RaycastHit hit)
     {

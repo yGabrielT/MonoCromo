@@ -16,6 +16,7 @@ public class EnableDoors : MonoBehaviour
     public DoorCloseAndOpen Door2;
     public Animator _doorAnim;
     private int AlavancaCount;
+    public AudioSource _portAudio;
     private AudioSource _botAudio;
     public AudioSource _alavSucessoAudio;
     // Start is called before the first frame update
@@ -32,6 +33,7 @@ public class EnableDoors : MonoBehaviour
             isReseted = false;
             isChanged = true;
             _doorAnim.SetTrigger("CanOpen");
+            _portAudio.Play();
             _botAudio.Play();
 
         }

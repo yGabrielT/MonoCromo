@@ -50,8 +50,16 @@ public class DestroObj : MonoBehaviour
         {
             if (nearbyObjs != null && nearbyObjs.gameObject.tag == ("Inimigo") && nearbyObjs.gameObject.tag != ("Ground"))
             {
-                nearbyObjs.GetComponent<Inimigo>().TomarDano(30);
-                Debug.Log("Raio Atingido");
+                nearbyObjs.TryGetComponent<Inimigo>(out Inimigo _inim);
+                if(_inim != null){
+                    _inim.TomarDano(30);
+                }
+                else{
+                    Boss _boss = nearbyObjs.GetComponentInParent<Boss>();
+                    if(_boss !=null){
+                        _boss.TomarDano(5);
+                    }
+                }
             }
             if(nearbyObjs != null && nearbyObjs.gameObject.tag == ("Botao"))
             {

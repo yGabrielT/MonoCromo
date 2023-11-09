@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 803909550}
-  m_IndirectSpecularColor: {r: 0.028095677, g: 0.015656985, b: 0.06662103, a: 1}
+  m_IndirectSpecularColor: {r: 0.028067784, g: 0.015660057, b: 0.06667902, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,8 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 070a4b8a243eec341b3b51362d521d5f,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -218,7 +219,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0
+  m_BounceIntensity: 2
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 1.7104e-41, w: 0}
@@ -2320,7 +2321,7 @@ Light:
     serializedVersion: 2
     m_Bits: 2039
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -9072,7 +9073,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_Intensity: 6.61
   m_Range: 41.5
   m_SpotAngle: 124.57932
   m_InnerSpotAngle: 109.375015
@@ -31303,6 +31304,7 @@ MonoBehaviour:
   Door1: {fileID: 995641620}
   Door2: {fileID: 808961901}
   _doorAnim: {fileID: 5114852344783722417}
+  _portAudio: {fileID: 0}
   _alavSucessoAudio: {fileID: 205792755}
 --- !u!82 &8593251044018431471
 AudioSource:
