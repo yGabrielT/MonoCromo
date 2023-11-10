@@ -25,6 +25,7 @@ public class Personagem : MonoBehaviour
 
     public float AddSpeed = 4f;
 
+    private SkinnedMeshRenderer[] _skinnedMeshes;
 
 
 
@@ -111,6 +112,13 @@ public class Personagem : MonoBehaviour
 
     private float sprintVelocidadebase;
 
+    private Material[] temporarysMaterial;
+    [SerializeField]private Material _hitMaterial;
+
+    [SerializeField] float hitColorRefreshRate;
+
+    
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -135,7 +143,7 @@ public class Personagem : MonoBehaviour
         barraDeVida.vidaMaxima(playerVida);
         baseSpeed = _controller.MoveSpeed;
         sprintVelocidadebase = sprintVelocidade;
-
+        _skinnedMeshes = GetComponentsInChildren<SkinnedMeshRenderer>();
     }
 
     // Update is called once per frame
@@ -191,6 +199,7 @@ public class Personagem : MonoBehaviour
             impulseSource.GenerateImpulse(ShakeForce);
             // atualiza a barra de vida
             barraDeVida.atualizarVida(vidaAtual);
+            StartCoroutine(nameof(OnHit));
         }
         else
         {
@@ -201,6 +210,17 @@ public class Personagem : MonoBehaviour
             isDead = true;
             ativarControles = false;
             _anim.SetTrigger("isDead");
+        }
+    }
+
+    private IEnumerator OnHit(){
+        for (int i = 0; i < _skinnedMeshes.Length; i++)
+        {
+            Debug.Log(_skinnedMeshes[i]);
+            temporarysMaterial[i] = _skinnedMeshes[i].material;
+            _skinnedMeshes[i].material = _hitMaterial; 
+            yield return new WaitForSecondsRealtime(hitColorRefreshRate);
+            _skinnedMeshes[i].material = temporarysMaterial[i];
         }
     }
  

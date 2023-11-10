@@ -6675,7 +6675,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35896
+  m_Name: pb_Mesh34328
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -29587,6 +29587,8 @@ MonoBehaviour:
   telaCaptura: {fileID: 4615367483296022918}
   animacaoCaptura: {fileID: 4747167339880754773}
   isDead: 0
+  _hitMaterial: {fileID: 2100000, guid: 511f50dc2c5aaa941b1bc36c3439807e, type: 2}
+  hitColorRefreshRate: 0.5
 --- !u!82 &4074664988798026605
 AudioSource:
   m_ObjectHideFlags: 0

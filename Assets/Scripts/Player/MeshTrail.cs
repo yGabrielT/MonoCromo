@@ -31,6 +31,7 @@ public class MeshTrail : MonoBehaviour
     {
         _manuseioTemp = GetComponent<ManuseioTemp>();
         len = lColors.Length;
+        skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
     }
     void Update()
     {
@@ -73,7 +74,7 @@ public class MeshTrail : MonoBehaviour
 
                 if (skinnedMeshRenderers == null)
                 {
-                    skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+                    //skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
                 }
                 for (int i = 0; i < skinnedMeshRenderers.Length; i++)
                 {
