@@ -25,7 +25,7 @@ public class Personagem : MonoBehaviour
 
     public float AddSpeed = 4f;
 
-    private SkinnedMeshRenderer[] _skinnedMeshes;
+    
 
 
 
@@ -112,11 +112,16 @@ public class Personagem : MonoBehaviour
 
     private float sprintVelocidadebase;
 
-    private Material[] temporarysMaterial;
+    private Material[] _temporarysMaterial;
     [SerializeField]private Material _hitMaterial;
 
-    [SerializeField] float hitColorRefreshRate;
+    [SerializeField] float _hitColorRefreshRate;
+    private SkinnedMeshRenderer[] _skinnedMeshes;
 
+    [SerializeField] int _timesToChangeColor;
+    [SerializeField] float _invencibleFrames;
+
+    private bool _isInvencible;
     
 
 
@@ -144,6 +149,7 @@ public class Personagem : MonoBehaviour
         baseSpeed = _controller.MoveSpeed;
         sprintVelocidadebase = sprintVelocidade;
         _skinnedMeshes = GetComponentsInChildren<SkinnedMeshRenderer>();
+        _temporarysMaterial = new Material[_skinnedMeshes.Length];
     }
 
     // Update is called once per frame
@@ -191,8 +197,8 @@ public class Personagem : MonoBehaviour
 
     private void PerderVida()
     {
-
-        if (vidaAtual > 0)
+        
+        if (vidaAtual > 0 && !_isInvencible)
         {
             //levar dano
             vidaAtual -= inimigo.dano;
@@ -201,7 +207,7 @@ public class Personagem : MonoBehaviour
             barraDeVida.atualizarVida(vidaAtual);
             StartCoroutine(nameof(OnHit));
         }
-        else
+        if(vidaAtual <= 0)
         {
             //morte
             audioMorte.Play();
@@ -214,14 +220,26 @@ public class Personagem : MonoBehaviour
     }
 
     private IEnumerator OnHit(){
-        for (int i = 0; i < _skinnedMeshes.Length; i++)
+        _isInvencible = true;
+        for(int f = 0; f < _timesToChangeColor; f++)
         {
-            Debug.Log(_skinnedMeshes[i]);
-            temporarysMaterial[i] = _skinnedMeshes[i].material;
-            _skinnedMeshes[i].material = _hitMaterial; 
-            yield return new WaitForSecondsRealtime(hitColorRefreshRate);
-            _skinnedMeshes[i].material = temporarysMaterial[i];
+            yield return new WaitForSecondsRealtime(_hitColorRefreshRate);
+            for (int i = 0; i < _skinnedMeshes.Length; i++)
+            {
+                Debug.Log(_skinnedMeshes[i]);
+                _temporarysMaterial[i] = _skinnedMeshes[i].material;
+                _skinnedMeshes[i].material = _hitMaterial; 
+                
+                
+            }
+            yield return new WaitForSecondsRealtime(_hitColorRefreshRate);
+            for (int i = 0; i < _skinnedMeshes.Length; i++)
+            {
+                _skinnedMeshes[i].material = _temporarysMaterial[i];
+            }
         }
+        yield return new WaitForSecondsRealtime(_invencibleFrames);
+        _isInvencible = false;
     }
  
 
