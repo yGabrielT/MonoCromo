@@ -26,7 +26,9 @@ public class Inimigo : MonoBehaviour
     public AudioSource audioAcertado;
     public AudioSource audioAtirar;
     public AudioSource audioAtordoado;
-    public bool AtacarBool = true;
+    [HideInInspector]public bool AtacarBool = true;
+    [SerializeField] private GameObject _stunGO; 
+    public bool isTurret = false;
     
     
     private float projTemp;
@@ -34,8 +36,8 @@ public class Inimigo : MonoBehaviour
     private bool atordoado;
     private int vidaAtual;
     private Transform playerPos;
-    private Renderer renderer;
-    private Material defaultMaterial;
+
+
     private NavMeshAgent NavMeshAgente;
     private float temp;
     private bool Spawnado = false;
@@ -63,12 +65,11 @@ public class Inimigo : MonoBehaviour
         vidaAtual = vidaMax;
 
         //Pegar os componentes do IA para depois executar o PathFinding
-        if(this.gameObject.tag == "Inimigo")
+        if(this.gameObject.tag == "Inimigo" && !isTurret)
         {
             NavMeshAgente = this.GetComponent<NavMeshAgent>();
             NavMeshAgente.speed = velocidade;
-            defaultMaterial = this.GetComponent<Renderer>().material;
-            renderer = this.GetComponent<Renderer>();
+            
         }
         GerarInimigo();
     }
@@ -78,11 +79,16 @@ public class Inimigo : MonoBehaviour
         if(playerPos == null){
             AtacarBool = false;
         }
-        Stealth();
-        Movimentar();
+        if(!isTurret){
+            Stealth();
+            Movimentar();
+            Atordoar(AtordTimer);
+            AtordoarSom();
+        }
+        
+        
         AtacarPersonagem();
-        Atordoar(AtordTimer);
-        AtordoarSom();
+        
 
     }
 
@@ -151,11 +157,21 @@ public class Inimigo : MonoBehaviour
         {
             projTemp += Time.deltaTime;
             
-            this.gameObject.transform.LookAt(playerPos.transform);
-            var angle = transform.rotation.eulerAngles;
-            angle.x = 0;
-            angle.z = 0;
-            transform.rotation = Quaternion.Euler(angle);
+            if(!isTurret)
+            {
+                this.gameObject.transform.LookAt(playerPos.transform);
+                var angle = transform.rotation.eulerAngles;
+                angle.x = 0;
+                angle.z = 0;
+                transform.rotation = Quaternion.Euler(angle);
+            }
+            else{
+                this.gameObject.transform.LookAt(playerPos.transform);
+                var angle = transform.rotation.eulerAngles;
+                
+                transform.rotation = Quaternion.Euler(angle);
+            }
+            
             
             if(projTemp > TempoPraAtirar)
             {
@@ -177,7 +193,7 @@ public class Inimigo : MonoBehaviour
         if(this.gameObject.tag == "Inimigo" && this.vidaAtual <= 0)
         {   
             atordoado = true;
-            renderer.material = atordoadoMaterial;
+            _stunGO.SetActive(true);
             NavMeshAgente.SetDestination(transform.position);
             if (cooldown > temp)
             {
@@ -188,8 +204,8 @@ public class Inimigo : MonoBehaviour
                 AtacarBool = false;
                 isStealth = true;
                 atordoado = false;
+                _stunGO.SetActive(false);
                 this.vidaAtual = vidaMax;
-                renderer.material = defaultMaterial;
                 temp = 0;
             }
 

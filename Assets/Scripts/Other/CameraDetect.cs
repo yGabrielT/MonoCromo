@@ -11,6 +11,7 @@ public class CameraDetect : MonoBehaviour
     [SerializeField] Color _colorActivated;
     [SerializeField] Color _colorDeactivated;
     private bool isRotating;
+    [SerializeField] private GameObject[] _torretaGO;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,10 @@ public class CameraDetect : MonoBehaviour
     void Update()
     {
         if(_fov.canSeePlayer){
+            for(int i =0; i < _torretaGO.Length; i++){
+                _torretaGO[i].GetComponent<Inimigo>().AtacarBool = true;
+            }
+            
             _light.DOColor(_colorActivated,.5f);
             DOTween.Pause(CameraPos);
             this.CameraPos.transform.LookAt(_fov.playerRef.transform);

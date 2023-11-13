@@ -6,9 +6,9 @@ public class BalaGroundDetect : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.tag == "Player")
+        if(other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.tag == "Player" || other.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
-            Destroy(this.gameObject,0.5f);
+            Destroy(this.gameObject);
         }
     }
 }

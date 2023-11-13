@@ -3,7 +3,27 @@ guid: 6304e8847d3e24e478f1213c09a4cae1
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 01308c18ece044140aff0e7df0dea0e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: corpo_material
+    second: {fileID: 2100000, guid: b1dd65c71f6c27644afa1b6a07f7b4c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: luva e bota_materia
+    second: {fileID: 2100000, guid: 32570ea284873bd4489cb1a83cae0417, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roupa_material
+    second: {fileID: 2100000, guid: 08ae23c5968c892419614bc69aa470f4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

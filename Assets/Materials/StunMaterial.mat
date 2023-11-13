@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Material.001 2
-  m_Shader: {fileID: -6465566751694194690, guid: 9c83ad3bef6b37d44af02e463159aabc,
+  m_Name: StunMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: d92da5aee86c3f640ae23f5e3b66507d,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: f03f3a8a2edc6eb4291b173508d6efcb, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -49,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f03f3a8a2edc6eb4291b173508d6efcb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7da23c530161d814d8089301c845f972, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -100,13 +100,12 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _GlossMapScale: 1
-    - _Glossiness: 0.5
-    - _GlossyReflections: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
     - _Metallic: 0
-    - _Mode: 0
     - _OcclusionStrength: 1
-    - _Parallax: 0.02
+    - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -116,23 +115,21 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _UVSec: 0
-    - _VelocityX: 1.8
-    - _VelocityX1: 1.2
-    - _VelocityX2: -2
-    - _VelocityY: 1.2
-    - _VelocityY1: 1.2
+    - _VelocityX1: 0.5
+    - _VelocityX2: 0
+    - _VelocityY1: 0
     - _VelocityY2: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _Back_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+    - _Back_Color: {r: 0.9950112, g: 0.57392186, b: 0, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _TIling: {r: 2, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &4925113805067646022
+--- !u!114 &9205406358561665773
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

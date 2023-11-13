@@ -160,6 +160,7 @@ public class Equipamento : MonoBehaviour
         //Usando Granada de tinta
         else if (!isPrincipal && _isSecundario)
         {
+            
             cooldownAtual = _tempoDeRecargaSecundaria;
             objectToThrow = _tipoSecundario;
             forcaAtual = _forcaSecundaria;
@@ -228,6 +229,7 @@ public class Equipamento : MonoBehaviour
             Debug.Log("Mouse Scroll cima");
             isPrincipal = true;
             _isSecundario = false;
+            prontoPraJogar = true;
 
         }
         else if (_input.scroll < 0 && _municaoSecundaria > 0) 
@@ -235,6 +237,7 @@ public class Equipamento : MonoBehaviour
            Debug.Log("Mouse Scroll baixo");
             isPrincipal = false;
             _isSecundario = true;
+            prontoPraJogar = true;
         }
         
 
