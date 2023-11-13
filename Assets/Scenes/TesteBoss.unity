@@ -17952,7 +17952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
-    m_ImpulseShape: 2
+    m_ImpulseShape: 1
     m_CustomImpulseShape:
       serializedVersion: 2
       m_Curve: []
@@ -17990,7 +17990,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0, y: -1, z: 0}
+  m_DefaultVelocity: {x: -1, y: -1, z: 0}
 --- !u!224 &2779397382679376229
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40370,7 +40370,7 @@ MonoBehaviour:
   forcaCimaPrincipal: 0
   tempoDeRecargaPrincipal: 0.01
   _municaoPrincipal: 0
-  forceShake: 1
+  forceShake: 0.15
   audioPrincipal: {fileID: 1015273145354214437}
   muzzleShock: {fileID: 2264251435433495349}
   _tipoSecundario: {fileID: 76866827463003559, guid: 94885afc29dffb24c9100ccf596f7f38,

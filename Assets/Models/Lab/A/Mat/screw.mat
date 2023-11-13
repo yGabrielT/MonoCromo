@@ -175,7 +175,7 @@ Material:
     - _HatchingEnabled: 0
     - _HatchingRotation: 0
     - _HatchingSmoothness: 0.1
-    - _Metallic: 0
+    - _Metallic: 0.419
     - _Mode: 0
     - _NoiseScale: 1
     - _NoiseStrength: 0.1
@@ -193,7 +193,7 @@ Material:
     - _RimPower: 0.55
     - _Shininess: 0
     - _SizeFalloff: 0
-    - _Smoothness: 0.5
+    - _Smoothness: 0.678
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _SpecClipMaskScale: 1
