@@ -66363,6 +66363,10 @@ MonoBehaviour:
   telaCaptura: {fileID: 4615367483917463971}
   animacaoCaptura: {fileID: 4747167340462595696}
   isDead: 0
+  _hitMaterial: {fileID: 0}
+  _hitColorRefreshRate: 0
+  _timesToChangeColor: 0
+  _invencibleFrames: 0
 --- !u!114 &7350520310317784771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66610,6 +66614,7 @@ MonoBehaviour:
   sprint: 0
   shoot: 0
   crouch: 0
+  pause: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
