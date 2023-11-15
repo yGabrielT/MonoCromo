@@ -41,7 +41,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -49,7 +50,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -107,7 +108,42 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: arthur03(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: camisa
+      parentName: arthur03(Clone)
+      position: {x: 0.061238628, y: -0.0048751086, z: 1.863036}
+      rotation: {x: 0.015972015, y: 0.70692635, z: 0.7069264, w: -0.015972013}
+      scale: {x: 100.00002, y: 114.79745, z: 100}
+    - name: "cal\xE7a"
+      parentName: arthur03(Clone)
+      position: {x: -0.05454047, y: -0.6144762, z: 1.969234}
+      rotation: {x: -0.013290027, y: 0.70698196, z: 0.7069819, w: 0.013290027}
+      scale: {x: 85.69356, y: 99.99999, z: 87.03027}
+    - name: tenis
+      parentName: arthur03(Clone)
+      position: {x: 0.3576455, y: -8.056189, z: -3.4024715}
+      rotation: {x: 0.000000014079044, y: 0.76487213, z: -0.000000016716804, w: 0.64418215}
+      scale: {x: 89.2523, y: 100, z: 99.999985}
+    - name: olhos
+      parentName: arthur03(Clone)
+      position: {x: -0.2708554, y: 4.349274, z: 1.0795543}
+      rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+      scale: {x: 15.310553, y: 15.310553, z: 17.300732}
+    - name: tenis.001
+      parentName: arthur03(Clone)
+      position: {x: -1.0452024, y: -8.092961, z: -3.5852196}
+      rotation: {x: 0.007730482, y: -0.7085614, z: 0.007857567, w: 0.70556307}
+      scale: {x: 89.252304, y: 100.00001, z: 99.999985}
+    - name: corpo
+      parentName: arthur03(Clone)
+      position: {x: -6.453479, y: -0.0048751086, z: 0.5271064}
+      rotation: {x: -0.06286999, y: 0.7043063, z: 0.7043063, w: 0.06286998}
+      scale: {x: 100, y: 100, z: 100}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -118,13 +154,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
