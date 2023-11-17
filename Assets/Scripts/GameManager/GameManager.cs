@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         _transition.Transition(numCena, set, delay);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void VoltarMenuGame()
