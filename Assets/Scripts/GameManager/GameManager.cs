@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
         _transition.Transition(0, set, delay);
     }
 
+    
+
 }
 
 
