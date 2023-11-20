@@ -54,13 +54,14 @@ public class UI : MonoBehaviour
         // Cooldown
         if (!_manuseio.timeToggle && isChange)
         {
-            isChange =false;
+            
             image.fillAmount -= 1 / cool * Time.deltaTime;
 
 
             // Termino do cooldonw
             if (image.fillAmount <= 0)
             {
+                isChange = false;
                 image.fillAmount = 0;
             }
         }

@@ -30,6 +30,7 @@ using TMPro;
         }
         void Start()
         {
+            TempoText.SetText("");
             SlowCooldown = SetTempCooldown;
         }
 
@@ -101,7 +102,7 @@ using TMPro;
             if (timeToggle)
             {
                 TempoText.SetText(timeCrono.ToString("0"));
-               //  Cooldown.fillAmount = 1;
+                // Cooldown.fillAmount = 1;
             }
             if (startcooldown && !timeToggle)
             {
