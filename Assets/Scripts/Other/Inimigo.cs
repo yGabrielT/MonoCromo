@@ -29,6 +29,7 @@ public class Inimigo : MonoBehaviour
     [HideInInspector]public bool AtacarBool = true;
     [SerializeField] private GameObject _stunGO; 
     public bool isTurret = false;
+    [SerializeField] private Transform PivotTurret;
     
     
     private float projTemp;
@@ -159,11 +160,11 @@ public class Inimigo : MonoBehaviour
             
             if(!isTurret)
             {
-                this.gameObject.transform.LookAt(playerPos.transform);
-                var angle = transform.rotation.eulerAngles;
+                this.PivotTurret.LookAt(playerPos.transform);
+                var angle = PivotTurret.rotation.eulerAngles;
                 angle.x = 0;
-                angle.z = 0;
-                transform.rotation = Quaternion.Euler(angle);
+                
+                PivotTurret.rotation = Quaternion.Euler(angle);
             }
             else{
                 this.gameObject.transform.LookAt(playerPos.transform);

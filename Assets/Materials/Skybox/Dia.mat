@@ -111,7 +111,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Rotation: 51
-    - _RotationSpeed: 5.2
+    - _RotationSpeed: 0.5
     - _Rotationn: 1
     - _SkyboxExtended: 1
     - _SmoothnessTextureChannel: 0

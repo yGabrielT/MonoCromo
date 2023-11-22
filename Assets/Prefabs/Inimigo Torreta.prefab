@@ -39,7 +39,7 @@ Transform:
   - {fileID: 6601051381651744163}
   - {fileID: 9107059949237072152}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &5829591265130522067
 CapsuleCollider:
@@ -113,6 +113,7 @@ MonoBehaviour:
   audioAtirar: {fileID: 7686533634596741857}
   audioAtordoado: {fileID: 109997062458827757}
   AtacarBool: 0
+  _stunGO: {fileID: 0}
   isTurret: 1
   _fov: {fileID: 8667040889721136401}
   isStealth: 1
