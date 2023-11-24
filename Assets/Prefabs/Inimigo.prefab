@@ -115,6 +115,7 @@ MonoBehaviour:
   AtacarBool: 0
   _stunGO: {fileID: 7767562107377941620}
   isTurret: 0
+  PivotTurret: {fileID: 0}
   _fov: {fileID: 8667040889721136401}
   isStealth: 1
   newPosCooldown: 10
@@ -327,7 +328,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -456,7 +457,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -639,7 +640,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

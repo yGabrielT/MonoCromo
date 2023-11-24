@@ -19,6 +19,6 @@ public class AudioAnimationEvents : MonoBehaviour
     }
     public void EventOnRunFootStep(AnimationEvent animationEvent)
     {
-        
+        _third.OnFootstep(animationEvent);
     }
 }

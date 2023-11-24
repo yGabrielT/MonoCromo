@@ -160,16 +160,17 @@ public class Inimigo : MonoBehaviour
             
             if(!isTurret)
             {
-                this.PivotTurret.LookAt(playerPos.transform);
-                var angle = PivotTurret.rotation.eulerAngles;
+                this.gameObject.transform.LookAt(playerPos.transform);
+                var angle = gameObject.transform.eulerAngles;
                 angle.x = 0;
                 
-                PivotTurret.rotation = Quaternion.Euler(angle);
+                gameObject.transform.rotation = Quaternion.Euler(angle);
             }
             else{
-                this.gameObject.transform.LookAt(playerPos.transform);
+                this.transform.LookAt(playerPos.transform);
                 var angle = transform.rotation.eulerAngles;
-                
+                angle.z = 0;
+                angle.x = 0;
                 transform.rotation = Quaternion.Euler(angle);
             }
             
