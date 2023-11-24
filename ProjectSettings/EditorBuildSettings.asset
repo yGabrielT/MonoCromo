@@ -27,7 +27,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Cutscenes/CutsceneElevador 2.unity
     guid: ce49188a6edd59c4bbfcc08c1c3560a4
   - enabled: 1
-    path: Assets/Scenes/TesteBoss.unity
+    path: Assets/Scenes/Cutscenes/CutsceneBossAntesReal.unity
+    guid: 8ba0fede53fc8484b8567ca8a921cbfc
+  - enabled: 1
+    path: Assets/Scenes/BossLuta.unity
     guid: 9eaf13043956ee74a8c3676ac11c38b5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,

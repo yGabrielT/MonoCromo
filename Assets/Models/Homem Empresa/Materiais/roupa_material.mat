@@ -12,7 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _HALFTONESHAPE_DOT
+  - _HALFTONESHAPE_CROSS
   - _OUTLINE
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -64,7 +64,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _HalfToneNoiseMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 0.69, y: 1}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HalfTonePatternMap:
         m_Texture: {fileID: 0}
@@ -120,8 +120,8 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _BrushLowerCut: 0.5
-    - _BrushSize: 1.5
+    - _BrushLowerCut: 0.388
+    - _BrushSize: 0.24
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -129,7 +129,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DiffuseStep: 0
+    - _DiffuseStep: -0.65
     - _DitherTexelSize: 1
     - _DitherThreshold: 1
     - _DstBlend: 0
@@ -139,7 +139,7 @@ Material:
     - _FaceShadowMapEnabled: 0
     - _FaceShadowMapPow: 0.2
     - _FaceShadowSmoothness: 0
-    - _FlattenGI: 0
+    - _FlattenGI: 1
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossinessSource: 0
@@ -148,15 +148,15 @@ Material:
     - _HairSpecNoiseStrength: 1
     - _HairSpecularSize: 0.8
     - _HairSpecularSmoothness: 0.1
-    - _HalfToneDiffuseStep: -0.02
+    - _HalfToneDiffuseStep: -0.71
     - _HalfToneEnabled: 1
-    - _HalfToneIncludeReceivedShadow: 1
-    - _HalfToneShape: 0
+    - _HalfToneIncludeReceivedShadow: 0
+    - _HalfToneShape: 2
     - _HalfToneUvMode: 0
-    - _HalftoneFadeDistance: 100
-    - _HalftoneFadeToColor: 1
-    - _HalftoneNoiseClip: 0.9
-    - _HalftoneTilling: 164.42
+    - _HalftoneFadeDistance: 54.8
+    - _HalftoneFadeToColor: 0.747
+    - _HalftoneNoiseClip: 7.5
+    - _HalftoneTilling: 98
     - _HatchingDensity: 1
     - _HatchingDiffuseOffset: 0
     - _HatchingDrawStrength: 1
@@ -180,7 +180,7 @@ Material:
     - _RimLightSmoothness: 0
     - _RimPower: 0.55
     - _Shininess: 0
-    - _SizeFalloff: 1
+    - _SizeFalloff: 0
     - _Smoothness: 0
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
@@ -209,12 +209,12 @@ Material:
     - _FaceFrontDirection: {r: 0, g: 0, b: 1, a: 0}
     - _FaceRightDirection: {r: 1, g: 0, b: 0, a: 0}
     - _HairSpecColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HalfToneColor: {r: 0.003921569, g: 0.003921569, b: 0.003921569, a: 1}
+    - _HalfToneColor: {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 0.325}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineDistancFade: {r: -200, g: 200, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShadowColor: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 0.373}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

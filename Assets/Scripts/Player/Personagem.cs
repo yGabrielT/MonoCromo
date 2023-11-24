@@ -171,7 +171,12 @@ public class Personagem : MonoBehaviour
     }
 
 
-
+    public void DesativarControles(){
+        ativarControles = false;
+    }
+    public void RetivarControles(){
+        ativarControles = true;
+    }
     public void Controlar()
     {
         if (ativarControles)

@@ -162,7 +162,7 @@ Material:
     - _HairSpecularSize: 0.8
     - _HairSpecularSmoothness: 0.1
     - _HalfToneDiffuseStep: 0
-    - _HalfToneEnabled: 1
+    - _HalfToneEnabled: 0
     - _HalfToneIncludeReceivedShadow: 1
     - _HalfToneShape: 0
     - _HalfToneUvMode: 0
