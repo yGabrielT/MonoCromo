@@ -455,7 +455,10 @@ public class Personagem : MonoBehaviour
                 _crosshair.gameObject.SetActive(false);
                 _cam.gameObject.SetActive(false);
                 _controller.SetSensivity(normalSensivity);
-                _controller.SetRotateOnMove(true);
+                if(!_controller._isClimbing){
+                    _controller.SetRotateOnMove(true);
+                }
+                
             }
         }
         if(_throwScript.isPrincipal){

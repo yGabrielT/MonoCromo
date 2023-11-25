@@ -113,7 +113,7 @@ namespace StarterAssets
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
 
-        private bool _isClimbing;
+        [HideInInspector]public bool _isClimbing;
 
         private const float _threshold = 0.01f;
 
@@ -300,6 +300,7 @@ namespace StarterAssets
                     Debug.DrawRay(transform.position + Vector3.up * aboveOrigin, targetDirection, Color.red, checkLadderDistance);
                     if (ladderHit.transform.gameObject.tag == "Ladder")
                     {
+                        SetRotateOnMove(false);
                         SubirEscada(targetDirection);
                         StartClimbAnimation();
                     }
@@ -314,6 +315,7 @@ namespace StarterAssets
                     Debug.DrawRay(transform.position + Vector3.up * aboveOrigin, lastGrabDir, Color.red, checkLadderDistance);
                     if (ladderHit.transform.gameObject.tag != "Ladder")
                     {
+                        SetRotateOnMove(true);
                         SairDaEscada();
                         StopClimbAnimation();
                         _verticalVelocity = 10f;
@@ -322,6 +324,7 @@ namespace StarterAssets
                 }
                 else
                 {
+                    SetRotateOnMove(true);
                     SairDaEscada();
                     StopClimbAnimation();
                     _verticalVelocity = 10f;
@@ -338,7 +341,7 @@ namespace StarterAssets
                 targetDirection.x = 0f;
                 targetDirection.z = 0f;
                 _verticalVelocity = 0f;
-                _rotateOnMove = false;
+                
                 Grounded = true;
                 Debug.Log(targetDirection);
                 _speed = targetSpeed;
@@ -350,6 +353,16 @@ namespace StarterAssets
                 _animator.SetBool("isClimbing", false);
             }
 
+            //Checar se esta perto do chão pra soltar a escada
+            float ladderDownDist = .1f;
+            
+            if(targetDirection.y < 0){
+                if(Physics.Raycast(transform.position,Vector3.down, out RaycastHit rayHit, ladderDownDist)){
+                    SetRotateOnMove(true);
+                    SairDaEscada();
+                    StopClimbAnimation();
+                }
+            }
 
             // Movimento //
 
