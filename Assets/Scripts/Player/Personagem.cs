@@ -161,9 +161,13 @@ public class Personagem : MonoBehaviour
             animacaoCaptura.Play("telaVermelha");
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                GameManager.Instance.ResetarFaseAtual();
             }
         }
+        if(transform.position.y <-100f){
+            GameManager.Instance.ResetarFaseAtual();
+        }
+
 
         Controlar();
         

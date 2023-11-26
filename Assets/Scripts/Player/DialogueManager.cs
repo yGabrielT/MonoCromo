@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject setaCooldown;                       // Seta ativada quando o jogador puder interagir
     [SerializeField] private CinemachineVirtualCamera _npcCam;
 
-    [SerializeField] private CinemachineTargetGroup _targetGroup;
+    
     private List<AudioClip> _npcAudios = new List<AudioClip>();
     private List<AudioClip> _primaryAudios = new List<AudioClip>();
 
@@ -37,6 +37,9 @@ public class DialogueManager : MonoBehaviour
 
     private int audioIndex1;
     private int audioIndex2;
+
+    [SerializeField] int _limitAudio = 3;
+    private int _audioLimiterCounter = 0;
 
     private void Start()
     {
@@ -62,10 +65,12 @@ public class DialogueManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+        /*
         if(_alreadyChatitng && !PauseController.estaPausado){
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+        */
         
     }
 
@@ -75,7 +80,7 @@ public class DialogueManager : MonoBehaviour
         
         if (diag != null && !isInCooldown)
         {
-            _targetGroup.m_Targets[1].target = npcPos;
+            _npcCam.m_LookAt = npcPos;
             _npcCam.gameObject.SetActive(true);
             _pers.ativarControles = false;
             _alreadyChatitng = true;
@@ -136,6 +141,8 @@ public class DialogueManager : MonoBehaviour
         _alreadyChatitng = false;
         _npcCam.gameObject.SetActive(false);
         _pers.ativarControles = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         Invoke(nameof(ReturnCooldown),.5f);
     }
@@ -159,8 +166,12 @@ public class DialogueManager : MonoBehaviour
         int i = 0;
 		for (i = 0; i < fullTxtArray.Length; i++){
 
-
-            PlayDialogueAudio();
+            _audioLimiterCounter ++;
+            if(_audioLimiterCounter >= _limitAudio){
+                _audioLimiterCounter = 0;
+                PlayDialogueAudio();
+            }
+            
             nextTxt += fullTxtArray[i];
 
 			TextDesc.text = nextTxt;

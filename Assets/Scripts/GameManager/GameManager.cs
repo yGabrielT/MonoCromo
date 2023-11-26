@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using EasyTransition;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -44,6 +45,10 @@ public class GameManager : MonoBehaviour
     public void VoltarMenuGame()
     {
         _transition.Transition(0, set, delay);
+    }
+
+    public void ResetarFaseAtual(){
+        _transition.Transition((SceneManager.GetActiveScene().buildIndex), set, delay);
     }
 
     
