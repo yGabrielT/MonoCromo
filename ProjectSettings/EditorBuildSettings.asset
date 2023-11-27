@@ -18,11 +18,20 @@ EditorBuildSettings:
     path: Assets/Scenes/TerceiroLab.unity
     guid: a318b994542a75444af4082a40f53f1e
   - enabled: 1
+    path: Assets/Scenes/SegundoLab.unity
+    guid: 9df2f30e08f4d63409a46daf209ed18b
+  - enabled: 1
+    path: Assets/Scenes/PrimeiroLab.unity
+    guid: 8d29642fda6ce044ca9db72b18727521
+  - enabled: 1
     path: Assets/Scenes/Cutscenes/CutsceneElevador.unity
     guid: cf774cfe50104e244a378a7de4197b2f
   - enabled: 1
-    path: Assets/Scenes/SegundoLab.unity
-    guid: 9df2f30e08f4d63409a46daf209ed18b
+    path: Assets/Scenes/PrimeiroAndar.unity
+    guid: aef704e9736450c458b4417a7017a503
+  - enabled: 1
+    path: Assets/Scenes/TerceiroAndar.unity
+    guid: 34ed959294109c64083fb75b84775a48
   - enabled: 1
     path: Assets/Scenes/Cutscenes/CutsceneElevador 2.unity
     guid: ce49188a6edd59c4bbfcc08c1c3560a4
