@@ -66483,6 +66483,7 @@ MonoBehaviour:
   _audioSource: {fileID: 8589691036825790896}
   _alreadyChatitng: 0
   letterDelay: 0.05
+  _limitAudio: 3
 --- !u!1 &8559908361597940080
 GameObject:
   m_ObjectHideFlags: 0

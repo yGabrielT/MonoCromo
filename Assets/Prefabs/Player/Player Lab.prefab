@@ -15726,6 +15726,7 @@ MonoBehaviour:
   _audioSource: {fileID: 2933393381988494329}
   _alreadyChatitng: 0
   letterDelay: 0.05
+  _limitAudio: 3
 --- !u!1 &3523527713575458411
 GameObject:
   m_ObjectHideFlags: 0

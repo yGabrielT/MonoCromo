@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44befd833153a6489307217f79d52cd, type: 3}
+  m_Name: Pensamento6
+  m_EditorClassIdentifier: 
+  Dialogue:
+  - NpcName: Arhur
+    NpcDescription: "Eles est\xE3o me esperando aqui."
+    isPrimary: 1
+  - NpcName: Arhur
+    NpcDescription: ...
+    isPrimary: 1
+  - NpcName: Arhur
+    NpcDescription: "Preciso sair daqui o mais r\xE1pido poss\xEDvel!"
+    isPrimary: 1
+  AudioNpc:
+  - {fileID: 8300000, guid: f415c835e7170494b928551058d7e6dc, type: 3}
+  - {fileID: 8300000, guid: 3cd923b9efdb6c840972e510b20e98e3, type: 3}
+  - {fileID: 8300000, guid: 3a4678c78e07a714d9a851766826ab3b, type: 3}
+  - {fileID: 8300000, guid: 59e6319835c0e474a8b183bfa9a9cf2e, type: 3}
+  AudioPrimary:
+  - {fileID: 8300000, guid: f391910165f5b9f4abf9c28228c4cee3, type: 3}
+  - {fileID: 8300000, guid: d9bb07bf6a186b24a8eee271afd8dc21, type: 3}
+  - {fileID: 8300000, guid: 435e9ffce99bd424db1759faaf4e4928, type: 3}
+  - {fileID: 8300000, guid: 35fc57a1ffa78704f82fb263d4ea5f42, type: 3}

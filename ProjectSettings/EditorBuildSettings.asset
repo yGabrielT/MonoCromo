@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 6c10c85e5af1c174dbb6bc74ccdc0562
   - enabled: 1
-    path: Assets/Scenes/Favela 2.unity
+    path: Assets/Scenes/Favela inicio.unity
     guid: a715e4aa8c6997e4095a975fc6ff28da
   - enabled: 1
     path: Assets/Scenes/Cutscenes/CutsceneLab.unity
