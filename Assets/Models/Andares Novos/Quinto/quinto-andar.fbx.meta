@@ -3,7 +3,257 @@ guid: 9b46b8678fc99fd439da16c182ac8b9a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Amario star Madeira preta.001
+    second: {fileID: 2100000, guid: 70c38d03abe2a9d4095405237e68e77e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Amario star plastico cinza claro
+    second: {fileID: 2100000, guid: 9813f83073260f3449179624fc886454, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Brushed Steel
+    second: {fileID: 2100000, guid: 0cf547f811735b54a925d8ae9b5faaa3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chair fabric
+    second: {fileID: 2100000, guid: ba2a640c137f99d41bee780431071821, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ColorMouse
+    second: {fileID: 2100000, guid: cc7d9c0dcbc0de640a8459dd19196a92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fabric Upholstery 001a
+    second: {fileID: 2100000, guid: 3a9d5f52a7c42ed4fad4c6b8adabe362, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Greasy wood
+    second: {fileID: 2100000, guid: 8861cd652fad1e447a0f2a15df158b3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leather Base 01 Holes
+    second: {fileID: 2100000, guid: a4f55bd05cd721e47a162e33d6e01b6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 4f5a5e853fa3b9141b3521d0394024dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Office Chair_Fabric
+    second: {fileID: 2100000, guid: 5a40a3aa869585a4fbe56e79218e4c97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Office Chair_Metal
+    second: {fileID: 2100000, guid: 58a0118be39c069498635c7675ed5547, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Office Chair_Painted Metal
+    second: {fileID: 2100000, guid: d63aec9427e06a641a3f74cf4810ab01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Office Chair_Plastic
+    second: {fileID: 2100000, guid: 57f2cf21ad09e9d4f8488ec3fd1503ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Old Wood
+    second: {fileID: 2100000, guid: c760120b470e15242a050275efc8a4fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Table
+    second: {fileID: 2100000, guid: 3fb155996045da04ba559d4d0fa05967, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White-Wood
+    second: {fileID: 2100000, guid: ed26fcf8cf625ca4e9610025ef75c225, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 26b997f0c6626db4ca25643f8527464b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood car interior
+    second: {fileID: 2100000, guid: 4dc33e21a14be1b4390d699a5e1664b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aluminum.004
+    second: {fileID: 2100000, guid: 6e32a3499d72bad47bdc2e0dbbf4f01a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black
+    second: {fileID: 2100000, guid: dc9940a3ccfd96e47ac56f11bbabe142, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blackBas
+    second: {fileID: 2100000, guid: 280fdc302ff874e42b4c2eb24b45ffa8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chair wood
+    second: {fileID: 2100000, guid: 95e5763af3181f0419634935132fb858, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: comp
+    second: {fileID: 2100000, guid: cad9fdbe77ee3544badbc9742f78dd0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: digital
+    second: {fileID: 2100000, guid: e5d0f17eb9187e346a61362c5d1388a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ground
+    second: {fileID: 2100000, guid: 03b4ea9d447d7fc43bea2465c1a68672, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light.002
+    second: {fileID: 2100000, guid: a18c04596d924b5479978d196e1b4c8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: luz
+    second: {fileID: 2100000, guid: 4414093d662e5a94f9416ae796c2260e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tableGWC
+    second: {fileID: 2100000, guid: c0900a4cbc1bb5246ae69f5d6dda82ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: telaBlack
+    second: {fileID: 2100000, guid: a33da18ed7897294caaacd2db964f5c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tube metal
+    second: {fileID: 2100000, guid: 94ee7cfa9972ca24db13b38c8025cfb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall
+    second: {fileID: 2100000, guid: 5f564ba6d3d34074babc0fc2b4a3d0aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: white
+    second: {fileID: 2100000, guid: a16d3e9141831ca43906cfb555d542d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2100000, guid: ac610fabcca46c844b17664360e62db6, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: ColorPC
+    second: {fileID: 2800000, guid: 42ad81daf6d966b4db1763fc9ce029c2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Fabric039_1K-PNG_Color
+    second: {fileID: 2800000, guid: 5ca62a5683173024fa31fcbbde0b8eca, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Fabric039_1K-PNG_NormalGL
+    second: {fileID: 2800000, guid: 062c08cc79402904d9a5a93d07ed0e2d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Fabric039_1K-PNG_Roughness
+    second: {fileID: 2800000, guid: 2a6cc55786e5fb1478108bb0f43c6243, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Leather_Base_01_metallic
+    second: {fileID: 2800000, guid: 45a693c46280d1443afcb8230b097000, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Madeira_escura_Normal
+    second: {fileID: 2800000, guid: b24926d4c4fbe1f45b0744a077e32a66, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "Ma\xE7anetaEscr"
+    second: {fileID: 2800000, guid: 248bbaa1aa09c8d4e8d3ad3c729a728d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal027_1K-PNG_Color
+    second: {fileID: 2800000, guid: 484323b3f7e00c944883777630fdf348, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MouseColor
+    second: {fileID: 2800000, guid: 0b1ff335248881344808fffd47bd5af6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TelaPC
+    second: {fileID: 2800000, guid: 16b906c57faa36047be0140b2662db0e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WhiteFabric_NRM
+    second: {fileID: 2800000, guid: 6c68a088d3e3b1a45b44b409fb0aa862, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wood051_2K_Color
+    second: {fileID: 2800000, guid: 5c7b9777547961940b888c0176654cbe, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: black
+    second: {fileID: 2800000, guid: 9c1db53f8350bd744834af6b7591744e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cabinetGrande
+    second: {fileID: 2800000, guid: 4352d713d7b737c46abb66dba0065cdb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: door
+    second: {fileID: 2800000, guid: a9d97f6f409ef88439c3f0f45bcb54ca, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: grayGround
+    second: {fileID: 2800000, guid: b6b67e5bcad4f8846bbb9e5ce077ae1c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: white
+    second: {fileID: 2800000, guid: 56a7f5d6c53b32b4cb199162deddeb02, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

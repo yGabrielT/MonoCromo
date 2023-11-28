@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/PrimeiroAndar.unity
     guid: aef704e9736450c458b4417a7017a503
   - enabled: 1
+    path: Assets/Scenes/SegundoAndar.unity
+    guid: fb6e24c12a0420142997b41e0177bd78
+  - enabled: 1
     path: Assets/Scenes/TerceiroAndar.unity
     guid: 34ed959294109c64083fb75b84775a48
   - enabled: 1
