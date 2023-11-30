@@ -52392,7 +52392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boneShape: 1
-  drawBones: 1
+  drawBones: 0
   drawTripods: 0
   boneSize: 1
   tripodSize: 1
@@ -59882,8 +59882,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7309793584991475494}
-  m_LocalRotation: {x: -0, y: -0.70710653, z: -0, w: 0.70710707}
-  m_LocalPosition: {x: 0.82045364, y: -1.7741346, z: 10.493765}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -30.237253, y: -11.264805, z: 29.249258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -65978,6 +65978,8 @@ GameObject:
   - component: {fileID: 8819803275213068172}
   - component: {fileID: 2772700608448218927}
   - component: {fileID: 2303908893290524580}
+  - component: {fileID: 7615174727095764293}
+  - component: {fileID: 6128358702267882016}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -66484,6 +66486,31 @@ MonoBehaviour:
   _alreadyChatitng: 0
   letterDelay: 0.05
   _limitAudio: 3
+--- !u!114 &7615174727095764293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538803506469575073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7e2bd949e50d4409282d121df14a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6128358702267882016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538803506469575073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86cc76d0eefffd945a4a961db5935d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NpcDialogue: {fileID: 0}
 --- !u!1 &8559908361597940080
 GameObject:
   m_ObjectHideFlags: 0
@@ -66831,7 +66858,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 231124155871297177}
   m_Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 35
     OrthographicSize: 10
     NearClipPlane: 0.01
     FarClipPlane: 500

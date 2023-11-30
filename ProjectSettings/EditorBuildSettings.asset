@@ -27,14 +27,23 @@ EditorBuildSettings:
     path: Assets/Scenes/Cutscenes/CutsceneElevador.unity
     guid: cf774cfe50104e244a378a7de4197b2f
   - enabled: 1
-    path: Assets/Scenes/PrimeiroAndar.unity
+    path: Assets/Scenes/Favela PosLab.unity
+    guid: 9fd9b679fecf36c4cbe78b027cda084f
+  - enabled: 1
+    path: "Assets/Scenes/Andares Corpora\xE7\xE3o/PrimeiroAndar.unity"
     guid: aef704e9736450c458b4417a7017a503
   - enabled: 1
-    path: Assets/Scenes/SegundoAndar.unity
+    path: "Assets/Scenes/Andares Corpora\xE7\xE3o/SegundoAndar.unity"
     guid: fb6e24c12a0420142997b41e0177bd78
   - enabled: 1
-    path: Assets/Scenes/TerceiroAndar.unity
+    path: "Assets/Scenes/Andares Corpora\xE7\xE3o/TerceiroAndar.unity"
     guid: 34ed959294109c64083fb75b84775a48
+  - enabled: 1
+    path: "Assets/Scenes/Andares Corpora\xE7\xE3o/QuartoAndar.unity"
+    guid: 3e35ce4e7a3865b4f83ace38cc3f9866
+  - enabled: 1
+    path: "Assets/Scenes/Andares Corpora\xE7\xE3o/QuintoAndar.unity"
+    guid: b8a165ca07dc10b4e8fe56681116a793
   - enabled: 1
     path: Assets/Scenes/Cutscenes/CutsceneElevador 2.unity
     guid: ce49188a6edd59c4bbfcc08c1c3560a4
