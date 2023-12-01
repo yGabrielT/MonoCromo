@@ -8388,7 +8388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1553373569027863785
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15327,6 +15327,8 @@ MonoBehaviour:
       m_Calls: []
   materialObj: {fileID: 0}
   inimigo: {fileID: 1500782727885953526, guid: b1c84f33a169e86418152d4608a4af01, type: 3}
+  inimigo3: {fileID: 1500782727885953526, guid: c03d4099a9e1ac546bdaac2d35515af3,
+    type: 3}
   SmokeWalkTrail: {fileID: 5226497921045322546}
   SmokeSprintTrail: {fileID: 9151388891485116811}
   SmokeJump: {fileID: 1014737460875142850, guid: c19d98d1631c99542a4e1373c9f57550,
@@ -15350,6 +15352,7 @@ MonoBehaviour:
   _hitColorRefreshRate: 0.1
   _timesToChangeColor: 4
   _invencibleFrames: 0.7
+  _isInvencible: 0
 --- !u!114 &6806795408412839782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15417,11 +15420,12 @@ MonoBehaviour:
   audioMix: {fileID: 24100000, guid: 8c82976af34757f4082da22904073db5, type: 2}
   TempoText: {fileID: 6994947635573050380}
   SetTempParado: 3.8
-  SetTempCooldown: 3
+  SetTempCooldown: 25
   audioClip: {fileID: 6105873347307744587}
   timeScale: 0.25
   timeToggle: 0
   startcooldown: 0
+  canUseAbility: 1
 --- !u!114 &4692228984253750987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15725,8 +15729,8 @@ MonoBehaviour:
   _npcCam: {fileID: 8890373202238189576}
   _audioSource: {fileID: 2933393381988494329}
   _alreadyChatitng: 0
-  letterDelay: 0.05
-  _limitAudio: 3
+  letterDelay: 0.01
+  _limitAudio: 5
 --- !u!1 &3523527713575458411
 GameObject:
   m_ObjectHideFlags: 0
@@ -22120,8 +22124,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 0, y: 4.3}
+  m_SizeDelta: {x: 223.6, y: 220.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6058160525417242910
 CanvasRenderer:

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TerceiroAndarAlavs : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class TerceiroAndarAlavs : MonoBehaviour
     public int maxNumsTillUnlock = 3;
     public BoxCollider _collidToUnlock;
     public GameObject DoorOpen;
+
+    public UnityEvent OnUnlock;
     
     public void Start(){
 
@@ -19,10 +22,15 @@ public class TerceiroAndarAlavs : MonoBehaviour
     }
 
     public void Update(){
-        if(numberOfInter >= maxNumsTillUnlock && !canInteract){
+        if(numberOfInter == maxNumsTillUnlock && !canInteract){
+            
             canInteract = true;
             _collidToUnlock.enabled = true;
+            
+        }
+        if(numberOfInter == maxNumsTillUnlock + 1 && canInteract){
             DoorOpen.SetActive(false);
+            OnUnlock.Invoke();
         }
     }
 

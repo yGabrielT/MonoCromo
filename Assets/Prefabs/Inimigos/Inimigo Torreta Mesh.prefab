@@ -105,7 +105,7 @@ MonoBehaviour:
   AtordTimer: 7.2
   atordoadoMaterial: {fileID: 2100000, guid: c229628907afddb4a8ef291c8565329e, type: 2}
   TempoPraAtirar: 0.25
-  Projetil: {fileID: 8341455949525019227, guid: dfbbce2603f1edf47b6869dedc36e712,
+  Projetil: {fileID: 8341455949525019227, guid: 5de4c49db73a13c49a24ffc4723c2905,
     type: 3}
   ProjForc: 30
   audioAcertado: {fileID: 4954440468428459552}
@@ -113,9 +113,10 @@ MonoBehaviour:
   audioAtordoado: {fileID: 109997062458827757}
   AtacarBool: 0
   _stunGO: {fileID: 0}
+  _fov: {fileID: 8667040889721136401}
+  _anim: {fileID: 0}
   isTurret: 1
   PivotTurret: {fileID: 6978070385508993244}
-  _fov: {fileID: 8667040889721136401}
   isStealth: 1
   newPosCooldown: 10
   AggroRange: 10

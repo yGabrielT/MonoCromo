@@ -8,7 +8,10 @@ public class OnTrigger : MonoBehaviour
     public UnityEvent onTrigger;
     
     void OnTriggerEnter(Collider other) {
-        onTrigger.Invoke();
+        if(other.gameObject.tag == "Player"){
+            onTrigger.Invoke();
+        }
+        
     }    
 
 

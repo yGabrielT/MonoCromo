@@ -1472,7 +1472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5654986376802224662
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1813,11 +1813,12 @@ MonoBehaviour:
   audioMix: {fileID: 24100000, guid: 8c82976af34757f4082da22904073db5, type: 2}
   TempoText: {fileID: 6813337416127724508}
   SetTempParado: 3.8
-  SetTempCooldown: 3
+  SetTempCooldown: 25
   audioClip: {fileID: 3130914798163998431}
   timeScale: 0.25
   timeToggle: 0
   startcooldown: 0
+  canUseAbility: 1
 --- !u!114 &8232063159351293546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2121,8 +2122,8 @@ MonoBehaviour:
   _npcCam: {fileID: 7671237416776761159}
   _audioSource: {fileID: 7074185323233803265}
   _alreadyChatitng: 0
-  letterDelay: 0.05
-  _limitAudio: 3
+  letterDelay: 0.01
+  _limitAudio: 5
 --- !u!1 &1071123969274413758
 GameObject:
   m_ObjectHideFlags: 0

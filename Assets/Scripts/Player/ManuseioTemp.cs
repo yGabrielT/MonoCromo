@@ -19,6 +19,7 @@ using TMPro;
         private float timeScale = .5f;
         [SerializeField]
         public bool timeToggle = false, startcooldown;
+        public bool canUseAbility = true;
         private float defaultTimeScale = 1f, defaultFixedDeltaTime = 0.02f;
 
         private Personagem _pers;
@@ -36,7 +37,7 @@ using TMPro;
 
         void Update()
         {
-            if(_pers.ativarControles){
+            if(_pers.ativarControles && canUseAbility){
                 PararTempo();
                 AtualizarCanvas();
                 audioMix.SetFloat("SFXpitch", Time.timeScale);
