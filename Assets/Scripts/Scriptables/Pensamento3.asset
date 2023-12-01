@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pensamento3
   m_EditorClassIdentifier: 
   Dialogue:
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: 'Que barulho foi esse?
 
 '

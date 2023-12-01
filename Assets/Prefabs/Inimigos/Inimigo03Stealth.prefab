@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9008964719225395260}
   - component: {fileID: 1500782727885953526}
   m_Layer: 8
-  m_Name: Inimigo03
+  m_Name: Inimigo03Stealth
   m_TagString: Inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,12 +101,12 @@ MonoBehaviour:
   Tipo: {fileID: 0}
   quantidade: 0
   vidaMax: 30
-  velocidade: 4
-  dano: 20
+  velocidade: 8
+  dano: 205
   AtordTimer: 6.4
   atordoadoMaterial: {fileID: 2100000, guid: c229628907afddb4a8ef291c8565329e, type: 2}
   TempoPraAtirar: 2
-  Projetil: {fileID: 8341455949525019227, guid: dfbbce2603f1edf47b6869dedc36e712,
+  Projetil: {fileID: 8341455949525019227, guid: 5de4c49db73a13c49a24ffc4723c2905,
     type: 3}
   ProjForc: 30
   audioAcertado: {fileID: 4954440468428459552}

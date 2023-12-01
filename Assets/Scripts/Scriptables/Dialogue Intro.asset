@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Dialogue Intro
   m_EditorClassIdentifier: 
   Dialogue:
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: "Acho que finalmente est\xE1 pronto..."
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: euismod egestas. Sed sit amet egestas neque.aaa
     isPrimary: 1
   AudioNpc:

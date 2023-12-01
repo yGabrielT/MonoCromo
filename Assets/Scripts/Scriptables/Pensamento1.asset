@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: Pensamento1
   m_EditorClassIdentifier: 
   Dialogue:
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: Nossa, que saudade do meu pai...
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: ...
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: Acho que vou fazer um Graffiti para ele!
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: ...Acho que vou grafitar o muro da casa abandonada perto do rio.
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: Faz muito tempo que ele foi embora...
     isPrimary: 1
   AudioNpc:

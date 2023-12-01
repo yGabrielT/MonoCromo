@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Pensamento7
   m_EditorClassIdentifier: 
   Dialogue:
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: Acho que eu me lembrei dessa Matriz.
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: "\xC9 uma megacorpora\xE7\xE3o que domina todo o S\xE3o Paulo!"
     isPrimary: 1
   AudioNpc:

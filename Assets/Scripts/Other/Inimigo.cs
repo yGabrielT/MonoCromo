@@ -187,7 +187,7 @@ public class Inimigo : MonoBehaviour
             {
                 _anim.SetBool("AtacarBool", false);
             }
-            if (curSpeed > 0.1f)
+            if (curSpeed > 0f)
             {
                 _anim.SetBool("IsWalking", true);
             }

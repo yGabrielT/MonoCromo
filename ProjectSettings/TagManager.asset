@@ -17,6 +17,8 @@ TagManager:
   - Botao
   - Ladder
   - Wind
+  - InProjStealth
+  - InteractableAlav
   layers:
   - Default
   - TransparentFX

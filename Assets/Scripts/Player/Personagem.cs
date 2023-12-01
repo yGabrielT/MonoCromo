@@ -58,6 +58,7 @@ public class Personagem : MonoBehaviour
 
 
     public Inimigo inimigo;
+    public Inimigo inimigo3;
 
     [Header("VFX")]
     [SerializeField] private ParticleSystem SmokeWalkTrail;
@@ -121,7 +122,7 @@ public class Personagem : MonoBehaviour
     [SerializeField] int _timesToChangeColor;
     [SerializeField] float _invencibleFrames;
 
-    private bool _isInvencible;
+    public bool _isInvencible;
     
 
 
@@ -204,13 +205,13 @@ public class Personagem : MonoBehaviour
 
     }
 
-    private void PerderVida()
+    private void PerderVida(int danoInim)
     {
         
         if (vidaAtual > 0 && !_isInvencible)
         {
             //levar dano
-            vidaAtual -= inimigo.dano;
+            vidaAtual -= danoInim;
             impulseSource.GenerateImpulse(ShakeForce);
             // atualiza a barra de vida
             barraDeVida.atualizarVida(vidaAtual);
@@ -257,15 +258,18 @@ public class Personagem : MonoBehaviour
         if (other.gameObject.tag == "InProj" && !isDead)
         {
             //Destroy(other.gameObject);
-            PerderVida();
+            PerderVida(inimigo.dano);
+        }
+        if(other.gameObject.tag == "InProjStealth" && !isDead){
+            PerderVida(inimigo3.dano);
         }
 
         
-        if (other.gameObject.tag == "Wind")
+        if (other.gameObject.tag == "Wind" && !isDead)
         {
             Debug.Log("Perdeu Vida com o vento");
             //Destroy(other.gameObject);
-            PerderVida();
+            PerderVida(inimigo.dano);
         }
 
     }
@@ -282,6 +286,17 @@ public class Personagem : MonoBehaviour
         box.enabled = false;
         yield return new WaitForSeconds(4.5f);
         box.enabled = true;
+    }
+
+    private void onInteractEnum2(RaycastHit hit)
+    {
+        onInteract.Invoke();
+        BoxCollider box = hit.transform.GetComponent<BoxCollider>();
+        TerceiroAndarAlavs interact2 = hit.transform.GetComponentInParent<TerceiroAndarAlavs>();
+        Debug.Log(hit.transform.name + "Detectado no Enumerator");
+        interact2.IncreaseInter();
+        box.enabled = false;
+        
     }
 
     private void InteractInput()
@@ -307,7 +322,7 @@ public class Personagem : MonoBehaviour
         {
             Debug.DrawRay(headRay.transform.position, Camera.main.transform.forward * maxInteractDistance, Color.green);
             var obj = hit.transform.gameObject;
-            if ((hit.transform.gameObject.tag == "Interactable") || (hit.transform.gameObject.tag == "NPC"))
+            if ((hit.transform.gameObject.tag == "Interactable") || (hit.transform.gameObject.tag == "NPC") || (hit.transform.gameObject.tag == "InteractableAlav"))
             {
 
                 if (hit.transform.gameObject.tag == "Interactable")
@@ -321,6 +336,21 @@ public class Personagem : MonoBehaviour
                         change = true;
 
                         StartCoroutine(onInteractEnum(hit));
+                        Debug.Log("Interagido");
+                    }
+                    Invoke("ColldownInteract", 1f);
+                }
+
+                if((hit.transform.gameObject.tag == "InteractableAlav")){
+                    textInteract.SetActive(true);
+
+                    if (!change && isInteracting)
+                    {
+                        isInteracting = false;
+                        textInteract.SetActive(false);
+                        change = true;
+
+                        onInteractEnum2(hit);
                         Debug.Log("Interagido");
                     }
                     Invoke("ColldownInteract", 1f);

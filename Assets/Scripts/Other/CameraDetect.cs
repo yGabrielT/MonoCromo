@@ -41,7 +41,7 @@ public class CameraDetect : MonoBehaviour
             
             if(isRotating){
                 isRotating = false;
-                CameraPos.DORotate(new Vector3(0,-50f,0),8f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutBack);
+                CameraPos.DORotate(new Vector3(0,-50f,0),2f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutBack);
             }
         }
     }

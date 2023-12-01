@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pensamento5
   m_EditorClassIdentifier: 
   Dialogue:
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: "Matriz... eu ouvi falar desse nome, eu n\xE3o me lembro."
     isPrimary: 1
   AudioNpc:

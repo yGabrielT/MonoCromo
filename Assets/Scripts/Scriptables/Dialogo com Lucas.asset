@@ -16,21 +16,21 @@ MonoBehaviour:
   - NpcName: Lucas
     NpcDescription: "Opa Arthur, \u201Ct\xE1\u201D fazendo o que aqui?"
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: "Mano, vim aqui falar algo urgente contigo. Fui raptado por uma
       corpora\xE7\xE3o chamada Matriz, que voc\xEA e meu pai tinham neg\xF3cios"
     isPrimary: 1
   - NpcName: Lucas
     NpcDescription: "Nem ferrando, \xE9 por isso que voc\xEA estava desaparecido?"
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: Sim, cara, fizeram uns testes em mim, colocaram um implante que
       me faz ter um poder de desacelerar o tempo.
     isPrimary: 1
   - NpcName: Lucas
     NpcDescription: "Mas voc\xEA est\xE1 bem?"
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: "To bem sim, consegui fugir de l\xE1 e descobri alguns dos planos
       deles, precisamos impedir eles r\xE1pido."
     isPrimary: 1
@@ -39,7 +39,7 @@ MonoBehaviour:
       de comunica\xE7\xE3o e gerenciamento das suas tecnologias e sair o mais r\xE1pido
       poss\xEDvel."
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: Beleza, vamos sair agora de noite.
     isPrimary: 1
   - NpcName: Lucas

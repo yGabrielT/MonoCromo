@@ -16,7 +16,7 @@ MonoBehaviour:
   - NpcName: NPC @
     NpcDescription: Eae doido
     isPrimary: 0
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: Opa
     isPrimary: 1
   AudioNpc:

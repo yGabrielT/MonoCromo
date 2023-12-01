@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Pensamento4
   m_EditorClassIdentifier: 
   Dialogue:
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: Onde estou?
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: ...
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: Que lugar estranho...
     isPrimary: 1
   AudioNpc:

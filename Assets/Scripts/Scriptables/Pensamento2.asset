@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pensamento2
   m_EditorClassIdentifier: 
   Dialogue:
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: Melhor eu nem pensar em passar pra esse lado.
     isPrimary: 1
   AudioNpc:

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Pensamento6
   m_EditorClassIdentifier: 
   Dialogue:
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: "Eles est\xE3o me esperando aqui."
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: ...
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: "Preciso sair daqui o mais r\xE1pido poss\xEDvel!"
     isPrimary: 1
   AudioNpc:

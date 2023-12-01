@@ -13,33 +13,33 @@ MonoBehaviour:
   m_Name: Pensamento8
   m_EditorClassIdentifier: 
   Dialogue:
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: Ainda bem que consegui fugir.
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: ...
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: "Essa Matriz est\xE1 enganando o povo..."
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: "e fazendo experimentos ilegais com seres humanos, por isso houve
       v\xE1rios desaparecimentos recentes."
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: ...
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: "Ser\xE1 que meu pai est\xE1 envolvido nisso? "
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: ...
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: "Vou falar com o Lucas, o bra\xE7o direito do meu pai, para ver
       se ele sabe de algo!"
     isPrimary: 1
-  - NpcName: Arhur
+  - NpcName: Arthur
     NpcDescription: "Vou ter que ir at\xE9 a base do grupo revolucion\xE1rio para
       conversar com ele."
     isPrimary: 1
