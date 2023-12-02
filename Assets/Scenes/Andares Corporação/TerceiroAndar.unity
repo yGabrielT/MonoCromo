@@ -153,6 +153,11 @@ PrefabInstance:
       propertyPath: alertaAnimator
       value: 
       objectReference: {fileID: 2045840243}
+    - target: {fileID: 7035966708834996953, guid: 5324f408b563fd041913324da174d9a8,
+        type: 3}
+      propertyPath: onTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1946090612}
     - target: {fileID: 8117594291027418899, guid: 5324f408b563fd041913324da174d9a8,
         type: 3}
       propertyPath: m_Name
@@ -1437,6 +1442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1177214791}
   - component: {fileID: 1177214792}
+  - component: {fileID: 1177214793}
   m_Layer: 0
   m_Name: Interagiveis
   m_TagString: Untagged
@@ -1481,7 +1487,7 @@ MonoBehaviour:
   OnUnlock:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1671547196638663830}
+      - m_Target: {fileID: 1177214793}
         m_TargetAssemblyTypeName: AlertController, Assembly-CSharp
         m_MethodName: Notificacao
         m_Mode: 1
@@ -1493,6 +1499,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1177214793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177214790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee45d634dcafbf3408330b70dba4265a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alertBox: {fileID: 2045840244}
+  alertaAnimator: {fileID: 2045840243}
+  textoAplicado: "Volte para o elevador para avan\xE7ar para a pr\xF3xima fase"
+  alertaTxt: {fileID: 2045840242}
 --- !u!1 &1255610908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,7 +1544,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 66797322}
-  - {fileID: 8768235237012950811}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2238,6 +2259,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897211245}
   m_Mesh: {fileID: -5787464613538997973, guid: 0e3b37170ef0cbb4fb7a097ed109849b, type: 3}
+--- !u!114 &1946090612 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1671547197073704324, guid: 5324f408b563fd041913324da174d9a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 66797321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee45d634dcafbf3408330b70dba4265a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1952892767
 GameObject:
   m_ObjectHideFlags: 0
@@ -4212,22 +4245,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9076250746880754479}
   m_Mesh: {fileID: 8344753866302596607, guid: 0e3b37170ef0cbb4fb7a097ed109849b, type: 3}
---- !u!114 &1671547196638663830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8117594291397709313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee45d634dcafbf3408330b70dba4265a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alertBox: {fileID: 2045840244}
-  alertaAnimator: {fileID: 2045840243}
-  textoAplicado: "Volte para o elevador para avan\xE7ar para a pr\xF3xima fase"
-  alertaTxt: {fileID: 2045840242}
 --- !u!4 &1677264337246456341
 Transform:
   m_ObjectHideFlags: 0
@@ -10165,23 +10182,6 @@ Transform:
   m_Father: {fileID: 543450651678583555}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8117594291397709313
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8768235237012950811}
-  - component: {fileID: 1671547196638663830}
-  m_Layer: 0
-  m_Name: TriggerNotif (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &8134837689810958972
 GameObject:
   m_ObjectHideFlags: 0
@@ -19445,21 +19445,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!4 &8768235237012950811
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8117594291397709313}
-  m_LocalRotation: {x: -0, y: -0.24942818, z: -0, w: 0.9683933}
-  m_LocalPosition: {x: -63.55, y: 34.31, z: -97.96}
-  m_LocalScale: {x: 4, y: 4, z: 16.631}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1255610909}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: -28.887, z: 0}
 --- !u!33 &8797264491758265613
 MeshFilter:
   m_ObjectHideFlags: 0

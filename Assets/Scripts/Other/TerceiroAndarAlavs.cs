@@ -10,6 +10,7 @@ public class TerceiroAndarAlavs : MonoBehaviour
     public int maxNumsTillUnlock = 3;
     public BoxCollider _collidToUnlock;
     public GameObject DoorOpen;
+    private bool isNotified;
 
     public UnityEvent OnUnlock;
     
@@ -28,7 +29,8 @@ public class TerceiroAndarAlavs : MonoBehaviour
             _collidToUnlock.enabled = true;
             
         }
-        if(numberOfInter == maxNumsTillUnlock + 1 && canInteract){
+        if(numberOfInter == maxNumsTillUnlock + 1 && canInteract && !isNotified){
+            isNotified = true;
             DoorOpen.SetActive(false);
             OnUnlock.Invoke();
         }
