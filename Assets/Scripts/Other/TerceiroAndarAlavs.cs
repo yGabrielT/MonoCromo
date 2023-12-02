@@ -11,6 +11,9 @@ public class TerceiroAndarAlavs : MonoBehaviour
     public BoxCollider _collidToUnlock;
     public GameObject DoorOpen;
     private bool isNotified;
+    public AudioClip deactiveSound;
+    public AudioClip switchSound;
+    public AudioSource vfxAudioSource;
 
     public UnityEvent OnUnlock;
     
@@ -20,6 +23,7 @@ public class TerceiroAndarAlavs : MonoBehaviour
 
     public void IncreaseInter(){
         numberOfInter++;
+        vfxAudioSource.PlayOneShot(switchSound);
     }
 
     public void Update(){
@@ -30,9 +34,11 @@ public class TerceiroAndarAlavs : MonoBehaviour
             
         }
         if(numberOfInter == maxNumsTillUnlock + 1 && canInteract && !isNotified){
+            
             isNotified = true;
             DoorOpen.SetActive(false);
             OnUnlock.Invoke();
+            vfxAudioSource.PlayOneShot(deactiveSound);
         }
     }
 

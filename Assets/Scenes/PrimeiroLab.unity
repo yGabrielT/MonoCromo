@@ -3822,6 +3822,11 @@ PrefabInstance:
       objectReference: {fileID: 1833817128}
     - target: {fileID: 1671547197073704324, guid: 5324f408b563fd041913324da174d9a8,
         type: 3}
+      propertyPath: textoAplicado
+      value: "Saia do labor\xE1torio antes que eles te capturem"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671547197073704324, guid: 5324f408b563fd041913324da174d9a8,
+        type: 3}
       propertyPath: alertaAnimator
       value: 
       objectReference: {fileID: 145861983}
