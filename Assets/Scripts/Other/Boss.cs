@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.Audio;
 
 public class Boss : MonoBehaviour
 {
@@ -11,20 +12,21 @@ public class Boss : MonoBehaviour
     public Transform player;
     public int VidaAtual;
     [SerializeField] private Animator anim;
-    [SerializeField] private Collider colisaoMaoR;
-    [SerializeField] private Collider colisaoMaoL;
+    [SerializeField] private Transform posMaoR;
+    [SerializeField] private Transform posMaoL;
     public UnityEvent onSpecial;
 
     [Header("Coisas Secund�rias")]
-    public int dano = 1;
 
-    [SerializeField] private bool atacando;
-    [SerializeField] private bool podeAtacar;
-    [SerializeField] private float tempoAtaque;
-    [SerializeField] private float distancia;
+    private bool atacando;
+    private bool podeAtacar;
+    private float tempoAtaque;
+    private float distancia;
     [SerializeField] private float smoothTime;
     [SerializeField] private float cooldownAtaque = 3;
     private AudioSource _bossAudio;
+    [SerializeField] private float balaForca = 10;
+
 
     [SerializeField] private float distanciaParaAndar;
 
@@ -32,7 +34,7 @@ public class Boss : MonoBehaviour
 
     [SerializeField] GameObject _windPrefab;
     [SerializeField] float DestroyWindTime;
-
+    [SerializeField] float distanciaParaAtacarLeve = 10;
     [SerializeField] Transform _transformWind;
 
     private bool canRun;
@@ -40,55 +42,87 @@ public class Boss : MonoBehaviour
     private int numbersOfHits;
     [SerializeField] int hitsToStunItself;
     private int damage = 20;
-    public bool isStunned;
+    private bool isStunned;
 
     private Transform target;
 
     [SerializeField] float _cooldownStun;
 
+    [SerializeField] GameObject _flameParticleOmbro;
+    [SerializeField] GameObject _flameParticlePe;
+    [SerializeField] GameObject _projectileToShoot;
+
     [Header("Audio")]
-    [SerializeField] AudioClip[] _passosAudios; 
-    private float _delayPassoAudio;
-    [SerializeField] float _delayAteOProximoPasso = .5f;
-    [SerializeField] AudioClip _ataque1;
-    [SerializeField] AudioClip _ataque2;
+    [SerializeField] AudioClip _flameAudio;
+
+
+    [SerializeField] AudioClip _ataqueleve;
+
     [SerializeField] AudioClip _ataqueEspecial;
 
-    private bool canLightAttack ;
+    [SerializeField] private AudioSource _bossJetpackAudioSource;
+    private int numeroAtaque;
 
-    void Start() {
+    private bool canLightAttack;
+
+    private Vector3 prevPos;
+    private Vector3 curMov;
+    private float curSpeed;
+    
+    private float timerExpireAttack;
+    [SerializeField] private float timeTillAttackRenews = 7f;
+    public AudioMixer volVfx;
+    private float volumeSfx;
+
+    void Start()
+    {
         canLightAttack = true;
         _bossAudio = GetComponent<AudioSource>();
         target = player;
-        numbersOfHits = 0;    
+        numbersOfHits = 0;
     }
     // Update is called once per frame
     void Update()
     {
-        if(!isStunned){
+
+        
+
+        if (!isStunned)
+        {
             Atacar();
             SeguirJogador();
-        }else{
+        }
+        else
+        {
             canRun = false;
         }
-        if(VidaAtual <= 0){
+        if (VidaAtual <= 0)
+        {
             Destroy(gameObject);
         }
-        if(canRun){
-            target = player;
-            anim.SetBool("CanRun",true);
-            
-            
-            
-        }
-        else{
-          
-            target = gameObject.transform;
-            anim.SetBool("CanRun",false);
+        //Renova o timer de ataque caso aja um erro nas aninações
+        if(!canLightAttack){
+            timerExpireAttack += Time.deltaTime;
+            if(timeTillAttackRenews < timerExpireAttack){
+                timerExpireAttack = 0;
+                canLightAttack = true;
+            }
         }
     }
 
-    
+    public float GetVolumeSFX(){
+        float value;
+		volVfx.GetFloat("VolSFX", out value);
+        
+		if(value != 0){
+			return Mathf.Pow(10f,value/20);
+		}else{
+			return 100f;
+		}
+        
+    }
+
+
     public void TomarDano(int dano)
     {
         this.VidaAtual -= dano;
@@ -97,101 +131,109 @@ public class Boss : MonoBehaviour
     }
 
 
-    public void SeguirJogador(){
-       if(distanciaParaAndar < distancia && !podeAtacar)
-       {
-            _nav.SetDestination(target.position);
-            canRun = true;
-       } 
-       else
-       {
-            canRun = false;
-       }
+    public void SeguirJogador()
+    {
+        if (distanciaParaAndar < distancia)
+        {
 
-        
+            canRun = true;
+        }
+        else
+        {
+            canRun = false;
+        }
+        if (canRun)
+        {
+            target = player;
+
+        }
+        else
+        {
+
+            target = gameObject.transform;
+
+        }
+        _nav.SetDestination(target.position);
+
+        curMov = transform.position - prevPos;
+        curSpeed = curMov.magnitude / Time.deltaTime;
+        prevPos = transform.position;
+
+        if(curSpeed > .1f && !isStunned){
+            AtivarCombustores();
+        }
+        if(curSpeed < .1f){
+            DesativarCombustores();
+        }
 
     }
     public void Atacar()
     {
-        if (!atacando)
-        {
-            // Acompanha o player com a rota��o do boss. "olhando" para ele
-            Vector3 lookDir = player.position - transform.position;
-            lookDir.y = 0;
-            transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.LookRotation(lookDir),smoothTime * Time.deltaTime);
-        }
-
+        
+        // Acompanha o player com a rota��o do boss. "olhando" para ele
+        Vector3 lookDir = player.position - transform.position;
+        lookDir.y = 0;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookDir), smoothTime * Time.deltaTime);
         distancia = Vector3.Distance(transform.position, player.position);
 
-        if (!podeAtacar)
-        {
-            tempoAtaque += Time.deltaTime; // falar cm biel para usar o input dele
-            if(tempoAtaque > cooldownAtaque)
+        
+            if (tempoAtaque > cooldownAtaque)
             {
-              
+
                 tempoAtaque = 0;
-                canRun = false;
+                
                 podeAtacar = true;
                 
+                
             }
-            else{
+            else
+            {
+                tempoAtaque += Time.deltaTime;
                 atacando = false;
                 canRun = true;
-                if(_delayPassoAudio >= _delayAteOProximoPasso)
-                {
-                    EscolherPassoAleatorio();
-                    _delayPassoAudio= 0f;
-                }
-                else
-                {
-                    _delayPassoAudio += Time.deltaTime;
-                }
+                
             }
-        }
+        
+            
+            
+        
 
-        // AO ENTRAR EM UM RANGE MELEE ELE ATACA DE PERTO
-        if(distancia < 10 && canLightAttack)
+        // Atacar leve com projeteis se for perto e com onda de choque se estiver longe
+        if (canLightAttack)
         {
             canLightAttack = false;
             numbersOfHits++;
             
-            canRun = false;
+            
             atacando = true;
-            int numeroAtaque = Random.Range(1, 3);
-            if(numeroAtaque == 1){
-                _bossAudio.PlayOneShot(_ataque1);
+
+            if (distancia <= distanciaParaAtacarLeve)
+            {
+                numeroAtaque = Random.Range(1, 3);
+                
+                
             }
-            else{
-                _bossAudio.PlayOneShot(_ataque2);
+            if (distancia > distanciaParaAtacarLeve)
+            {
+                numeroAtaque = 3;
+                AudioSource.PlayClipAtPoint(_ataqueEspecial, transform.position, GetVolumeSFX());
+                
             }
             anim.SetTrigger(numeroAtaque.ToString());
-            
-            
+
+
         }
 
-        // caso fique longe la�a um ataque em �rea no ch�o
-        if((distancia >= 10 ) &&  podeAtacar)
+        if (distancia > distanciaParaAtacarLeve)
         {
-            
-            canRun = false;
-            numbersOfHits++;
-            atacando = true;
-            
-            int numeroAtaque = 3;
-            anim.SetTrigger(numeroAtaque.ToString());
-            podeAtacar = false;
-            _bossAudio.PlayOneShot(_ataqueEspecial);
-            
-            // criar dano em �rea
-            // buscar uma anima��o disso
-        }
-        if(distancia > 10){
             atacando = false;
-            podeAtacar = false;
+            //podeAtacar = false;
             canRun = true;
         }
+
         //Boss se atordoa após certa quantidade de ataques
-        if(numbersOfHits >= hitsToStunItself){
+        if (numbersOfHits >= hitsToStunItself)
+        {
             numbersOfHits = 0;
             StartCoroutine(nameof(Atordoarse));
         }
@@ -199,22 +241,47 @@ public class Boss : MonoBehaviour
         // tava pensando em adicionar uma parte onde o personagem ficando distante por dois ataques ao chao o robo se aproxima e lan�a um surpresa
     }
 
-    public void AtivarCollider(){
-        colisaoMaoR.enabled = true;
-        colisaoMaoL.enabled = true;
+    public void AtirarMissil()
+    {
+        
+        if (numeroAtaque == 1)
+        {
+            Vector3 forcaDir = posMaoL.transform.forward;
+            forcaDir = (player.position - posMaoL.position).normalized;
+            
+            GameObject projetil = Instantiate(_projectileToShoot, posMaoL.position, Quaternion.LookRotation(forcaDir));
+            Rigidbody projetilRb = projetil.GetComponent<Rigidbody>();
+            forcaDir = forcaDir * balaForca;
+            projetilRb.AddForce(forcaDir, ForceMode.Impulse);
+            AudioSource.PlayClipAtPoint(_ataqueleve, transform.position, GetVolumeSFX());
+        }
+        if (numeroAtaque == 2)
+        {
+            Vector3 forcaDir = posMaoR.transform.forward;
+            forcaDir = (player.position - posMaoR.position).normalized;
+            
+            GameObject projetil = Instantiate(_projectileToShoot, posMaoR.position, Quaternion.LookRotation(forcaDir));
+            Rigidbody projetilRb = projetil.GetComponent<Rigidbody>();
+            forcaDir = forcaDir * balaForca;
+            projetilRb.AddForce(forcaDir, ForceMode.Impulse);
+            AudioSource.PlayClipAtPoint(_ataqueleve, transform.position, GetVolumeSFX());
+            
+        }
+        Invoke(nameof(ReativarCooldownMissil),.5f);
     }
 
-    public void DesativarCollider(){
-        colisaoMaoL.enabled = false;
-        colisaoMaoR.enabled = false;
+    public void ReativarCooldownMissil()
+    {
+
         canLightAttack = true;
-    }   
+    }
 
     //Fica atordoado e enquanto isso ativar os pontos fracos do Boss
     public IEnumerator Atordoarse()
     {
         isStunned = true;
         canRun = false;
+        DesativarCombustores();
         Debug.Log("Atordoado");
         yield return new WaitForSeconds(_cooldownStun);
         isStunned = false;
@@ -222,21 +289,49 @@ public class Boss : MonoBehaviour
         podeAtacar = false;
     }
 
-    private void EscolherPassoAleatorio(){
-        int Randnumb = Random.Range(0,1);
-        float volume = Random.Range(0.2f,.7f);
+    public void AtivarCombustores()
+    {
+
+
+        _bossJetpackAudioSource.volume = 1f;
+        _flameParticleOmbro.SetActive(true);
+    }
+
+    public void DesativarCombustores()
+    {
+
+        _bossJetpackAudioSource.volume = 0f;
+        _flameParticleOmbro.SetActive(false);
+    }
+
+    public void AtivarCombustoresPes()
+    {
+
+
+        _bossJetpackAudioSource.volume = 1f;
+        _flameParticlePe.SetActive(true);
+    }
+
+    public void DesativarCombustoresPes()
+    {
+
+        _bossAudio.volume = 0f;
+        _flameParticlePe.SetActive(false);
+    }
+
+    public void InstanciarAbilidadeEspecial()
+    {
+        GameObject wind = Instantiate(_windPrefab, _transformWind.position, Quaternion.identity);
+        Destroy(wind, DestroyWindTime);
         
-        _bossAudio.PlayOneShot(_passosAudios[Randnumb], volume);
-
+        Debug.Log(GetVolumeSFX());
+        
+        Invoke(nameof(SpawnarSupply), 2f);
+        Invoke(nameof(ReativarCooldownMissil),2f);
     }
 
-    public void InstanciarAbilidadeEspecial(){
-        GameObject wind = Instantiate(_windPrefab,_transformWind.position,Quaternion.identity);
-        Destroy(wind,DestroyWindTime);
-        Invoke(nameof(SpawnarSupply),2f);
-    }
-
-    public void SpawnarSupply(){
+    public void SpawnarSupply()
+    {
         onSpecial.Invoke();
     }
 }

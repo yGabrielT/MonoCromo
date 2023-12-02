@@ -270,11 +270,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7176658433355944741, guid: 8c82976af34757f4082da22904073db5,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: cc351e6cd44c4304cb5c07d78e48f308, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ac11a977b8051fe438c5e0031c41b31a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -930,7 +930,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh178860
+  m_Name: pb_Mesh47424
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2

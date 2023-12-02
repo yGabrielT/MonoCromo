@@ -17,7 +17,7 @@ MonoBehaviour:
     NpcDescription: Acho que eu me lembrei dessa Matriz.
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: "\xC9 uma megacorpora\xE7\xE3o que domina todo o S\xE3o Paulo!"
+    NpcDescription: "\xC9 uma megacorpora\xE7\xE3o que domina todo a S\xE3o Paulo!"
     isPrimary: 1
   AudioNpc:
   - {fileID: 8300000, guid: f415c835e7170494b928551058d7e6dc, type: 3}
