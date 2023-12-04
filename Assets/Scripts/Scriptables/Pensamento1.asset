@@ -14,19 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialogue:
   - NpcName: Arthur
-    NpcDescription: Nossa, que saudade do meu pai...
+    NpcDescription: "P\xF4, j\xE1 faz uma cota que meu pai sumiu, e ainda sinto saudades
+      dele..."
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: ...
+    NpcDescription: 'Vou fazer algo para espairecer a mente... '
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: Acho que vou fazer um Graffiti para ele!
+    NpcDescription: "Talvez at\xE9 uma homenagem para ele... "
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: ...Acho que vou grafitar o muro da casa abandonada perto do rio.
+    NpcDescription: "D\xE1 pra fazer uma arte no muro daquela casa abandonada no
+      rio."
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: Faz muito tempo que ele foi embora...
+    NpcDescription: "Aquele muro j\xE1 t\xE1 dando sopa faz um tempo."
     isPrimary: 1
   AudioNpc:
   - {fileID: 8300000, guid: f415c835e7170494b928551058d7e6dc, type: 3}

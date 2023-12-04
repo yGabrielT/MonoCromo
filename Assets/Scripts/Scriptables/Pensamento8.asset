@@ -14,34 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialogue:
   - NpcName: Arthur
-    NpcDescription: Ainda bem que consegui fugir.
+    NpcDescription: "Ainda bem que consegui fugir, pensei que n\xE3o conseguiria
+      chegar suave"
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: ...
+    NpcDescription: "Como ningu\xE9m sabe que isso est\xE1 acontecendo? A Matriz
+      est\xE1 enganando todo mundo..."
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: "Essa Matriz est\xE1 enganando o povo..."
+    NpcDescription: "e fazendo experimentos ilegais com humanos, por isso houve v\xE1rios
+      desaparecimentos recentes"
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: "e fazendo experimentos ilegais com seres humanos, por isso houve
-      v\xE1rios desaparecimentos recentes."
+    NpcDescription: Vou falar com o Lucas, para ver se ele sabe de algo
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: ...
-    isPrimary: 1
-  - NpcName: Arthur
-    NpcDescription: "Ser\xE1 que meu pai est\xE1 envolvido nisso? "
-    isPrimary: 1
-  - NpcName: Arthur
-    NpcDescription: ...
-    isPrimary: 1
-  - NpcName: Arthur
-    NpcDescription: "Vou falar com o Lucas, o bra\xE7o direito do meu pai, para ver
-      se ele sabe de algo!"
-    isPrimary: 1
-  - NpcName: Arthur
-    NpcDescription: "Vou ter que ir at\xE9 a base do grupo revolucion\xE1rio para
-      conversar com ele."
+    NpcDescription: "Nessa hora da noite, ele deve estar no galp\xE3o do grupo revolucion\xE1rio."
     isPrimary: 1
   AudioNpc:
   - {fileID: 8300000, guid: f415c835e7170494b928551058d7e6dc, type: 3}

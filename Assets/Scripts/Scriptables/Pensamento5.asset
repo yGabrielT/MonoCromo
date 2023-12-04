@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialogue:
   - NpcName: Arthur
-    NpcDescription: "Matriz... eu ouvi falar desse nome, eu n\xE3o me lembro."
+    NpcDescription: Droga, eu dei muito mole, eu fui pego pelos caras da Matriz.
+    isPrimary: 1
+  - NpcName: Arthur
+    NpcDescription: O que eles queriam fazendo experimentos comigo?
     isPrimary: 1
   AudioNpc:
   - {fileID: 8300000, guid: f415c835e7170494b928551058d7e6dc, type: 3}

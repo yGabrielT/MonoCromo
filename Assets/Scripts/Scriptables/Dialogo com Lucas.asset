@@ -14,36 +14,84 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialogue:
   - NpcName: Lucas
-    NpcDescription: "Opa Arthur, \u201Ct\xE1\u201D fazendo o que aqui?"
+    NpcDescription: "Opa Arthur, t\xE1 fazendo o que aqui?"
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: "Mano, vim aqui falar algo urgente contigo. Fui raptado por uma
-      corpora\xE7\xE3o chamada Matriz, que voc\xEA e meu pai tinham neg\xF3cios"
+    NpcDescription: "Mano, vim aqui falar algo urgente contigo. Fui raptado pela
+      Matriz, que voc\xEA e meu pai tinham neg\xF3cios."
     isPrimary: 1
   - NpcName: Lucas
-    NpcDescription: "Nem ferrando, \xE9 por isso que voc\xEA estava desaparecido?"
+    NpcDescription: "Nem ferrando, \xE9 por isso que voc\xEA estava desaparecido
+      truta?"
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: Sim, cara, fizeram uns testes em mim, colocaram um implante que
-      me faz ter um poder de desacelerar o tempo.
+    NpcDescription: 'Sim, cara, fizeram uns testes em mim, colocaram um implante
+      que me fez ter um poder de desacelerar o tempo.
+
+'
     isPrimary: 1
   - NpcName: Lucas
     NpcDescription: "Mas voc\xEA est\xE1 bem?"
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: "To bem sim, consegui fugir de l\xE1 e descobri alguns dos planos
-      deles, precisamos impedir eles r\xE1pido."
+    NpcDescription: "T\xF4 bem sim, consegui fugir de l\xE1 e descobri alguns dos
+      planos deles, precisamos impedir eles r\xE1pido."
     isPrimary: 1
   - NpcName: Lucas
-    NpcDescription: "Vamos ter que fazer uma invas\xE3o esta noite, quebrar os servidores
-      de comunica\xE7\xE3o e gerenciamento das suas tecnologias e sair o mais r\xE1pido
-      poss\xEDvel."
+    NpcDescription: "J\xE1 na \xE9poca que eu trabalhava com seu pai achava essa
+      Matriz suspeita. Com esses desaparecimentos, estava investigando mais sobre
+      eles.\r\n"
+    isPrimary: 1
+  - NpcName: Lucas
+    NpcDescription: "Por isso, estudei um pouco da seguran\xE7a exterior da sede
+      principal, l\xE1 tem diversas c\xE2meras e drones, por\xE9m seria imposs\xEDvel
+      passar sem realizar alarde, e foi muito tenso s\xF3 de saber estas informa\xE7\xF5es,
+      assim, desistimos deste plano.\r\n"
+    isPrimary: 1
+  - NpcName: Lucas
+    NpcDescription: "Mas com seu novo superpoder, voc\xEA poder\xE1 desativar os
+      alarmes, c\xE2meras e drones em torno da regi\xE3o do pr\xE9dio da sede, e
+      assim voc\xEA entrar\xE1 no primeiro andar. \r\n"
+    isPrimary: 1
+  - NpcName: Lucas
+    NpcDescription: "Vou juntar o pessoal e vamos sair agora de madrugada. Vou te
+      passar as instru\xE7\xF5es das localiza\xE7\xF5es dos equipamentos que vigiam
+      o local.\r\n"
     isPrimary: 1
   - NpcName: Arthur
-    NpcDescription: Beleza, vamos sair agora de noite.
+    NpcDescription: 'Beleza, mas depois de passarmos, o que acontece?
+
+'
     isPrimary: 1
   - NpcName: Lucas
-    NpcDescription: "Certo, quando voc\xEA estiver pronto entre na garagem."
+    NpcDescription: "O primeiro andar fica sempre vazio, ent\xE3o poderemos te dar
+      apoio at\xE9 ali, mas depois voc\xEA dever\xE1 seguir solo, pois voc\xEA deve
+      chegar at\xE9 o terceiro andar e quebrar os servidores da Matriz e junto do
+      supercomputador para que outros times possam invadir mais facilmente outros
+      laborat\xF3rios e ind\xFAstrias.\r\n"
+    isPrimary: 1
+  - NpcName: Lucas
+    NpcDescription: "Eu e meu time estaremos preparados para invadir a sede, por\xE9m
+      para nos reagruparmos com voc\xEA ir\xE1 demorar um pouco.\r\n "
+    isPrimary: 1
+  - NpcName: Arthur
+    NpcDescription: "E depois, eu espero voc\xEAs?"
+    isPrimary: 1
+  - NpcName: Lucas
+    NpcDescription: "Vai continuando sozinho at\xE9 chegar no \xFAltimo andar, que
+      \xE9 onde reside o chefe da Matriz, nos espera para n\xE3o enfrentar ele sozinho."
+    isPrimary: 1
+  - NpcName: Arthur
+    NpcDescription: "Beleza mano, parece que todos v\xE3o depender de mim, ser\xE1
+      que consigo par\xE7a? "
+    isPrimary: 1
+  - NpcName: Lucas
+    NpcDescription: "\xC9 tenso Arthur, mas voc\xEA entrar\xE1 para hist\xF3ria daqueles
+      que mudaram o jeito em que o mundo enxergar\xE1. Quando estiver PRONTO entre
+      na GARAGEM.\r\n"
+    isPrimary: 1
+  - NpcName: Arthur.
+    NpcDescription: OK.
     isPrimary: 1
   AudioNpc:
   - {fileID: 8300000, guid: f415c835e7170494b928551058d7e6dc, type: 3}

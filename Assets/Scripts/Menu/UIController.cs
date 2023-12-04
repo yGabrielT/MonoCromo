@@ -14,7 +14,7 @@ public class UIController : MonoBehaviour
 
     public void IniciarGame()
     {
-        GameManager.Instance.AvancarCena(1);
+        GameManager.Instance.AvancarCena(16);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
     }
